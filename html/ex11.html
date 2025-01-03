@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>테이블 셀 병합</title>
+    <!-- 속성 colspan : 가로방향 셀 병합 -->
+    <!-- 속성 rowspan : 세로방향 셀 병합 -->
+  </head>
+  <body>
+    <table border="1px">
+      <thead>
+        <tr>
+          <th colspan="2">제목셀1</th>
+          <th>제목셀2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- 다행 편집 단축키 : CTRL + ALT + 화살표키 -->
+          <td>데이터셀1</td>
+          <td rowspan="2">데이터셀2</td>
+          <td>데이터셀3</td>
+        </tr>
+        <tr>
+          <td>데이터셀1</td>
+          <td>데이터셀2</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
