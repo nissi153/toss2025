@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>입력태그의 종류</title>
+  </head>
+  <body>
+    <form action="http://www.myserver.com" method="post">
+      <!-- label태그 : 입력태그의 제목 표시 -->
+      <!-- for속성 : label태그와 input태그를 연결 -->
+      <label for="id">아이디</label>
+      <!-- type속성 : 입력되는 데이터의 타입 -->
+      <!-- id: Html 문서의 유일한 식별자 -->
+      <!-- name: Request Parameter 서버의 매개변수와 연결 -->
+      <!-- value: 입력된 데이터(초기값 넣을 수 있음.) -->
+      <!-- placeholder: 힌트 문구 -->
+      <input
+        type="text"
+        id="id"
+        name="id"
+        value=""
+        placeholder="아이디를 입력하세요."
+      />
+      <br />
+      <label for="pw">암호</label>
+      <input
+        type="password"
+        id="pw"
+        name="pw"
+        value=""
+        placeholder="암호를 입력하세요."
+      />
+      <br />
+      <input type="submit" value="전송하기" />
+      <br />
+      <!-- 체크박스 : 여러개 선택 가능 -->
+      <!-- 서버에서 checkbox라는 이름으로 파라미터를 받는다. 배열형태이다. -->
+      <!-- String[] checkbox -->
+      <!-- checked : 초기값 (체크된 상태) -->
+      <!-- value : 체크된 상태일 때 값(문자열) -->
+      <!-- 첫번째,세번째 체크박스만 체크: ck1,ck3 -->
+      <input
+        type="checkbox"
+        name="checkbox"
+        id="check1"
+        value="ck1"
+        checked
+      /><label for="check1">체크박스1</label>
+      <input type="checkbox" name="checkbox" id="check2" value="ck2" />
+      <label for="check2">체크박스2</label>
+      <input type="checkbox" name="checkbox" id="check3" value="ck3" />
+      <label for="check3">체크박스3</label>
+
+      <!-- 라디오버튼 : 여러개 중에서 하나만 선택 -->
+    </form>
+  </body>
+</html>
