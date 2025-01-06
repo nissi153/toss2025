@@ -26,6 +26,35 @@
       <!-- Green : 1바이트 : 0~255 : 8bit -->
       <!-- Blue : 1바이트 : 0~255 : 8bit -->
       <!-- Alpah : 1바이트 : 0.0 ~ 1.0 : 8bit -->
+
+      <!-- 날짜 선택 태그 -->
+      <input type="date" name="date" value="2025-01-06" />
+      <!-- 날짜시간 선택 태그 -->
+      <input
+        type="datetime-local"
+        name="datetime"
+        value="2025-01-06T12:27:00"
+      />
+      <!-- email -->
+      <input type="email" name="email" value="abc@gmail.com" />
+      <!-- email 다중선택 -->
+      <input
+        type="email"
+        name="email"
+        value="abc@gmail.com,123@gmail.com"
+        multiple
+      />
+      <!-- 달(Month) -->
+      <input type="month" name="month" value="2025-01" />
+      <!-- 숫자(Number) -->
+      <input type="number" value="10" min="5" max="10" step="1" />
+      <!-- 범위 -->
+      <input type="range" value="1" min="1" max="5" step="1" />
+      <!-- 많은 양의 텍스트를 입력받을 때 : textarea태그 -->
+      <textarea name="memo" cols="30" rows="10">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis placeat et ad a adipisci dolorum, praesentium nam aspernatur? Sapiente id vero cum quisquam distinctio doloremque beatae veniam inventore illo odio!
+       </textarea
+      >
     </form>
   </body>
 </html>
