@@ -32,9 +32,21 @@
       li {
         display: inline;
       }
-      section,
+      /* float 가급적 사용하지 않는다. */
+      /* flex box을 사용해서 레이아웃을 잡는다. */
+      section {
+        /* display:inline로 만들고, 오른쪽으로 정렬 */
+        float: right;
+        width: 80%;
+      }
       aside {
-        display: inline;
+        /* display:inline로 만들고, 왼쪽으로 정렬 */
+        float: left;
+        width: 18%;
+      }
+      footer {
+        /* float - right left 지워준다. block으로 돌아감. */
+        clear: both;
       }
     </style>
   </head>
@@ -62,7 +74,13 @@
           veniam nesciunt iste!
         </p>
       </section>
-      <aside>사이드</aside>
+      <aside>
+        <ul>
+          <li style="display: block"><a href="#">메뉴1</a></li>
+          <li style="display: block"><a href="#">메뉴2</a></li>
+          <li style="display: block"><a href="#">메뉴3</a></li>
+        </ul>
+      </aside>
     </main>
     <footer>푸터영역</footer>
   </body>
