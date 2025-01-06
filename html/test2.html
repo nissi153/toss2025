@@ -2,106 +2,194 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>뉴스 페이지</title>
+    <title>카페 스토리</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
-      header {
-        padding: 10px 20px;
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #ddd;
-      }
-      header h1 {
-        margin: 0;
-        font-size: 24px;
-      }
-      nav {
-        padding: 10px 20px;
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #ddd;
-      }
-      nav a {
-        margin-right: 10px;
-        text-decoration: none;
-        color: #333;
-        font-size: 14px;
-      }
-      .container {
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
         padding: 20px;
       }
-      .news-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+      .nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .nav-item {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .nav-item.active {
+        background-color: #ffedee;
+        color: #ff6b6b;
+      }
+      .nav-item.normal {
+        color: #666;
+      }
+      .stories {
+        display: flex;
+        flex-direction: column;
         gap: 20px;
       }
-      .news-item {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        overflow: hidden;
+      .story {
+        display: flex;
+        gap: 15px;
+        align-items: center;
       }
-      .news-item img {
-        width: 100%;
-        height: 150px;
+      .story-number {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        min-width: 25px;
+      }
+      .story-content {
+        flex-grow: 1;
+      }
+      .story-title {
+        font-size: 15px;
+        margin-bottom: 5px;
+        color: #333;
+      }
+      .story-views {
+        font-size: 13px;
+        color: #888;
+      }
+      .story-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
         object-fit: cover;
       }
-      .news-item h2 {
-        font-size: 16px;
-        margin: 10px;
-      }
-      .news-item p {
-        font-size: 14px;
-        color: #555;
-        margin: 0 10px 10px;
-      }
-      footer {
-        text-align: center;
-        padding: 10px 20px;
-        background-color: #f8f8f8;
-        border-top: 1px solid #ddd;
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: 20px;
+        gap: 10px;
+        color: #666;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>뉴스</h1>
-    </header>
-    <nav>
-      <a href="#">주요 뉴스</a>
-      <a href="#">추천</a>
-      <a href="#">언론사</a>
-      <a href="#">심층탐사</a>
-      <a href="#">경제</a>
-      <a href="#">라이브</a>
+    <nav class="nav">
+      <div class="nav-item active">카페</div>
+      <div class="nav-item normal">티스토리</div>
+      <div class="nav-item normal">브런치스토리</div>
+      <div class="nav-item normal">카카오스토리</div>
     </nav>
-    <div class="container">
-      <div class="news-grid">
-        <div class="news-item">
-          <img src="https://via.placeholder.com/300x150" alt="뉴스 이미지" />
-          <h2>국수본 "2차 집행시 막는 경호처 직원 체포"</h2>
-          <p>연합뉴스TV</p>
+
+    <div class="stories">
+      <div class="story">
+        <div class="story-number">1</div>
+        <div class="story-content">
+          <div class="story-title">
+            이번달에 발급중료된다는 나후 혜자 신용카드
+          </div>
+          <div class="story-views">댓글 187</div>
         </div>
-        <div class="news-item">
-          <img src="https://via.placeholder.com/300x150" alt="뉴스 이미지" />
-          <h2>가족 9명 잃은 반려견 푸딩이의 조문</h2>
-          <p>한국일보</p>
-        </div>
-        <div class="news-item">
-          <img src="https://via.placeholder.com/300x150" alt="뉴스 이미지" />
-          <h2>은박지 덮은 '키세스 시위대'</h2>
-          <p>이데일리</p>
-        </div>
-        <div class="news-item">
-          <img src="https://via.placeholder.com/300x150" alt="뉴스 이미지" />
-          <h2>'8인 체제' 첫 회의 현장</h2>
-          <p>연합뉴스TV</p>
+        <img
+          src="/api/placeholder/80/80"
+          alt="카드 이미지"
+          class="story-image"
+        />
+      </div>
+
+      <div class="story">
+        <div class="story-number">2</div>
+        <div class="story-content">
+          <div class="story-title">
+            아 개웃기닥ㅋㅋㅋㅋ 술 취가 라식한 병원 알려달라는거 실화냐
+          </div>
+          <div class="story-views">댓글 25</div>
         </div>
       </div>
+
+      <div class="story">
+        <div class="story-number">3</div>
+        <div class="story-content">
+          <div class="story-title">염력 월 순수익</div>
+          <div class="story-views">댓글 77</div>
+        </div>
+        <img
+          src="/api/placeholder/80/80"
+          alt="수익 이미지"
+          class="story-image"
+        />
+      </div>
+
+      <div class="story">
+        <div class="story-number">4</div>
+        <div class="story-content">
+          <div class="story-title">공부 잘하는 사람들이 다 공감한다는 것</div>
+          <div class="story-views">댓글 54</div>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="story-number">5</div>
+        <div class="story-content">
+          <div class="story-title">누가 밥솥으로 커스텀라 된다고 했나</div>
+          <div class="story-views">댓글 42</div>
+        </div>
+        <img
+          src="/api/placeholder/80/80"
+          alt="고양이 이미지"
+          class="story-image"
+        />
+      </div>
+
+      <div class="story">
+        <div class="story-number">6</div>
+        <div class="story-content">
+          <div class="story-title">맥도날드 모닝메뉴 신상 맥그리들</div>
+          <div class="story-views">댓글 36</div>
+        </div>
+        <img
+          src="/api/placeholder/80/80"
+          alt="맥도날드 이미지"
+          class="story-image"
+        />
+      </div>
+
+      <div class="story">
+        <div class="story-number">7</div>
+        <div class="story-content">
+          <div class="story-title">강아지 이름이 환희라서</div>
+          <div class="story-views">댓글 44</div>
+        </div>
+        <img
+          src="/api/placeholder/80/80"
+          alt="강아지 이미지"
+          class="story-image"
+        />
+      </div>
+
+      <div class="story">
+        <div class="story-number">8</div>
+        <div class="story-content">
+          <div class="story-title">
+            탁월한 사람들은 다 '이걸' 쓰면서 공부한다고 합니다
+          </div>
+          <div class="story-views">댓글 19</div>
+        </div>
+        <img src="/api/placeholder/80/80" alt="책 이미지" class="story-image" />
+      </div>
     </div>
-    <footer>주요 뉴스 더보기 | 1 / 3</footer>
+
+    <div class="pagination">
+      <span>◀</span>
+      <span>카페 인기글 더보기</span>
+      <span>1 / 3</span>
+      <span>▶</span>
+    </div>
   </body>
 </html>
