@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 폼</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 80px;
+      }
+      input,
+      select {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>회원가입 폼</h1>
+    <form>
+      <div>
+        <label for="name">이름 :</label>
+        <input type="text" id="name" placeholder="이름을 입력하세요." />
+      </div>
+      <div>
+        <label for="password">비밀번호 :</label>
+        <input type="password" id="password" placeholder="비번을 입력하세요." />
+      </div>
+      <div>
+        <label for="phone">핸드폰 :</label>
+        <input type="text" id="phone" placeholder="핸드폰을 입력하세요." />
+      </div>
+      <div>
+        <label for="email">이메일 :</label>
+        <input type="email" id="email" placeholder="이메일을 입력하세요." />
+      </div>
+      <div>
+        <label>성별 :</label>
+        <input type="radio" id="male" name="gender" value="남성" checked />
+        <label for="male">남성</label>
+        <input type="radio" id="female" name="gender" value="여성" />
+        <label for="female">여성</label>
+      </div>
+      <div>
+        <label>취미 :</label>
+        <input type="checkbox" id="walking" value="걷기" />
+        <label for="walking">걷기</label>
+        <input type="checkbox" id="running" value="달리기" checked />
+        <label for="running">달리기</label>
+        <input type="checkbox" id="cycling" value="자전거타기" />
+        <label for="cycling">자전거타기</label>
+      </div>
+      <div>
+        <label for="location">사는 곳 :</label>
+        <select id="location">
+          <option value="서울">서울</option>
+          <option value="부산">부산</option>
+          <option value="대구">대구</option>
+          <option value="인천">인천</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit">회원가입</button>
+      </div>
+    </form>
+  </body>
+</html>

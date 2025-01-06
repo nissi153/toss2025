@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>실습3 - 그림과 같이 입력양식을 구현하시오.</title>
+  </head>
+  <body>
+    <h3>회원가입 폼</h3>
+    <form action="" method="GET">
+      <label>이름 :</label>
+      <input type="text" placeholder="이름을 입력하세요." /> <br />
+      <label>비밀번호 :</label>
+      <input type="password" placeholder="비번을 입력하세요." /> <br />
+      <label>핸드폰:</label>
+      <input type="text" placeholder="핸드폰을 입력하세요." value="" /> <br />
+      <label>이메일:</label>
+      <input type="text" placeholder="이메일을 입력하세요." value="" /> <br />
+      <label>성별 </label>
+      <input type="radio" name="gender" value="male" checked /><label
+        >남성</label
+      >
+      <input type="radio" name="gender" value="female" /><label>여성</label
+      ><br />
+      <label>취미 </label>
+      <!-- 문자열 배열로 서버에서 받는다. -->
+      <input type="checkbox" name="favorite" value="walk" /><label>걷기</label>
+      <input type="checkbox" name="favorite" value="run" checked /><label
+        >달리기</label
+      >
+      <input type="checkbox" name="favorite" value="cycle" /><label
+        >자전거타기</label
+      ><br />
+      <label>사는 곳:</label>
+      <select name="location">
+        <option value="서울" selected>서울</option>
+        <option value="경기">경기</option>
+        <option value="인천">인천</option></select
+      ><br />
+      <input type="submit" value="회원가입" />
+    </form>
+  </body>
+</html>
