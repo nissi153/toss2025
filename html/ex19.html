@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>입력태그의 종류3</title>
+  </head>
+  <body>
+    <form action="http://www.myserver.com">
+      <!-- type:hidden 숨김 속성, 사용자에게는 보이지 않고,  -->
+      <!-- 서버에는 입력값이 전달되는 용도 -->
+      <input type="hidden" name="hiddenVal" value="게시물 아이디값" />
+      <br />
+      <!-- 선택목록 태그 : select태그 -->
+      <select name="drink">
+        <option value="coke">콜라</option>
+        <option value="sidar" selected>사이다</option>
+        <option value="juice">쥬스</option>
+      </select>
+      <!-- 수평선 태그 : hr태그 -->
+      <hr />
+      <!-- 색상 선택 태그 -->
+      <input type="color" name="color" value="#FF0000" />
+      <!-- 색상 표현 : 빛의 3원색 -->
+      <!-- R: red, G: green, B: blue, A: alpha 투명도 -->
+      <!-- 4바이트로 1픽셀 색상을 지정함 : RGBA -->
+      <!-- Red : 1바이트 : 0~255 : 8bit -->
+      <!-- Green : 1바이트 : 0~255 : 8bit -->
+      <!-- Blue : 1바이트 : 0~255 : 8bit -->
+      <!-- Alpah : 1바이트 : 0.0 ~ 1.0 : 8bit -->
+    </form>
+  </body>
+</html>
