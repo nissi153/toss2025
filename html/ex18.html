@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>입력태그의 종류2</title>
+  </head>
+  <body>
+    <form action="http://www.myserver.com" method="get">
+      <!-- button태그 : HTML 4.0 지원 -->
+      <!-- type이 없으면, 기본값이 submit이다. -->
+      <!-- type을 반드시 사용! -->
+      <button>버튼1</button>
+      <button type="submit">버튼1</button>
+      <input type="submit" />
+      <br />
+      <button type="button" onclick="alert('클릭!')">버튼2</button>
+      <br />
+      <input type="reset" value="리셋" />
+      <input type="text" />
+      <br />
+      <!-- formaction 속성 -->
+      <button type="submit" formaction="http://www.myserver2.com">
+        다른 주소로 전송
+      </button>
+      <!-- 이미지 버튼 -->
+      <input type="image" src="play-button.png" width="50px" height="50px" />
+      <button type="submit" style="border: none; background-color: transparent">
+        <img src="play-button.png" width="50px" height="50px" />
+      </button>
+    </form>
+  </body>
+</html>
