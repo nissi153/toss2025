@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>시멘틱 태그</title>
+    <!-- Semantic 의미론적 -->
+    <!-- 웹페이지의 공통적인 공간 구성요소를 태그형식으로 분류한 것 -->
+    <!-- 공통적인 구성요소: 헤더(Header), 푸터(Footer), 메인(섹션),
+     사이드(Side), 네비게이션바(메뉴바, Nav) -->
+    <!-- div태그와 기능적으로 똑같다. -->
+    <!-- header태그 : 상단공간(헤더) -->
+    <!-- nav태그 : 네이게이션(메뉴) -->
+    <!-- footer태그 : 바닥공간 -->
+    <!-- main태그 : 주 콘텐츠 공간(section + aside) -->
+    <!-- section : 주된 콘텐츠 -->
+    <!-- aside : 사이트(왼쪽,오른쪽) 공간 -->
+    <!-- *-----------------* -->
+    <!-- |   Header(Top)   | -->
+    <!-- *-----------------* -->
+    <!-- |        Nav      | -->
+    <!-- *-----------------*      -->
+    <!-- |      |          |      -->
+    <!-- |Aside | Section  | Main -->
+    <!-- |      |          |      -->
+    <!-- *-----------------* -->
+    <!-- |      Footer     | -->
+    <!-- *-----------------* -->
+    <style>
+      * {
+        border: 1px solid red;
+      }
+      ul,
+      li {
+        display: inline;
+      }
+      section,
+      aside {
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>헤더영역</header>
+    <nav>
+      <ul>
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi sequi
+          eum in, ullam ea commodi quos accusantium iure voluptas eaque
+          recusandae corporis consectetur distinctio incidunt velit. Praesentium
+          veniam nesciunt iste!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi sequi
+          eum in, ullam ea commodi quos accusantium iure voluptas eaque
+          recusandae corporis consectetur distinctio incidunt velit. Praesentium
+          veniam nesciunt iste!
+        </p>
+      </section>
+      <aside>사이드</aside>
+    </main>
+    <footer>푸터영역</footer>
+  </body>
+</html>
