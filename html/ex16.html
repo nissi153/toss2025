@@ -9,6 +9,8 @@
     <!-- 2. WB 주소줄을 이용한 통신 : GET 메소드 -->
     <!--    (a태그 - 하이퍼링크) : GET 메소드 -->
     <!-- 3. Java Script를 이용한 통신 : fetch함수, ajax함수, axios함수 -->
+    <!--                                GET/POST/PUT/PATCH/DELETE -->
+    <!--                                읽기/쓰기/전체수정/부분수정/삭제 -->
 
     <!-- HTTP GET방식 -->
     <!--        127.0.0.1 -->
@@ -55,5 +57,18 @@
     <!-- http://localhost:3000:/login -->
     <!-- 실제 데이터는 http 통신 패킷안에 body부분에 감춰서 전송됨. -->
   </head>
-  <body></body>
+  <body>
+    <!-- form태그 : input태그의 내용을 서버로 전송하는 태그 -->
+    <!-- action속성 : 서버주소 -->
+    <!-- method속성 : 전송방식 GET/POST -->
+    <!-- input태그 : form태그 안에서 사용자의 데이터를 담는 태그 -->
+    <!-- type속성 : text 문자열, password 문자열(암호), submit: 전송 실행버튼-->
+    <!-- name속성 : 서버에서 전송받는 Request Parameter, 매개변수 이름 -->
+    <!--          : void login(String id, String pw) -->
+    <form action="http://www.myserver.com/login" method="GET">
+      <input type="text" name="id" /> <br />
+      <input type="password" name="pw" /> <br />
+      <input type="submit" />
+    </form>
+  </body>
 </html>
