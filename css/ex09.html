@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS연습문제2</title>
+    <!-- ex09.html -->
+    <!-- 1. input태그 타입text인 요소의 배경색을 blue로 하시오 -->
+    <!-- 2. input태그 타입password인 요소의 배경색을 green로 하시오 -->
+    <!-- 3. 헤더태그 1의 글자색을 red로 하시오. -->
+    <!-- 4. 문단태그 3의 글자색을 blue로 하시오. -->
+    <!-- 5. 헤더태그 2, 문단태그3,4의 배경색을 cyan으로 하시오. -->
+    <!-- 필요시에는 id,class를 사용해도 됨. -->
+    <style>
+      input[type="text"] {
+        background-color: blue;
+      }
+      input[type="password"] {
+        background-color: green;
+      }
+      #wrapper > h1 {
+        color: red;
+      }
+      #p3 {
+        color: blue;
+      }
+      #wrapper2 {
+        background-color: cyan;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" />
+      <input type="password" />
+    </form>
+    <div id="wrapper">
+      <h1>헤더태그 1</h1>
+      <div>
+        <p>문단태그 1</p>
+        <p>문단태그 2</p>
+      </div>
+    </div>
+    <div id="wrapper2">
+      <h1>헤더태그 2</h1>
+      <div>
+        <p id="p3">문단태그 3</p>
+        <p>문단태그 4</p>
+      </div>
+    </div>
+  </body>
+</html>

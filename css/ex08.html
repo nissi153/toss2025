@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS연습문제1</title>
+    <!-- 1. 헤더태그 1의 글자색을 red로 하시오. id이용 -->
+    <!-- 2. 헤더태그 2의 글자색을 blue로 하시오. id이용 -->
+    <!-- 3. 헤더태그 3, 4의 배경색을 cyan으로 하시오. class이용 -->
+    <!-- 4. 앵커태그와 문단태그의 글자색을 green으로 하시오. -->
+    <!-- id,class를 추가해도 됨. -->
+    <!-- DM으로 제출하시오 -->
+    <!-- 도움말: 앵커태그의 클릭전 a:link, 클릭후 a:visited -->
+    <style>
+      #hd1 { color: red; }
+      #hd2 { color: blue; }
+      .hdclass { background-color: cyan; }
+      .mydesign { color: green; }
+      /* 기본설정 : 방문전과 방문후 동일 */
+      /* 앵커태그의 방문전으로 상태로 돌리려면, 크롬 방문기록 삭제 */
+      /* 방문전 */
+      a:link {
+        color: orange;
+      }
+      /* 방문후 */
+      a:visited {
+        color: purple;
+      }
+  </head>
+  <body>
+    <h1 id="hd1">헤더태그 1</h1>
+    <h1 id="hd2">헤더태그 2</h1>
+    <h2 class="hdclass">헤더태그 3</h2>
+    <h2 class="hdclass">헤더태그 4</h2>
+    <a class="mydesign" href="http://www.naver.com">앵커태그</a>
+    <p class="mydesign">문단태그</p>
+  </body>
+</html>

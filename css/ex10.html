@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS연습문제3</title>
+    <!-- ex10.html -->
+    <!-- 1. ID가 header인 div밑의 h1의 글자색을 red로 하시오.  -->
+    <!-- 2.               클래스명이 title인 h1의 글자색을 blue로 -->
+    <!-- 3. ID가 section인 div밑의 h1의 글자색을 green으로 -->
+    <!-- 4.               p의 배경색을 orange로 하시오. -->
+    <!-- DM에 스샷(코드)를 올려주세요. -->
+    <!-- 필요시에는 id,class를 사용해도 됨. -->
+    <style>
+      /* 후손선택자 */
+      #header h1 {
+        color: red;
+      }
+      #header h1.title {
+        color: blue;
+      }
+      #section h1 {
+        color: green;
+      }
+      #section p {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1 class="title">헤더-h1</h1>
+      <div id="nav">
+        <h1>메뉴</h1>
+      </div>
+    </div>
+    <div id="section">
+      <h1 class="title">섹션-h1</h1>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore at
+        laborum totam qui exercitationem quos odio cum delectus alias provident,
+        sint sapiente minima recusandae, nesciunt neque fugit veniam. Delectus,
+        expedita?
+      </p>
+    </div>
+  </body>
+</html>
