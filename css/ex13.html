@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>상태선택자</title>
+    <!-- 상태: 포커스,활성화,비활성화,체크됨,선택됨 -->
+    <!-- 포커스: 입력대기상태 -->
+    <!-- 활성화: Enabled, 기본값, 정상동작상태 -->
+    <!-- 비활성화: Disabled, 입력(동작) 불능상태 -->
+    <!-- 체크됨 : checked 체크박스 -->
+    <!-- 선택됨 : selected 선택박스 -->
+    <style>
+      input:enabled {
+        background-color: red;
+      }
+      input:disabled {
+        background-color: darkcyan;
+      }
+      input[type="checkbox"]:checked {
+        outline: 2px solid red;
+      }
+      /* 포커스 상태선택자 */
+      input:focus {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>활성화 상태</h1>
+    <input type="text" />
+    <h1>비활성화 상태</h1>
+    <input type="text" disabled />
+
+    <h1>체크박스</h1>
+    <input type="checkbox" id="ck" checked />
+    <label for="ck">체크박스</label><br />
+
+    <input type="radio" id="rd" checked />
+    <label for="rd">라디오버튼</label> <br />
+
+    <select id="select">
+      <option value="coke">콜라</option>
+      <option value="cider" selected>사이다</option>
+    </select>
+  </body>
+</html>

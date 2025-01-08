@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>n번째 선택자 - n변수 사용</title>
+    <style>
+      /* n이 0~7 까지 적용됨. */
+      li:nth-child(n) {
+        color: red;
+      }
+      /* 짝수번째만 선택 */
+      /* 2*0=0 2*1=2 2*2=4 2*3=6 ...8th 10th */
+      li:nth-child(2n) {
+        background-color: aqua;
+      }
+      /* 홀수번째만 */
+      li:nth-child(2n + 1) {
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>아이템1</li>
+      <li>아이템2</li>
+      <li>아이템3</li>
+      <li>아이템4</li>
+      <li>아이템5</li>
+      <li>아이템6</li>
+      <li>아이템7</li>
+    </ul>
+  </body>
+</html>
