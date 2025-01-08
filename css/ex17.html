@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>연습문제4</title>
+    <!-- ex17 -->
+    <!-- 1. 아이템1에 마우스 hover시 글자색 red로 -->
+    <!-- 2. 아이템2에 마우스 click시 글자색 blue로 -->
+    <!-- 3. 입력1에 포커스가 되면 배경색을 green으로 -->
+    <!-- 4. nth-child를 이용하여, 아이템1의 색상을 red로 -->
+    <!-- 5. 짝수번째 아이템의 배경색을 aqua로 -->
+    <style>
+      li:nth-child(1):hover {
+        color: red;
+      }
+      li:nth-child(2):active {
+        color: blue;
+      }
+      li + input:focus {
+        background-color: skyblue;
+      }
+      li:nth-child(1) {
+        color: red;
+      }
+      li:nth-child(2n) {
+          background-color: aqua;
+      }
+  </head>
+  <body>
+    <ul>
+      <li>아이템1</li>
+      <li>아이템2</li>
+      <li>아이템3</li>
+      <li>아이템4</li>
+      <li>아이템5</li>
+      <input type="text" value="입력1" />
+      <input type="text" value="입력2" />
+      <input type="text" value="입력3" />
+    </ul>
+  </body>
+</html>
