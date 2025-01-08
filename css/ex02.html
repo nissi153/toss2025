@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS을 적용하는 3가지 방법</title>
+    <!-- 방법1 : head태그 안에 style태그로 적용 -->
+    <!-- 방법2 : Inline태그 : html태그 안에 style속성으로 적용 -->
+    <!--       : 간단하게 스타일 적용할 때 -->
+    <!-- 방법3 : 별도의 css파일로 만들어서 import하는 방법 -->
+    <!--       : 스타일이 많을 때 별도의 파일로  -->
+    <style>
+      /* h1 : 태그 선택자 */
+      h1 {
+        color: red; /* 세미콜론 필요 */
+      }
+    </style>
+    <link rel="stylesheet" href="mycss.css" />
+  </head>
+  <body>
+    <h1>제목태그 H1입니다.</h1>
+    <h2 style="color: blue">제목태그 H2입니다.</h2>
+    <h3>제목태그 H3입니다.</h3>
+  </body>
+</html>
