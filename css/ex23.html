@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>div 태그에 배경입히기</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        border: 1px solid red;
+        width: 100px;
+        height: 100px;
+        background-image: url("bg.jpg");
+        background-repeat: no-repeat;
+        /* 이미지의 가로 너비를 틀에 맞춘다.*/
+        /* 공백이나 잘림이 생길 수 있다. */
+        background-size: contain;
+        /* 이미지의 세로 높이에 틀에 맞춘다 */
+        /*  공백이나 잘림이 생길 수 있다. */
+        background-size: cover;
+        /* 공백이나 잘림이 생기지 않게 하려면, */
+        /* 틀의 해상도(정방형)에 맞춰서 이미지를 준비한다. */
+        background-position: 10px 20px;
+        /* 이미지의 시작좌표 x y */
+      }
+      p {
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- width:부모태그의 넓이만큼(100%) -->
+    <!--      :display:block 한줄차지() -->
+    <!-- height: 0px(콘텐츠크기만큼) -->
+    <div><p>겨울이미지</p></div>
+  </body>
+</html>
