@@ -2,14 +2,27 @@
 <html lang="en">
   <head>
     <title>태그선택자와 id,class선택자 연결</title>
-    <style></style>
+    <style>
+      h1.select {
+        color: red;
+      }
+      h1#header {
+        color: blue;
+      }
+      li#item {
+        background-color: aqua;
+      }
+      .item {
+        background-color: yellow;
+      }
+    </style>
   </head>
   <body>
     <h1 class="select">제목태그 H1</h1>
-    <h1>제목태그 H1</h1>
+    <h1 id="header">제목태그 H1</h1>
     <ul>
       <li class="select">아이템1</li>
-      <li class="item">아이템2</li>
+      <li id="item">아이템2</li>
       <li class="select">아이템3</li>
       <!-- 클래스속성은 여러개 적용 가능함. -->
       <li class="select item">아이템4</li>

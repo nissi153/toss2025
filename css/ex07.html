@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>후손선택자, 직계(첫째)선택자</title>
+    <!-- 상속관계(계층) : 태그 안에 태그가 들어가는 경우 -->
+    <!-- 후손 : 상속관계에서 아래의 모든 태그 -->
+    <!-- 직계 : 상속관계에서 바로 아래의 한개의 태그 -->
+    <style>
+      /* 후손선택자는 공백문자 */
+      #header h1 {
+        color: red;
+      }
+      /* 직계선택자는 >오른쪽꺽쇠 문자 */
+      #section > h1 {
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>제목태그 1</h1>
+      <div>
+        <h1>제목태그 2</h1>
+      </div>
+    </div>
+    <div id="section">
+      <h1>제목태그 3</h1>
+      <div>
+        <h1>제목태그 4</h1>
+      </div>
+    </div>
+  </body>
+</html>
