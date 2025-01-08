@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS 크기 단위</title>
+    <!-- 크기단위 : px 픽셀, % 백분율(기본대비) -->
+    <!--          : em 배수(부모대비), rem 배수(root-html 대비) -->
+    <style>
+      p:nth-child(1) {
+        /* 생략 - 기본 16px */
+      }
+      p:nth-child(2) {
+        font-size: 8px;
+      }
+      p:nth-child(3) {
+        font-size: 16px;
+      }
+      p:nth-child(4) {
+        font-size: 24px;
+      }
+      p:nth-child(5) {
+        font-size: 32px;
+      }
+
+      p:nth-child(1) {
+        /* 기본 */
+      }
+      p:nth-child(2) {
+        /* 원래크기의 1.0배 */
+        font-size: 100%;
+      }
+      p:nth-child(3) {
+        /* 1.5배 */
+        font-size: 150%;
+      }
+      p:nth-child(4) {
+        font-size: 200%;
+      }
+      p:nth-child(5) {
+        font-size: 300%;
+      }
+
+      div {
+        font-size: 10px;
+      }
+      p:nth-child(1) {
+      }
+      p:nth-child(2) {
+        /* 자신을 감싸는 부모태그 div의 크기의 1배 */
+        font-size: 1em;
+      }
+      p:nth-child(3),
+      p:nth-child(4),
+      p:nth-child(5) {
+        /* div의 2배 */
+        font-size: 2em;
+      }
+
+      p:nth-child(1) {
+        font-size: 0.5rem;
+      }
+      p:nth-child(2) {
+        /* root(html태그 16px)의 1배 */
+        font-size: 1rem;
+      }
+      p:nth-child(3) {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    기본글씨 크기는 16px입니다.
+    <div>
+      <p>문단태그 p입니다.1</p>
+      <p>문단태그 p입니다.2</p>
+      <p>문단태그 p입니다.3</p>
+      <p>문단태그 p입니다.4</p>
+      <p>문단태그 p입니다.5</p>
+    </div>
+  </body>
+</html>

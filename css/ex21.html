@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>색상 속성 값</title>
+    <!-- 색성 값 3가지 -->
+    <!-- 1. 예약어 ex) red blue -->
+    <!-- 2. 16진수 표현 ex) 0xFF00CC -->
+    <!-- 3. RGB()함수 표현 ex) rgb(0,255,255) -->
+    <!-- 4. RGBA()함수 표현 ex) rgba(0,255,255,0.5) -->
+    <style>
+      /* 색상 예약어 : 140개 */
+      h1 {
+        /* color : 전경색(글꼴색상) */
+        color: blueviolet;
+        /* 배경색 */
+        background-color: aqua;
+      }
+      h2 {
+        /* 빛의 3원색 : Red Green Blue */
+        /* #RRGGBB 16진수 표현 */
+        /* Red : 0~255 00~FF */
+        /* Green : 0~255 00~FF  */
+        /* Blue : 0~255 00~FF  */
+        background-color: #ff0000;
+        background-color: #00ff00;
+        background-color: #0000ff;
+        background-color: #82ce44;
+        background-color: #82ce44ff; /* 00~ff 투명도 */
+      }
+      h3 {
+        /* rgb함수 : 10진수로 rgb값을 표현  */
+        color: rgb(255, 0, 0);
+      }
+      h4 {
+        /* alpha : 0.0 ~ 1.0  1은 불투명, 0 완전투명*/
+        color: rgba(255, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>제목태그 h1</h1>
+    <h2>제목태그 h2</h2>
+    <h3>제목태그 h3</h3>
+    <h4>제목태그 h4</h4>
+    <h5>제목태그 h5</h5>
+    <h6>제목태그 h6</h6>
+  </body>
+</html>
