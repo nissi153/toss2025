@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS연습문제1</title>
+    <!-- ex08.html -->
     <!-- 1. 헤더태그 1의 글자색을 red로 하시오. id이용 -->
     <!-- 2. 헤더태그 2의 글자색을 blue로 하시오. id이용 -->
     <!-- 3. 헤더태그 3, 4의 배경색을 cyan으로 하시오. class이용 -->
@@ -12,13 +13,24 @@
     <!-- DM으로 제출하시오 -->
     <!-- 도움말: 앵커태그의 클릭전 a:link, 클릭후 a:visited -->
     <style>
-      #hd1 { color: red; }
-      #hd2 { color: blue; }
-      .hdclass { background-color: cyan; }
-      .mydesign { color: green; }
+      #hd1 {
+        color: red;
+      }
+      #hd2 {
+        color: blue;
+      }
+      .hdclass {
+        background-color: cyan;
+      }
+      .mydesign {
+        color: green;
+      }
       /* 기본설정 : 방문전과 방문후 동일 */
       /* 앵커태그의 방문전으로 상태로 돌리려면, 크롬 방문기록 삭제 */
       /* 방문전 */
+      a {
+        color: black;
+      }
       a:link {
         color: orange;
       }
@@ -26,6 +38,7 @@
       a:visited {
         color: purple;
       }
+    </style>
   </head>
   <body>
     <h1 id="hd1">헤더태그 1</h1>
