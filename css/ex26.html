@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>display속성</title>
+    <!-- ex26.html -->
+    <!-- display:none : 안보이게. 자기공간도 사라짐. -->
+    <!-- visibilty: hidden : 안보이게. 자기공간이 존재 -->
+    <!-- block : 한줄 차지, 줄바꿈이 됨. -->
+    <!-- inline : 콘텐츠만큼 너비차지, 줄바꿈 안됨. -->
+    <!-- inline-block : inline이면서 너비/높이 확보 가능 -->
+
+    <!-- block속성 : div h1~h6 p hr ol ul li table form -->
+    <!-- inline속성 : span a img text속성(b,small,ins...) input lable -->
+    <style>
+      body {
+        margin: 0;
+      }
+      body * {
+        border: 1px solid red;
+      }
+      div {
+        display: block;
+      }
+      #span1 {
+        /* 공간은 차지하면서 안보임. */
+        visibility: hidden;
+        /* 공간도 사라지고 안보임. */
+        display: none;
+      }
+      #span2 {
+        width: 100px;
+        height: 100px;
+        /* inline이면서 너비/높이 조절 가능 */
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div>div는 block속성이다.</div>
+    <span id="span1">span1</span>
+    <span id="span2">span2</span>
+  </body>
+</html>

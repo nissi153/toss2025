@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>박스모델 - box model</title>
+    <!-- 모든 레이아웃(배치)은 박스모양(사각형)으로 가능 -->
+    <!-- 4가지 박스 모델 -->
+    <!-- margin : 다른 요소와의 간격 -->
+    <!-- border : 테두리선의 굵기 -->
+    <!-- padding : 테두리선과 내용물과의 간격 -->
+    <!-- centent : 내용물의 크기 -->
+    <style>
+      body {
+        border: 10px solid blue;
+        /* body태그의 기본 마진: 8, 패딩: 0 */
+        margin: 10px;
+        padding: 10px;
+      }
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        border: 10px solid black;
+        margin: 10px;
+        padding: 10px;
+      }
+      span {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div><span></span></div>
+    <div><span></span></div>
+  </body>
+</html>
