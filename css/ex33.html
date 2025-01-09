@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>position속성</title>
+    <!-- 웹 페이지 만드는 과정 -->
+    <!-- 화면 레이아웃(배치) - 박스모델  -->
+    <!-- 1. html태그 -->
+    <!-- 2. 시멘틱태그(header,footer,main,section,aside) -->
+    <!-- 3. div태그 다 넣는다.
+         <div id="header"> 
+    -->
+    <!-- 4. block,inline, inline-block -->
+    <!-- 5. flexbox 정렬/배치 : float속성 -->
+    <!-- 6. width, height -->
+    <!-- 7. overflow: hidden -->
+    <!-- 8. 마진, 패딩 -->
+    <!-- 9. position -->
+    <!--   1) static :기본값 순차적이 쌓이는 방식 -->
+    <!--   2) relatvie : 상대좌표에 위치(자기위치) -->
+    <!--   3) absolute : 절대좌표에 위치
+               (기준:relative, asolute, fixed있는 부모태그) -->
+    <!--   4) fixed : 고정좌표: 뷰포트(웹화면) 기준 -->
+    <!--   5) sticky : 특정 스크롤위치에 고정 -->
+    <!-- 10.top,bottom,left,right - static은 제외 -->
+    <style>
+      #static-box {
+        position: static;
+        background-color: aqua;
+      }
+      #relative-box {
+        position: relative;
+        top: 10px;
+        left: 10px;
+        background-color: blueviolet;
+      }
+      #container {
+        position: relative;
+        height: 50px;
+
+        background-color: yellow;
+        border: 1px solid red;
+      }
+      #absolute-box {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        color: white;
+        background-color: brown;
+      }
+      #fixed-box {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: green;
+      }
+      #sticky-box {
+        position: sticky;
+        top: 0px;
+        background-color: lightpink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="static-box">Static</div>
+    <div id="relative-box">Relative</div>
+    <div id="container">
+      <div id="absolute-box">Absolute</div>
+    </div>
+    <div id="fixed-box">Fixed</div>
+    <div id="sticky-box">Sticky Postion(스크롤하면 상단에 고정됨.)</div>
+    <div class="content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        reprehenderit laboriosam error sint dolorum corporis soluta officia enim
+        aliquam officiis dolore quisquam sit ipsum excepturi laudantium, totam
+        sed est mollitia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        reprehenderit laboriosam error sint dolorum corporis soluta officia enim
+        aliquam officiis dolore quisquam sit ipsum excepturi laudantium, totam
+        sed est mollitia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        reprehenderit laboriosam error sint dolorum corporis soluta officia enim
+        aliquam officiis dolore quisquam sit ipsum excepturi laudantium, totam
+        sed est mollitia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        reprehenderit laboriosam error sint dolorum corporis soluta officia enim
+        aliquam officiis dolore quisquam sit ipsum excepturi laudantium, totam
+        sed est mollitia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+        reprehenderit laboriosam error sint dolorum corporis soluta officia enim
+        aliquam officiis dolore quisquam sit ipsum excepturi laudantium, totam
+        sed est mollitia?
+      </p>
+    </div>
+  </body>
+</html>
