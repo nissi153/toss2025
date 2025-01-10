@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>grow 속성</title>
+    <!-- flex-grow - 유연하게 늘리기 -->
+    <!-- flex-grow : 기본값 0 -->
+    <!--           : 정수값(1,2..) : 총합 n/sum(n) 비율 -->
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background-color: yellow;
+        border: 10px solid black;
+        padding: 10px;
+        display: flex;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        margin: 10px;
+        border: 10px solid black;
+        padding: 10px;
+        background-color: rgb(136, 219, 136);
+
+        /* 기본값 0 - 자기콘텐츠 크기만큼 */
+        /* flex-grow: 0;  */
+        /* 1 : 늘어날수 있는 여백의 1/3, 1/3, 1/3 확보 */
+        /* flex-grow: 1; */
+      }
+      .item:nth-child(1) {
+        flex-grow: 1;
+      }
+      .item:nth-child(2) {
+        flex-grow: 2;
+      }
+      .item:nth-child(3) {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-grow</h1>
+    <div class="container container1">
+      <div class="item"><h3>AAA</h3></div>
+      <div class="item"><h3>BBBBBBBBBBBB</h3></div>
+      <div class="item"><h3>CCC</h3></div>
+    </div>
+  </body>
+</html>

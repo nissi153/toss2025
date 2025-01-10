@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>주축방향 정렬 - justify-content</title>
+    <title>교차축방향정렬 : align-items</title>
     <style>
       .container {
+        display: flex;
+        /* 주축방향 줄바꿈 한줄표현 */
+        flex-flow: row wrap;
+
+        width: 500px;
+        height: 250px;
         background-color: yellow;
         border: 1px solid #222;
         margin-bottom: 10px;
-
-        display: flex;
       }
       .box {
-        background-color: green;
-        margin: 5px;
         padding: 5px 45px;
+        margin: 5px;
+        /* width: 80px; */
+        background-color: green;
       }
       p {
         color: white;
         text-align: center;
       }
       .opt1 {
-        justify-content: start;
+        /* 교차축방향 정렬 : 시작점에 맞춤 */
+        align-items: flex-start;
       }
       .opt2 {
-        justify-content: end;
+        /* 끝점에 맞춤 */
+        align-items: flex-end;
       }
       .opt3 {
-        justify-content: center;
+        /* 가운데 */
+        align-items: center;
       }
       .opt4 {
-        justify-content: space-between;
+        /* 여백없이 늘림 - 기본값 */
+        align-items: stretch;
       }
       .opt5 {
-        justify-content: space-around;
-      }
-      .opt6 {
-        justify-content: space-evenly;
+        /* 글자 밑선에 맞춤 - baseline */
+        align-items: baseline;
       }
     </style>
   </head>
@@ -44,31 +51,31 @@
       <div class="box"><p>1</p></div>
       <div class="box"><p>2</p></div>
       <div class="box"><p>3</p></div>
+      <div class="box"><p>4</p></div>
     </div>
     <div class="container opt2">
       <div class="box"><p>1</p></div>
       <div class="box"><p>2</p></div>
       <div class="box"><p>3</p></div>
+      <div class="box"><p>4</p></div>
     </div>
     <div class="container opt3">
       <div class="box"><p>1</p></div>
       <div class="box"><p>2</p></div>
       <div class="box"><p>3</p></div>
+      <div class="box"><p>4</p></div>
     </div>
     <div class="container opt4">
       <div class="box"><p>1</p></div>
       <div class="box"><p>2</p></div>
       <div class="box"><p>3</p></div>
+      <div class="box"><p>4</p></div>
     </div>
     <div class="container opt5">
-      <div class="box"><p>1</p></div>
+      <div class="box"><h1>1</h1></div>
       <div class="box"><p>2</p></div>
-      <div class="box"><p>3</p></div>
-    </div>
-    <div class="container opt6">
-      <div class="box"><p>1</p></div>
-      <div class="box"><p>2</p></div>
-      <div class="box"><p>3</p></div>
+      <div class="box"><h3>3</h3></div>
+      <div class="box"><p>4</p></div>
     </div>
   </body>
 </html>

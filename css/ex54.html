@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>높낮이 정하기 - z-index</title>
+    <!-- 높낮이 순서 : 0 0 0 => 3 2 1 -->
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background-color: yellow;
+        border: 10px solid black;
+        padding: 10px;
+        display: flex;
+
+        /* 아이템간의 간격 */
+        gap: 10px;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        /* margin: 10px; */
+        border: 10px solid black;
+        padding: 10px;
+        background-color: rgb(136, 219, 136);
+      }
+      .item:nth-child(1) {
+        z-index: 0; /*기본값*/
+      }
+      .item:nth-child(2) {
+        z-index: 1;
+        transform: scale(1.5);
+        /* 투명도 */
+        /* opacity: 0.5; */
+      }
+      .item:nth-child(3) {
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex order</h1>
+    <div class="container container1">
+      <div class="item"><h3>AAA</h3></div>
+      <div class="item"><h3>BBBBBBBBBBBB</h3></div>
+      <div class="item"><h3>CCC</h3></div>
+    </div>
+  </body>
+</html>

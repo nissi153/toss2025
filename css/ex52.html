@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>shrink 애니메이션</title>
+    <style>
+      body {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 22px;
+        font-weight: 600;
+        color: #643bff;
+        margin-bottom: 20px;
+      }
+      .container {
+        width: 550px;
+        height: 180px;
+        background: #643bff;
+        margin-bottom: 10px;
+        display: flex;
+      }
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        color: #fff;
+        height: 150px;
+        flex-basis: 120px;
+      }
+      .item:nth-child(1) {
+        background: #ffc447;
+      }
+      .item:nth-child(2) {
+        background: #e87635;
+      }
+      .item:nth-child(3) {
+        background: #ff4847;
+      }
+      .item:nth-child(4) {
+        background: #d335e8;
+      }
+
+      /* flex-shrink : 1 기본값 */
+
+      /* 0으로 설정하면 기본값에서 줄어들지 않게 한다. */
+      .container2 .item:nth-child(1) {
+        flex-shrink: 1;
+      }
+      .container2 .item:nth-child(2) {
+        flex-shrink: 2;
+      }
+      .container2 .item:nth-child(3) {
+        flex-shrink: 1;
+      }
+      .container2 .item:nth-child(4) {
+        flex-shrink: 1;
+      }
+
+      .container3 .item:nth-child(1) {
+        flex-shrink: 1;
+      }
+      .container3 .item:nth-child(2) {
+        flex-shrink: 2;
+      }
+      .container3 .item:nth-child(3) {
+        flex-shrink: 0;
+        flex-basis: 150px;
+      }
+      .container3 .item:nth-child(4) {
+        flex-shrink: 0;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-shrink:</h1>
+
+    <!-- shirink 기본값 1 -->
+    <div class="container container1">
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+    </div>
+
+    <div class="container container2">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+    </div>
+
+    <div class="container container3">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">0</div>
+      <div class="item">0</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script>
+      TweenMax.to(".container", 8, {
+        width: 200,
+        repeat: -1,
+        repeatDelay: 2,
+        yoyo: true,
+        ease: Power0.easeNone,
+      });
+    </script>
+  </body>
+</html>

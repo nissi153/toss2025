@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>순서 정하기 - order</title>
+    <!-- 순서 : 1 2 3 => 3 2 1 -->
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background-color: yellow;
+        border: 10px solid black;
+        padding: 10px;
+        display: flex;
+
+        /* 아이템간의 간격 */
+        gap: 10px;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        /* margin: 10px; */
+        border: 10px solid black;
+        padding: 10px;
+        background-color: rgb(136, 219, 136);
+      }
+      .item:nth-child(1) {
+        order: 3;
+      }
+      .item:nth-child(2) {
+        order: 1;
+      }
+      .item:nth-child(3) {
+        order: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex order</h1>
+    <div class="container container1">
+      <div class="item"><h3>AAA</h3></div>
+      <div class="item"><h3>BBBBBBBBBBBB</h3></div>
+      <div class="item"><h3>CCC</h3></div>
+    </div>
+  </body>
+</html>

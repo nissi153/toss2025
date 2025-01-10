@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- ex49 -->
+    <title>basis, grow, shrink 속성</title>
+    <!-- flex-basis - 유연한 박스의 기본 영역 -->
+    <!-- flex-basis : 기본값 auto -->
+    <!--            : auto - 아이템의 너비높이에 따라서 결정. 계속 늘어남 -->
+    <!--            : initial - 컨테이너 공간이 부족하면, 최소크기까지 줄임 -->
+    <!--            : 수치(100px, 50%) - 기본적인 너비/높이값 -->
+    <style>
+      .container {
+        width: 90%;
+        height: auto;
+        background-color: yellow;
+        border: 10px solid black;
+        padding: 10px;
+        display: flex;
+      }
+      .item {
+        width: auto;
+        height: 100%;
+        margin: 10px;
+        border: 10px solid black;
+        padding: 10px;
+        background-color: rgb(136, 219, 136);
+
+        /* auto 기본값:콘텐츠크기만큼*/
+        flex-basis: 100px;
+        /* 100px : 기본100px만큼 확보, 
+                 100px보다 크면 콘텐츠크기만큼  */
+        width: 100px;
+        /* width는 basis보다 우선순위가 높다. */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>flex-basis</h1>
+    <div class="container container1">
+      <div class="item"><h3>AAA</h3></div>
+      <div class="item"><h3>대한민국대한민국</h3></div>
+      <div class="item"><h3>CCC</h3></div>
+    </div>
+    <div class="container container1">
+      <div class="item"><h3>AAA</h3></div>
+      <div class="item"><h3>BBBBBBBBBBBBBBBB</h3></div>
+      <div class="item"><h3>CCC</h3></div>
+    </div>
+  </body>
+</html>
