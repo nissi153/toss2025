@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>img태그 이미지배치 - object-fit속성</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 2px solid red;
+      }
+      .img1 {
+        /* none, 본래의 이미지 크기를 유지한다. */
+        /*       콘텐츠 초과시 가운데만 보임. */
+        object-fit: none;
+      }
+      .img2 {
+        /* fill, 기본값, 콘텐츠(이미지)가 컨테이너(img태그)를 */
+        /*      채운다. */
+        /* 컨테이너 해상도(Ratio)이 이미지와 다르면, 왜곡발생 */
+        object-fit: fill;
+      }
+      .img3 {
+        /* contain, 콘텐츠가 컨테이너에 완전히 들어간다. */
+        /* 컨테이너 해상도와 이미지 해상도가 다르면 */
+        /* 여백이나 잘림 현상이 생길 수 있다. */
+        object-fit: contain;
+      }
+      .img4 {
+        /* 콘텐츠가 컨테이버를 완전히 덮는다. */
+        /* 컨테이너 해상도와 이미지 해상도가 다르면 */
+        /* 여백이나 잘림 현상이 생길 수 있다. */
+        object-fit: cover;
+      }
+      .img5 {
+        /* 콘텐츠의 크기가 none과 contain 중 더 작은 크기가 */
+        /* 되도록 설정 */
+        /* 1. 컨테이너보다 콘텐츠가 작으면, none */
+        /* 2. 콘텐츠가 더 크면, contain */
+        object-fit: scale-down;
+      }
+    </style>
+  </head>
+  <body>
+    <div><img class="box img1" src="bg.jpg" /></div>
+    <div><img class="box img2" src="bg.jpg" /></div>
+    <div><img class="box img3" src="bg.jpg" /></div>
+    <div><img class="box img4" src="bg.jpg" /></div>
+    <div><img class="box img5" src="bg.jpg" /></div>
+  </body>
+</html>
