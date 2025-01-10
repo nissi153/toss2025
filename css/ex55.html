@@ -28,18 +28,49 @@
         color: white;
         background-color: gray;
         font-size: 22px;
+
+        /* 왜 이렇게 하나요? flex 정렬기능 사용! */
+        display: flex;
+        /* 기본값 */
+        flex-flow: row nowrap;
+        /* 주축방향 정렬 */
+        justify-content: center;
+        /* 교차축방향 정렬 */
+        align-items: center;
       }
       #header {
+        background-color: purple;
+        height: 50px;
       }
       #nav {
+        background-color: green;
+        height: 50px;
       }
       #main {
+        background-color: darkcyan;
+        height: 300px;
+
+        display: flex;
+        flex-flow: row nowrap;
+        /* justify-content: space-between; */
       }
       #aside {
+        background-color: orange;
+        height: 100%;
+        /* width: 30%; */
+        /*   grow 0 shrink 1 basis auto */
+        flex: 1 1 auto;
       }
       #section {
+        background-color: darkcyan;
+        height: 100%;
+        /* width: 70%; */
+        /*   grow shrink basis */
+        flex: 2 1 auto;
       }
       #footer {
+        background-color: darkolivegreen;
+        height: 50px;
       }
     </style>
   </head>
