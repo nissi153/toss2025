@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>줄바꿈 - flex-wrap</title>
+    <style>
+      .container {
+        background-color: #eee;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        background: yellow;
+
+        display: flex;
+        width: 40%;
+      }
+      .box {
+        background-color: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+      .opt1 {
+        /* nowrap : 줄바꿈 안함 */
+        flex-wrap: nowrap;
+      }
+      .opt2 {
+        /* wrap : 아랫쪽으로 줄바꿈 한다. */
+        flex-wrap: wrap;
+      }
+      .opt3 {
+        /* wrap-reverse : 윗쪽으로 줄바꿈 */
+        flex-wrap: wrap-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container opt1">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt2">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt3">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+  </body>
+</html>

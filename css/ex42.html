@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>레이아웃 배치를 자유롭게 - display:flex</title>
+    <!-- Flexbox, Flexable Box -->
+    <!-- IE11부터 지원 -->
+    <!-- flex 설명 블로그 -->
+    <!-- https://studiomeal.com/archives/197 -->
+    <style>
+      .container {
+        background-color: #eee;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        /* 컨테이너를 flexbox로 변경 */
+        display: flex;
+      }
+      .box {
+        /* width: 80px; */
+        background-color: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+      .opt1 {
+        /* 주축방향 : 왼쪽 -> 오른쪽 */
+        flex-direction: row;
+      }
+      .opt2 {
+        flex-direction: row-reverse;
+      }
+      .opt3 {
+        flex-direction: column;
+      }
+      .opt4 {
+        flex-direction: column-reverse;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container opt1">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt2">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt3">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt4">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>주축방향 정렬 - justify-content</title>
+    <style>
+      .container {
+        background-color: #eee;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+
+        display: flex;
+      }
+      .box {
+        background-color: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+      .opt1 {
+        justify-content: start;
+      }
+      .opt2 {
+        justify-content: end;
+      }
+      .opt3 {
+        justify-content: center;
+      }
+      .opt4 {
+        justify-content: space-between;
+      }
+      .opt5 {
+        justify-content: space-around;
+      }
+      .opt6 {
+        justify-content: space-evenly;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container opt1">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt2">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt3">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt4">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt5">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+    <div class="container opt6">
+      <div class="box"><p>1</p></div>
+      <div class="box"><p>2</p></div>
+      <div class="box"><p>3</p></div>
+    </div>
+  </body>
+</html>
