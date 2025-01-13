@@ -3,141 +3,117 @@
   <head>
     <title>연습문제 - 강아지블로그를 Flexbox로 구현하기</title>
     <!-- ex57.html -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gugi&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* 초기화 코드 */
       * {
         margin: 0;
         padding: 0;
       }
-      #wrap {
-        /* 고정너비 */
-        /* width: 1000px;  */
-        /* 가변너비 */
-        width: 100%;
-        /* 최소너비 */
-        min-width: 760px;
-        /* 최대너비 */
-        max-width: 1080px;
-
-        /*      상하 좌우:여백균등하게 */
-        margin: 0 auto;
-      }
       a {
-        /* 밑줄 제거 */
         text-decoration: none;
       }
+      li {
+        text-decoration: none;
+      }
+      /* 전체 wrapper */
+      #wrap {
+        /* 고정너비 */
+        width: 1000px;
+        /* 가운데로 정렬 */
+        margin: 0 auto;
+        /* border: 1px solid red; */
+      }
       body {
+        background-color: aqua;
         padding: 20px;
-        background-color: cyan;
+      }
+      div {
+        /* border: 1px solid blue; */
+      }
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       #header {
-        display: flex;
-        /* 기본값 */
-        flex-flow: row nowrap;
-        /* 주축방향 정렬 */
-        justify-content: center;
-        /* 교차축방향 정렬 */
-        align-items: center;
-
         height: 100px;
       }
       #header h1 {
-        font-family: "Times New Roman", Times, serif;
+        font-family: "Nanum Gothic", serif;
+        font-weight: 400;
+        font-style: normal;
       }
       #nav {
-        display: flex;
-        /* 기본값 */
-        flex-flow: row nowrap;
-        /* 주축방향 정렬 */
-        justify-content: center;
-        /* 교차축방향 정렬 */
-        align-items: center;
-
-        background-color: lightgrey;
-        height: 25px;
+        height: 30px;
+        background-color: lightgray;
       }
       #nav a {
-        margin: 5px;
-      }
-      #nav a:link {
+        margin-right: 5px;
         color: white;
       }
-      #nav a:visited {
-        color: white;
+      #main {
+        display: flex;
       }
-      img {
+      #aside {
+        flex-basis: 3;
+
+        margin: 10px;
+        border: 1px solid green;
+        padding: 20px;
+      }
+      #aside ul {
+        /* ul의 점점점 없애기 */
+        list-style: none;
+      }
+      #aside img {
         width: 200px;
         height: 200px;
         object-fit: cover;
       }
-      #main {
-        /* background-color: darkcyan; */
-        width: 100%;
-        height: auto;
-
-        display: flex;
-        flex-flow: row-reverse nowrap;
-        /* justify-content: space-between; */
-      }
-      #aside {
-        height: 100%;
-        /* width: 30%; */
-        /*   grow shiring basis */
-        flex: 1 1 auto;
-
-        margin: 10px;
-        padding: 20px;
-        border: 1px solid green;
-      }
-      #aside ul {
-        /* ul ol의 점점점 123 심볼 없애기 */
-        list-style: none;
-      }
       #section {
-        /* background-color: darkcyan; */
-        height: 100%;
-        /* width: 70%; */
-        /*   grow shiring basis */
-        flex: 2 1 auto;
+        flex-basis: 7;
 
-        margin: 10px;
-        padding: 5px;
+        padding: 20px;
       }
       #footer {
-        display: flex;
-        /* 기본값 */
-        flex-flow: row nowrap;
-        /* 주축방향 정렬 */
-        justify-content: center;
-        /* 교차축방향 정렬 */
-        align-items: center;
-
-        background-color: lightgrey;
+        background-color: lightgray;
         height: 50px;
       }
       #footer a {
-        margin: 5px;
-      }
-      #footer a:link {
-        color: black;
-      }
-      #footer a:visited {
+        margin-right: 5px;
         color: black;
       }
     </style>
   </head>
   <body>
     <div id="wrap">
-      <div class="box" id="header">
+      <div id="header" class="center">
         <h1>골든리트리버 - Golden Retriever</h1>
       </div>
-      <div class="box" id="nav">
+      <div id="nav" class="center">
         <a href="#">About</a>
         <a href="#">History</a>
         <a href="#">Information</a>
         <a href="#">SNS</a>
       </div>
-      <div class="box" id="main">
-        <div class="box" id="section">
+      <div id="main">
+        <div id="aside">
+          <h4>Golden Retriever</h4>
+          <img src="dog.jpg" alt="리트리버" />
+          <ul>
+            <li>● 기본특성</li>
+            <li>● 단점</li>
+            <li>● 키울 시 주의점</li>
+            <li>● 파생 혼종견</li>
+          </ul>
+        </div>
+        <div id="section">
           <h3>Golden Retriever</h3>
           <br />
           <p>
@@ -167,18 +143,8 @@
           <br />
           <p>참조: 나무위키 - 골든리트리버</p>
         </div>
-        <div class="box" id="aside">
-          <h4>Golden Retriever</h4>
-          <img src="dog.jpg" alt="리트리버" />
-          <ul>
-            <li>● 기본특성</li>
-            <li>● 단점</li>
-            <li>● 키울 시 주의점</li>
-            <li>● 파생 혼종견</li>
-          </ul>
-        </div>
       </div>
-      <div class="box" id="footer">
+      <div id="footer" class="center">
         <a href="#">Subscribe</a>
         <a href="#">About Author</a>
         <a href="#">Send us Email</a>
