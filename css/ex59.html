@@ -1,33 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <title>다음 로그인화면</title>
+    <title>연습문제15 - 다음로그인화면을 구현하시오.</title>
+    <!-- 다음 홈페이지의 로그인 화면을 유사하게 제작하시오. -->
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
       #wrap {
-        width: 580px;
-        margin: 0 auto;
-        border: 1px solid red;
+        /* 전체 박스 */
+        width: 578px;
+        height: auto;
+        margin: min(50px, 5%) auto; /* www */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
       #header {
+        /* kakao */
+        width: 88px;
+        height: 27px;
+        background-image: url("./logo_kakao.png");
+        background-size: 100px 80px;
+        margin: 77px auto 40px auto;
+      }
+      #main {
+        /* 입력창 */
+        box-sizing: border-box;
+        border: 1px solid rgb(214, 214, 214);
+        width: 578px;
+        padding: 55px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-      .logo_kakao {
+      #main input[type="text"],
+      [type="password"] {
+        /* 아이디, 비밀번호 입력창 */
         display: block;
-        width: 176px;
-        height: 54px;
-        background-size: 100px 80px;
-        background: #fff url("logo_kakao.png") no-repeat 0 0;
+        width: 440px;
+        height: 45px;
+        font-size: 15px;
+        border-width: 0 0 2px;
+        border-color: rgb(214, 214, 214);
+      }
+      #main input[type="text"]:focus,
+      [type="password"]:focus {
+        /* 아이디, 비밀번호 입력창(focus) */
+        outline: none;
+        border-color: black;
+      }
+
+      .keep_status {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center; */
+        align-items: center;
+      }
+      .keep_status input[type="checkbox"] {
+        /* 로그인 상태 유지 체크박스 */
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        appearance: none;
+        cursor: pointer;
+        background-image: url(./ico_comm.png);
+        background-size: 300px 300px;
+        background-position: 0px 0px;
+      }
+
+      .keep_status input[type="checkbox"]:checked {
+        /* 로그인 상태 유지 체크박스 */
+        background-image: url(./ico_comm.png);
+        background-size: 300px 300px;
+        background-position: -26px 0px;
+      }
+
+      .keep_status span {
+        /* 로그인 상태 유지 */
+        display: inline-block;
+        font-size: 14px;
+        padding-top: 25px;
+        padding-bottom: 40px;
+        position: relative;
+        top: 8px;
+      }
+
+      .keep_status button {
+        /* 로그인 상태 유지 옆 i */
+        background-color: transparent;
+        width: 18px;
+        height: 18px;
+        background-image: url("./ico_comm.png");
+        background-size: 300px 300px;
+        background-position: -120px -110px;
+        border-width: 0px;
+        cursor: pointer;
+      }
+      .keep_status input[type="button"]:hover {
+        background-color: whtie;
+        color: white;
+      }
+
+      #main input[type="submit"],
+      [type="button"] {
+        /* 로그인, QR코드 로그인 */
+        display: block;
+        width: 444px;
+        height: 45px;
+        border: 0px;
+        font-size: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #main input[type="submit"] {
+        /* 로그인 */
+        background-color: #fee500;
+      }
+      #main input[type="submit"]:hover {
+        /* 로그인(hover)*/
+        background-color: #f0d800;
+      }
+      #main input[type="button"]:hover {
+        /* QR코드 로그인(hover)*/
+        background-color: #dadada;
+      }
+
+      .line {
+        /* 또는 */
+        display: flex;
+        align-items: center;
+        color: gray;
+        font-size: 12px;
+        margin: 0;
+        padding: 24px 0px;
+      }
+      .line::before,
+      .line::after {
+        /* 또는 위치의 가로줄 */
+        content: "";
+        flex-grow: 1;
+        background-color: gray;
+        height: 1px;
+      }
+
+      .bottom {
+        /* 회원가입, 계정 찾기, 비밀번호 찾기*/
+        display: flex;
+        margin-top: 26px;
+        font-size: 12px;
+      }
+
+      a {
+        /* 회원가입, 계정 찾기, 비밀번호 찾기, footer */
+        text-decoration: none;
+        color: black;
+      }
+
+      .bar {
+        /* 계정 찾기, 비밀번호 찾기 사이 바 */
+        margin: 0 7px;
+        color: gray;
+        font-size: 10px;
+      }
+
+      #footer {
+        font-size: 12px;
+        padding: 42px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #footer a {
+        padding: 5px;
+      }
+      select {
+        border-width: 0px;
+        outline: none;
+      }
+      option {
+        border-width: 0px;
       }
     </style>
   </head>
   <body>
     <div id="wrap">
-      <div id="header">
-        <span class="logo_kakao"></span>
+      <div id="header"></div>
+      <div id="main">
+        <form action="http://myserver.com">
+          <input
+            type="text"
+            placeholder="카카오메일 아이디, 이메일, 전화번호"
+          />
+          <input type="password" placeholder="비밀번호" />
+          <div class="keep_status">
+            <input type="checkbox" /><span> &nbsp;로그인 상태 유지&nbsp;</span>
+            <button></button>
+          </div>
+          <input type="submit" value="로그인" />
+
+          <p class="line">&nbsp;&nbsp;또는&nbsp;&nbsp;</p>
+          <a href="#"><input type="button" value="QR코드 로그인" /></a>
+          <div class="bottom">
+            <a href="#" style="flex-grow: 1">회원가입</a>
+            <a href="#">계정 찾기</a>
+            <span class="bar">|</span>
+            <a href="#">비밀번호 찾기</a>
+          </div>
+        </form>
       </div>
-      <div id="main">로그인 영역</div>
+      <div id="footer">
+        <div class="link">
+          <a href="#">이용약관</a>
+          <a href="#">개인정보 처리방침</a>
+          <a href="#">운영정책</a>
+          <a href="#">고객센터</a>
+          <a href="#">공지사항</a>
+          <select>
+            <option>한국어</option>
+            <option>English</option>
+            <option>日本語</option>
+          </select>
+        </div>
+        <span style="font-size: 11px; padding: 6px">
+          Copyright © Kakao Corp. All rights reserved.
+        </span>
+      </div>
     </div>
   </body>
 </html>
