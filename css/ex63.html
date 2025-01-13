@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>가상요소 사용예2</title>
+    <style>
+      .box {
+        max-width: 550px;
+        padding: 32px 36px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        text-align: center;
+        /* border: 1px solid red; */
+        position: relative;
+      }
+      .title {
+        font-weight: 600;
+        line-height: 1.8em;
+        font-size: 26px;
+      }
+      .box::before {
+        content: "";
+        width: 26px;
+        height: 26px;
+        border-top: 6px solid #cecece;
+        border-left: 6px solid #4a4a4a;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .box::after {
+        content: "";
+        width: 26px;
+        height: 26px;
+        border-bottom: 6px solid #cecece;
+        border-right: 6px solid #4a4a4a;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="title">아직 12척의 배가 있사옵니다.</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>가상요소 선택자</title>
+    <!-- ex61 -->
+    <!-- body에는 없는데 실행시 만들어지는  -->
+    <!-- 가상요소 -->
+    <!-- before : 요소 앞에 생성 -->
+    <!-- after : 요소 뒤에 생성 -->
+    <style>
+      .before::before {
+        content: "before는 콘텐츠 앞에 생성됨.";
+        color: red;
+      }
+      .after::after {
+        content: "after는 콘텐츠 뒤에 생성됨.";
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="before">before 예시</p>
+    <p class="after">after 예시</p>
+    <p class="before after">before/after 예시</p>
+  </body>
+</html>

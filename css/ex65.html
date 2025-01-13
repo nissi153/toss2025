@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>transition 속성</title>
+    <!-- transition-delay : 지연시간 -->
+    <!--           -duration : 변환시간 -->
+    <!--           -property : 대상 속성 -->
+    <!--           -timing-funtion : 보간타입 -->
+    <!--                  : 시간 대비 변화량 -->
+    <!-- 보간: 인터폴레이션(시간의 간격을 채우는 것) -->
+    <!-- 보간타입: linear, ease(기본값), ease-in,  -->
+    <!-- ease-out, ease-in-out -->
+    <!-- https://cruiseweb.tistory.com/entry/CSS-Transition -->
+    <!-- 베지어 곡선 : 수학자 베지어가 제안한 두 점만으로 -->
+    <!-- 곡선을 정의하는 공식이다. -->
+    <style>
+      #graph {
+        width: 610px;
+        border: 3px solid black;
+      }
+      .bar {
+        width: 10px;
+        height: 50px;
+        background-color: orange;
+        margin: 5px;
+        transition-duration: 3s;
+        transition-delay: 0.5s;
+        transition-property: width, background-color;
+      }
+      #graph:hover > .bar {
+        width: 600px;
+        background-color: red;
+      }
+      .bar:nth-child(1) {
+        transition-timing-function: linear;
+      }
+      .bar:nth-child(2) {
+        transition-timing-function: ease;
+      }
+      .bar:nth-child(3) {
+        transition-timing-function: ease-in;
+      }
+      .bar:nth-child(4) {
+        transition-timing-function: ease-out;
+      }
+      .bar:nth-child(5) {
+        transition-timing-function: ease-in-out;
+      }
+      /* 베지어곡선함수 이용 cubic-bezier.com */
+      .bar:nth-child(6) {
+        transition-timing-function: cubic-bezier(0.95, 0.08, 0.25, 0.74);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="graph">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </body>
+</html>

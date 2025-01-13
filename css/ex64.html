@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>변환효과 - transition속성</title>
+    <!-- 위치속성 : top left right bottom -->
+    <!-- 크기속성 : width height -->
+    <!-- 박스속성 : margin padding -->
+    <!-- 테두리속성 : border-width radius color sytle -->
+    <!-- 색상속성 : color background-color -->
+    <!-- 투명도 : opacity 0.0(투명) ~ 1.0(불투명) -->
+    <!-- 형태 : transfor(기울기,스케일-줌) -->
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        /* 모든 속성, 2초동안 */
+        transition: all 2s;
+      }
+      .box:hover {
+        width: 200px;
+        height: 200px;
+      }
+      .box:active {
+        background-color: red;
+        opacity: 0.8;
+        font-size: 32px;
+        border: 20px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">클릭!</div>
+  </body>
+</html>
