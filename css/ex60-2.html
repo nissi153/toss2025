@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover Navigation Menu</title>
+    <style>
+      /* 기본 스타일 초기화 */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .nav {
+        background-color: #333;
+        padding: 0;
+      }
+
+      .nav-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .nav-item {
+        position: relative;
+      }
+
+      .nav-item > a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+      }
+
+      .nav-item > a:hover {
+        background-color: #555;
+      }
+
+      /* 드롭다운 메뉴 */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: #444;
+        display: none;
+        z-index: 1000;
+      }
+
+      .dropdown li {
+        width: 200px;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 10px 15px;
+        color: white;
+        text-decoration: none;
+      }
+
+      .dropdown a:hover {
+        background-color: #555;
+      }
+
+      /* 커서가 올라갔을 때 드롭다운 표시 */
+      .nav-item:hover .dropdown {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#">Menu 1</a>
+          <ul class="dropdown">
+            <li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+            <li><a href="#">Submenu 3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#">Menu 2</a>
+          <ul class="dropdown">
+            <li><a href="#">Submenu 1</a></li>
+            <li><a href="#">Submenu 2</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#">Menu 3</a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
