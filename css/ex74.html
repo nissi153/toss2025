@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>벤더 프리픽스</title>
+    <!-- https://projects.verou.me/prefixfree/ -->
+    <script src="prefixfree.min.js"></script>
+    <!-- 웹브라우저에 새로운 기능이 나올때 -->
+    <!-- 중간단계로 벤더(vender) 프리픽스(접두어)를 -->
+    <!-- 제공. -->
+
+    <!-- 새 기능: transition transform gradient user-select -->
+    <!-- 1. linear-gradint : 구버전 기능 없음 -->
+    <!-- 2. -webkit-linear-gradient : 중간실험단계 버전 -->
+    <!-- 3. linear-gradient : 새버전(표준으로 지원 가능) -->
+
+    <!-- caniuse.com 사이트 : 웹브라우저 기능 명세 -->
+    <style>
+      /* 브라우저 별 벤더 프리픽스는 다음과 같다. 
+      IE or Edge	-ms-
+      Chrome	-webkit-
+      Firefox	-moz-
+      Safari	-webkit-
+      Opera	-o-
+      iOS Safari	-webkit-
+      Android Browser	-webkit-
+      Chrome for Android	-webkit- 
+    */
+      div {
+        width: 100px;
+        height: 100px;
+        background: red;
+        /* 크롬과 사파리 4.0이상을 위한 코드 */
+        background: -webkit-linear-gradient(red, yellow);
+        /* 파이어폭스 3.6이상을 위한 코드 */
+        background: -moz-linear-gradient(red, yellow);
+        /* CSS 표준 문법 */
+        background: linear-gradient(red, yellow);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

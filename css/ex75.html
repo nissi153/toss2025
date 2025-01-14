@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <!-- css폴더 ex76 -->
+    <title>반응형 웹 만들기</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+    body {
+      display: flex;
+      flex-flow: row wrap;
+      /* justify-content: center;
+    align-items: center; */
+    }
+    /**************************** Header ****************************/
+    #header {
+      background-color: rgb(88, 219, 176);
+      color: white;
+      flex: 1 100%;
+      height: 230px;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    /**************************** Nav ****************************/
+    #nav {
+      position: sticky;
+      top: 0;
+      background-color: rgb(49, 49, 49);
+      flex: 1 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #nav_left {
+      display: flex;
+      flex-flow: row wrap;
+    }
+    .navBar {
+      padding: 14px;
+      text-align: center;
+      font-size: 13px;
+      color: white;
+      text-decoration: none;
+    }
+    .navHome {
+      background-color: rgb(119, 119, 119);
+    }
+    .navBar:hover:not(.navHome) {
+      background-color: rgb(223, 223, 223);
+      color: rgb(0, 0, 0);
+    }
+    /**************************** Aside ****************************/
+    #aside {
+      flex: 1 20%;
+      background-color: rgb(233, 233, 233);
+      padding: 20px;
+      display: flex;
+      flex-flow: column wrap;
+      gap: 20px;
+    }
+    .section {
+      display: flex;
+      flex-flow: column wrap;
+      gap: 20px;
+      font-size: 12px;
+    }
+    .section .largeImage {
+      height: 150px;
+      background-color: rgb(172, 172, 172);
+      padding: 20px;
+    }
+    .section .smallImage {
+      padding: 20px;
+      background-color: rgb(172, 172, 172);
+    }
+
+    /**************************** Main ****************************/
+    #main {
+      padding: 20px;
+      flex: 1 40%;
+      display: flex;
+      flex-flow: column wrap;
+      gap: 20px;
+    }
+
+    /**************************** Footer ****************************/
+    #footer {
+      flex: 1 100%;
+      font-weight: bold;
+      height: 100px;
+      background-color: rgb(226, 226, 226);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media only screen and (min-width: 401px) and (max-width: 700px) {
+      #aside {
+        flex: 1 100%;
+      }
+    }
+    @media only screen and (max-width: 400px) {
+      #nav_left {
+        flex: 1 100%;
+      }
+      .navBar {
+        flex: 1 100%;
+      }
+      #aside {
+        flex: 1 100%;
+      }
+    }
+  </style>
+  <body>
+    <div id="header">
+      <h1>My Website</h1>
+      <div>A <b>responsive</b> website created by me.</div>
+    </div>
+    <div id="nav">
+      <div id="nav_left">
+        <a href="" class="navBar navHome">Home</a>
+        <a href="" class="navBar">Link</a>
+        <a href="" class="navBar">Link</a>
+      </div>
+      <a href="" class="navBar">Link</a>
+    </div>
+    <div id="aside">
+      <div class="section">
+        <h3>About Me</h3>
+        <div>Photo of me</div>
+        <div class="largeImage">image</div>
+        <div>
+          Some text about me in culpa qui officia deserunt mollit anim..
+        </div>
+      </div>
+      <div class="section">
+        <h4>More Text</h4>
+        <div>Lorem ipsum dolor sit ame.</div>
+        <div class="smallImage">image</div>
+        <div class="smallImage">image</div>
+        <div class="smallImage">image</div>
+      </div>
+    </div>
+    <div id="main">
+      <div class="section">
+        <h2>TITLE HEADING</h2>
+        <div>Title description, Dec 7, 2017</div>
+        <div class="largeImage">image</div>
+        <div>Some text..</div>
+        <div>
+          Sunt in culpa qui officia deserunt mollit anim id est laborum
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.
+        </div>
+      </div>
+      <div class="section">
+        <h2>TITLE HEADING</h2>
+        <div>Title description, Dec 7, 2017</div>
+        <div class="largeImage">image</div>
+        <div>Some text..</div>
+        <div>
+          Sunt in culpa qui officia deserunt mollit anim id est laborum
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.
+        </div>
+      </div>
+    </div>
+    <div id="footer">Footer</div>
+  </body>
+</html>
