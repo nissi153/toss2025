@@ -53,8 +53,57 @@
       }
       /* Tablet해상도 */
       @media screen and (min-width: 768px) and (max-width: 959px) {
+        .header {
+          flex: 1 100%;
+          order: 0;
+        }
+        .ad {
+          flex: 1 20%;
+          order: 1;
+          height: 400px;
+        }
+        .main {
+          flex: 1 60%;
+          order: 2;
+          height: 400px;
+        }
+        .info {
+          flex: 1 20%;
+          order: 3;
+          height: 400px;
+        }
+        .footer {
+          flex: 1 100%;
+          order: 4;
+        }
       }
       /* Mobile해상도 */
+      @media screen and (max-width: 767px) {
+        .header {
+          flex: 1 80%;
+          order: 0;
+        }
+        .ad {
+          height: 100px;
+          flex: 1 20%;
+          order: 1;
+        }
+        .main {
+          height: 400px;
+          order: 2;
+        }
+        .info {
+          flex: 1 0%;
+          height: 0;
+          visibility: hidden;
+          order: 3;
+        }
+        .footer {
+          height: 100px;
+          flex: 1 100%;
+          order: 4;
+        }
+      }
     </style>
   </head>
   <body>
