@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>반응형웹 - 미디어쿼리 속성</title>
+    <!-- 반응형 웹이란? -->
+    <!--   : 화면너비에 따라서 반응하는 동적인 웹  -->
+    <!--   : 화면높이는 스크롤이 있어서 별도 처리가 필요없음 -->
+    <!-- PC웹, Tablet웹, Mobile웹 3가지로 구분 -->
+    <!-- 반응형 웹을 만드는 방법 -->
+    <!-- 1. PC웹과 Mobile웹을 별도로 제작 -->
+    <!--   예) 네이버 PC웹, Mobile(m.naver.com) -->
+    <!-- 2. 반응형으로 해상도에 따라서 동적인 배치 -->
+    <!--    예) 카페24 디자인센터, 아임웹, 크리에이터링크 -->
+
+    <!-- PC 화면너비 : 가로 960px이상  -->
+    <!-- Table 화면너비 : 가로 768px이상, 아이패드 기준 -->
+    <!-- Mobile 화면너비 : 가로 767px이하 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* PC해상도 */
+      @media screen and (min-width: 960px) {
+        body {
+          background-color: plum;
+        }
+      }
+      /* Table해상도 */
+      @media screen and (min-width: 768px) and (max-width: 959px) {
+        body {
+          background-color: green;
+        }
+      }
+      /* Mobile해상도 */
+      @media screen and (max-width: 767px) and (orientation: portrait) {
+        body {
+          background-color: aqua;
+        }
+      }
+      @media screen and (orientation: landscape) {
+        body {
+          background-color: brown;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>제목태그 H1</h1>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas consectetur
+      corrupti voluptatum reprehenderit harum, quam aliquam! Repellat officia
+      excepturi quasi nesciunt odio perferendis! Nemo distinctio quasi dolorem
+      cupiditate veritatis odio!
+    </p>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas consectetur
+      corrupti voluptatum reprehenderit harum, quam aliquam! Repellat officia
+      excepturi quasi nesciunt odio perferendis! Nemo distinctio quasi dolorem
+      cupiditate veritatis odio!
+    </p>
+  </body>
+</html>
