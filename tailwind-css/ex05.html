@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- https://tailwindcss.com/docs/margin -->
+    <!-- https://tailwindcss.com/docs/padding -->
+    <!-- https://tailwindcss.com/docs/font-weight -->
+    <!-- https://tailwindcss.com/docs/text-color -->
+    <!-- text-base : 1rem 16px -->
+    <div class="text-base text-red-500">hello world</div>
+    <!-- text-lg : 18px -->
+    <div class="text-lg">hello world</div>
+    <div class="text-2xl">hello world</div>
+    <div class="text-2xl p-3 border">hello world</div>
+    <!-- pt-3 : padding-top 3*025rem -->
+    <!-- pb, pl, pr : bottom left right -->
+    <!-- py : y축, px : x축 -->
+    <div class="text-2xl pt-3 border">hello world</div>
+    <!-- mt-3 : margin-top 3*0.2rem -->
+    <div class="text-2xl mt-3 border">hello world</div>
+
+    <!-- https://tailwindcss.com/docs/list-style-type -->
+    <div class="p-5">
+      <ul class="list-disc">
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+      </ul>
+    </div>
+    <div class="p-5">
+      <ul class="list-decimal">
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+      </ul>
+    </div>
+    <!-- https://tailwindcss.com/docs/border-radius -->
+    <div class="w-32 h-32 bg-red-400"></div>
+    <br />
+    <!-- rounded : 4px 반지름 -->
+    <div class="w-32 h-32 bg-red-400 rounded"></div>
+    <br />
+    <div class="w-32 h-32 bg-red-400 rounded-lg"></div>
+    <br />
+    <div class="w-32 h-32 bg-red-400 rounded-full"></div>
+    <br />
+
+    <!-- https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values -->
+    <div class="text-[17px]">hello world</div>
+    <div class="mt-[17px] border">hello world</div>
+    <div class="bg-[#4267B2] text-white">hello world</div>
+    <!-- rgb(66, 103, 178) -->
+    <br />
+  </body>
+</html>
