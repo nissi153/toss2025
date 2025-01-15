@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>color 값</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- 
+        w-96 : 96%나 96px이 아니라 0.25rem*96 입니다.
+        https://tailwindcss.com/docs/width
+    -->
+    <!-- 
+        h-10 :2.5rem
+        https://tailwindcss.com/docs/height
+    -->
+    <!-- w-10 : width 10*0.25rem -->
+    <!-- h-10 : height 10*0.25rem -->
+    <div class="w-1/2 h-10 bg-blue-500"></div>
+    <div class="w-1/4 h-10 bg-red-500"></div>
+    <div class="w-[100px] h-10 bg-red-500"></div>
+    <br />
+    <!-- grid : display:grid 격자(테이블)모양 레이아웃 -->
+    <!-- grid-cols-10 : 컬럼이 10개인 격자 -->
+    <!-- gap-2 : 아이템간의 간격 2*0.25rem -->
+    <div class="grid grid-cols-10 gap-2">
+      <!-- aspect-square : 가로:세로 1:1 정방형 -->
+      <div class="bg-sky-50 aspect-square"></div>
+      <div class="bg-sky-100 aspect-square"></div>
+      <div class="bg-sky-200 aspect-square"></div>
+      <div class="bg-sky-300 aspect-square"></div>
+      <div class="bg-sky-400 aspect-square"></div>
+      <div class="bg-sky-500 aspect-square"></div>
+      <div class="bg-sky-600 aspect-square"></div>
+      <div class="bg-sky-700 aspect-square"></div>
+      <div class="bg-sky-800 aspect-square"></div>
+      <div class="bg-sky-900 aspect-square"></div>
+    </div>
+    <br />
+    <div class="grid grid-cols-10 gap-2">
+      <div class="bg-blue-50 aspect-square"></div>
+      <div class="bg-blue-100 aspect-square"></div>
+      <div class="bg-blue-200 aspect-square"></div>
+      <div class="bg-blue-300 aspect-square"></div>
+      <div class="bg-blue-400 aspect-square"></div>
+      <div class="bg-blue-500 aspect-square"></div>
+      <div class="bg-blue-600 aspect-square"></div>
+      <div class="bg-blue-700 aspect-square"></div>
+      <div class="bg-blue-800 aspect-square"></div>
+      <div class="bg-blue-900 aspect-square"></div>
+    </div>
+    <br />
+    <div class="grid grid-cols-10 gap-2">
+      <div class="bg-indigo-50 aspect-square"></div>
+      <div class="bg-indigo-100 aspect-square"></div>
+      <div class="bg-indigo-200 aspect-square"></div>
+      <div class="bg-indigo-300 aspect-square"></div>
+      <div class="bg-indigo-400 aspect-square"></div>
+      <div class="bg-indigo-500 aspect-square"></div>
+      <div class="bg-indigo-600 aspect-square"></div>
+      <div class="bg-indigo-700 aspect-square"></div>
+      <div class="bg-indigo-800 aspect-square"></div>
+      <div class="bg-indigo-900 aspect-square"></div>
+    </div>
+    <br />
+    <div class="grid grid-cols-10 gap-2">
+      <div class="bg-violet-50 aspect-square"></div>
+      <div class="bg-violet-100 aspect-square"></div>
+      <div class="bg-violet-200 aspect-square"></div>
+      <div class="bg-violet-300 aspect-square"></div>
+      <div class="bg-violet-400 aspect-square"></div>
+      <div class="bg-violet-500 aspect-square"></div>
+      <div class="bg-violet-600 aspect-square"></div>
+      <div class="bg-violet-700 aspect-square"></div>
+      <div class="bg-violet-800 aspect-square"></div>
+      <div class="bg-violet-900 aspect-square"></div>
+    </div>
+  </body>
+</html>
