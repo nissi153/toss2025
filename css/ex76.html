@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emmet 문법</title>
+    <!-- ex76.html -->
+  </head>
+  <body>
+    <!-- 기본 요소 생성 -->
+    <!-- div -->
+    <!-- p -->
+    <div></div>
+    <p></p>
+    <!-- 자식 요소 (>) -->
+    <!-- div>ul>li -->
+    <div>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+    <!-- 형제 요소 (+) -->
+    <!-- div+p+span -->
+    <div></div>
+    <p></p>
+    <span></span>
+    <!-- 상위 요소로 이동 (^) -->
+    <!-- div>p>span^h1 -->
+    <div>
+      <p><span></span></p>
+      <h1></h1>
+    </div>
+    <!-- 곱하기 (*) -->
+    <!-- ul>li*3 -->
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <!-- ID와 클래스 -->
+    <!-- div#header -->
+    <div id="header"></div>
+    <!-- div.container -->
+    <div class="container"></div>
+    <!-- div#id.class1.class2 -->
+    <div id="id" class="class1 class2"></div>
+
+    <!-- 속성 추가 ([]) -->
+    <!-- a[href='http://server.com'] -->
+    <a href="http://server.com"></a>
+    <!-- img[src='bg.jpg'][alt='이미지'] -->
+    <img src="bg.jpg" alt="이미지" />
+
+    <!-- 넘버링 ($) -->
+    <!-- ul>li.item$*3 -->
+    <ul>
+      <li class="item1"></li>
+      <li class="item2"></li>
+      <li class="item3"></li>
+    </ul>
+    <!-- ul>li.item$*3{hello$} -->
+    <ul>
+      <li class="item1">hello1</li>
+      <li class="item2">hello2</li>
+      <li class="item3">hello3</li>
+    </ul>
+    <!-- 텍스트 내용 ({}) -->
+    <!-- p{Hello} -->
+    <p>Hello</p>
+    <!-- div{Item $}*3 -->
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+
+    <!-- 그룹화 (()) -->
+    <!-- div>(header>ul>li*2)+footer>p -->
+    <div>
+      <header>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </header>
+      <footer>
+        <p></p>
+      </footer>
+    </div>
+
+    <!-- 실제 사용 예시 -->
+    <!-- nav>ul.menu>li.menu-item*4>a[href=#]{Menu $} -->
+    <nav>
+      <ul class="menu">
+        <li class="menu-item"><a href="#">Menu 1</a></li>
+        <li class="menu-item"><a href="#">Menu 2</a></li>
+        <li class="menu-item"><a href="#">Menu 3</a></li>
+        <li class="menu-item"><a href="#">Menu 4</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
