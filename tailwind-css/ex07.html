@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반응형웹과 Flex 연결</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- 전체 콘텐츠를 감싸는 div  -->
+    <div class="wrap flex flex-row flex-wrap">
+      <!-- 헤더 -->
+      <div
+        class="header flex justify-center items-center flex-[1_100%] md:flex-[1_100%] sm:flex-[1_80%] bg-blue-200 h-[80px] md:order-0 sm:order-0"
+      >
+        <p class="text-2xl">헤더</p>
+      </div>
+      <!-- 메뉴 nav -->
+      <!-- 메인 = section + aside -->
+      <div
+        class="flex justify-center items-center flex-[1_50%] sm:flex-[1_100%] md:flex-[1_50%] bg-green-200 h-[200px] md:h-[200px] sm:h-[100px] md:order-1 sm:order-2 order-1"
+      >
+        <p class="text-2xl">세션1</p>
+      </div>
+      <div
+        class="flex justify-center items-center flex-[1_50%] sm:flex-[1_100%] md:flex-[1_50%] bg-red-200 h-[200px] md:h-[200px] sm:h-[100px] md:order-2 order-2 sm:order-3"
+      >
+        <p class="text-2xl">세션2</p>
+      </div>
+      <div
+        class="flex justify-center items-center flex-[1_50%] sm:flex-[1_100%] md:flex-[1_50%] bg-orange-200 h-[200px] md:h-[200px] sm:h-[100px] md:order-3 order-3 sm:order-4"
+      >
+        <p class="text-2xl">세션3</p>
+      </div>
+      <div
+        class="flex justify-center items-center flex-[1_50%] sm:flex-[1_100%] md:flex-[1_50%] bg-gray-200 h-[200px] md:h-[200px] sm:h-[100px] md:order-4 order-4 sm:order-5"
+      >
+        <p class="text-2xl">세션4</p>
+      </div>
+      <!-- 광고 -->
+      <div
+        class="ad flex justify-center items-center md:flex-[1_50%] sm:flex-[1_20%] flex-[1_30%] bg-yellow-200 h-[80px] md:order-5 order-5 sm:order-1"
+      >
+        <p class="text-2xl">광고</p>
+      </div>
+      <!-- 정보 -->
+      <div
+        class="info flex justify-center items-center md:flex-[1_50%] sm:flex-[1_30%] flex-[1_70%] bg-sky-200 h-[80px] order-6"
+      >
+        <p class="text-2xl">정보</p>
+      </div>
+      <!-- 푸터 -->
+      <div
+        class="footer flex justify-center items-center flex-[1_100%] sm:flex-[1_70%] bg-red-200 h-[80px] order-7"
+      >
+        <p class="text-2xl">푸터</p>
+      </div>
+    </div>
+  </body>
+</html>
