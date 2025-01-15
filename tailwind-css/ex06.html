@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- https://tailwindcss.com/docs/flex -->
+    <!-- https://tailwindcss.com/docs/width -->
+    <!-- https://tailwindcss.com/docs/gap -->
+    <!-- flex : display:flex -->
+    <div class="flex border-4 border-red-300 m-3">
+      <!-- border-4 : border: 4px solid lightgray -->
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <!-- flex-direction: row column -->
+    <!-- flex-wrap: nowrap wrap -->
+    <div class="flex flex-row flex-wrap border-4 border-red-300 m-3">
+      <div class="p-2 border-4 border-blue-500">
+        hello Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+        optio beatae sit obcaecati, necessitatibus assumenda illum deserunt
+        enim, possimus totam cum quod inventore quisquam! Eveniet est reiciendis
+        sequi veritatis nulla!
+      </div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <!-- 
+        justify-content: center        - justify-center
+        justify-content: space-between - justify-between
+        align-items: flex-start        - items-start
+        align-items: center            - items-center
+        align-content: center          - content-center
+        align-self: auto               - self-auto
+        align-slef: flex-start         - self-start
+        align-slef: flex-end           - self-end
+        flex: 1 1 0%                   - flex-1
+        flex: 1 1 auto                 - flex-auto
+        flex: 0 1 auto                 - flex-initial
+        flex: none                     - flex-none
+    -->
+    <div class="flex flex-wrap border-4 border-red-300 m-3">
+      <!-- flex-1 => flex: 1 1 0%; -->
+      <div class="flex-1 p-2 border-4 border-blue-500">hello</div>
+      <div class="flex-1 p-2 border-4 border-blue-500">hello</div>
+      <div class="flex-1 p-2 border-4 border-blue-500">hello</div>
+      <div class="flex-1 p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <div class="flex border-4 border-red-300 m-3">
+      <div class="w-3/4 p-2 border-4 border-blue-500">hello</div>
+      <div class="w-1/4 p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <div class="flex justify-between border-4 border-red-300 m-3">
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <div class="flex justify-center border-4 border-red-300 m-3">
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+      <div class="p-2 border-4 border-blue-500">hello</div>
+    </div>
+
+    <div
+      class="flex justify-center items-center w-80 h-80 border-4 border-red-300 m-3"
+    >
+      <!-- leading-9 : line-height: 9*0.25rem -->
+      <div class="text-center leading-9 w-32 h-16 p-2 border-4 border-blue-500">
+        hello
+      </div>
+    </div>
+
+    <!-- 반응형 웹과 tailwind css 연결 -->
+    <!-- 
+      Breakpoint prefix	Minimum width	CSS
+      sm	640px	@media (min-width: 640px) { ... }
+      md	768px	@media (min-width: 768px) { ... }
+      lg	1024px	@media (min-width: 1024px) { ... }
+      xl	1280px	@media (min-width: 1280px) { ... }
+      2xl	1536px	@media (min-width: 1536px) { ... } -->
+    <div class="flex md:flex-row flex-col border-4 border-red-300 m-3">
+      <div class="p-2 flex-1 border-4 border-blue-500 order-1">1 hello</div>
+      <div class="p-2 flex-1 border-4 border-blue-500 order-0">2 hello</div>
+      <div class="p-2 flex-1 border-4 border-blue-500 order-2">3 hello</div>
+      <div class="p-2 flex-1 border-4 border-blue-500 order-3">4 hello</div>
+    </div>
+
+    <div class="flex md:flex-row flex-col border-4 border-red-300 m-3">
+      <div class="p-2 flex-1 border-4 border-blue-500">1 hello</div>
+      <div
+        class="p-2 flex-1 border-4 border-blue-500 order-first md:order-none"
+      >
+        2 hello
+      </div>
+      <div class="p-2 flex-1 border-4 border-blue-500">3 hello</div>
+      <div class="p-2 flex-1 border-4 border-blue-500">4 hello</div>
+    </div>
+  </body>
+</html>
