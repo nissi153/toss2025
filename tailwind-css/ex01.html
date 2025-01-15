@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind CSS 소개</title>
+    <!-- ex01.html -->
+    <!-- https://tailwindcss.com/ -->
+    <!-- HTML을 떠나지 않고 빠르게 빌드하는 CSS 템플릿 -->
+    <!-- CSS방법 : head태그,인라인,별도css파일 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CSS 리셋 코드가 포함됨. -->
+  </head>
+  <body>
+    <h1>CSS 리셋된 H1은 font-size: 16px</h1>
+    <ul>
+      <li>item1</li>
+      <li>item2</li>
+      <li>item3</li>
+    </ul>
+    <!-- sizing -->
+    <!-- space-y-8 : 마진 y축 8*0.25rem -->
+    <!-- bg-blue-400 : 백그라운드색상 blue 400 진함의 정도 -->
+    <div class="space-y-8 bg-blue-400">
+      <!-- w-96 : width 96*0.25rem  -->
+      <!-- bg-white : BG white -->
+      <!-- shadow : 그림자효과 -->
+      <!-- rounded : 테두리선 라운딩: 0.25rem 4px(반지름) -->
+      <div class="w-96 bg-white shadow rounded">w-96</div>
+      <div class="w-80 bg-white shadow rounded">w-80</div>
+      <div class="w-72 bg-white shadow rounded">w-72</div>
+      <div class="w-64 bg-white shadow rounded">w-64</div>
+      <div class="w-60 bg-white shadow rounded">w-60</div>
+      <div class="w-56 bg-white shadow rounded">w-56</div>
+      <div class="w-52 bg-white shadow rounded">w-52</div>
+      <div class="w-48 bg-white shadow rounded">w-48</div>
+    </div>
+  </body>
+</html>
