@@ -12,7 +12,17 @@
       // 예) 3입력 2입력 5입력 => 325
       //3. 연산자 우선순위를 조정하여(소괄호)
       //   11이 출력되도록 하시오.
-      console.log(10 - 4 / 2 + 4 * 2);
+      document.write("1-1. " + (20 < 30));
+      document.write("<br>");
+      document.write("1-2. " + (20 <= 30));
+      document.write("<br>");
+      let num100 = prompt("백의 자리");
+      let num10 = prompt("십의 자리");
+      let num1 = prompt("일의 자리");
+      let total = Number(num100) * 100 + Number(num10) * 10 + Number(num1);
+      document.write("2-1. " + total);
+      document.write("<br>");
+      console.log((10 - 4) / 2 + 4 * 2);
     </script>
   </head>
   <body></body>
