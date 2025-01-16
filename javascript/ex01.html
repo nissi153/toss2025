@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 개요</title>
+    <!-- ex01 -->
+    <!-- JavaScript : 공식명칭은 ECMA Script -->
+    <!-- 만든 사람 : 넷스케이프 브랜든 아이크라는 사람이 만듦
+                     썬마이크로 시스템즈와 협력해서 만든 언어 -->
+    <!-- Java와 JavaScript와는 전혀 다른 언어  -->
+    <!-- ES6(ECMA Script 6)에서 언어적으로 완성됨. -->
+    <!-- 특징 : 웹브라우저에서 지원하는 유일한 언어 : 과거 Basic언어 -->
+    <!--      : 구글에서 JS V8 엔진을 향상시키고, 오픈 소스로 배포 -->
+
+    <!-- JS 구동시키는 2가지방법 -->
+    <!-- 1. 프론트엔드(사용자PC) : 웹브라우저 JS 해석, 템플릿엔진(리액트,Vue,앵귤러) -->
+    <!-- 2. 백엔드(서버PC) : Node.js 웹서버 프로그램 -->
+
+    <!-- HTML안에서 JS 선언하는 3가지 방법 -->
+    <!--1. head/body태그 안에서 script태그 사용  -->
+    <!--2. html태그 인라인 속성으로 - onclick,href  -->
+    <!--3. 별도의 js파일 import/link해서  -->
+    <script>
+      // 한줄주석문, 콘솔: 표준입출력(키보드,모니터)
+      console.log("hello world JS");
+    </script>
+    <script src="myjs.js"></script>
+  </head>
+  <body>
+    <button type="button" onclick="myFunc()">함수 실행</button>
+
+    <button type="button" onclick="alert('클릭하셨어요?')">클릭하세요</button>
+    <a href="javascript:alert('클릭하셨어요?')">클릭하세요</a>
+
+    <!-- body태그 마지막에 js를 정의하는게 좋다. -->
+    <script>
+      console.log("hello world JS2");
+    </script>
+  </body>
+</html>
