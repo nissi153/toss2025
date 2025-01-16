@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>연산자</title>
+    <script>
+      //단항 연산자 : 연산의 대상이 1개
+      //이항 연산자 : 산비논대(산술,비교,논리,대입)
+      //삼항 연산자
+      //대입 연산자
+
+      //연산자의 우선순위 : 연산자가 한 줄에 있으면,
+      //                우선순위에 따라 순차적으로 연산이 됨.
+      // 단항 > 이항 > 삼항 > 대입(=)
+
+      //단항 : ++ -- ! -(minus)
+      //산술 : + - * / %
+      //비교 : A<B (A가 B보다 작은가?)
+      //        > <= >= !=
+      //논리 : && ||
+      //삼항 : A ? B : C
+      //대입 : = += -= *= /= %=
+
+      //단항 연산자 ++ --
+      let i = 10; // b0000...1010 4바이트 정수
+      // ++ : 자신에게 +1을 더하는 연산자
+      // A++ : A = A + 1
+      // A-- : A = A - 1
+      i++;
+      document.write(i + "<br>");
+      i--;
+      document.write(i + "<br>");
+      // ++A : 먼저 +1 연산을 한후 다음 연산으로 넘어감
+      // A++ : 다른 연산이 이루어진후 마지막에 +1한다.
+      //  10=>11      10=>11
+      i = i++ + 10 + ++i;
+      document.write(i + "<br>");
+      // 단항/삼항 연산자를 가급적 한줄에 1개만 사용하자.
+
+      let j = 10;
+      j++;
+      document.write(j + "<br>");
+      ++j;
+      document.write(j + "<br>");
+
+      j = 10;
+      document.write(j++ + "<br>");
+      document.write(j + "<br>");
+      j = 10;
+      document.write(++j + "<br>");
+      document.write(j + "<br>");
+    </script>
+  </head>
+  <body></body>
+</html>
