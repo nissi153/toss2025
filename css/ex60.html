@@ -2,7 +2,1338 @@
 <html lang="en">
   <head>
     <title>연습문제-영화웹페이지</title>
-    <!-- https://www.megabox.co.kr/movie -->
   </head>
-  <body></body>
+  <style>
+    :root {
+      --main-color: #4f3395;
+      --main-padding: 50px;
+      --main-gap: 15px;
+      --logo-width: 140px;
+      --nav-height: 40px;
+      --max-width: 1200px;
+    }
+
+    .links {
+      display: flex;
+      gap: var(--main-gap);
+    }
+
+    .links a,
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .links a:hover,
+    nav a:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--main-color);
+    }
+
+    .links-right {
+      justify-content: flex-end;
+    }
+
+    #wrap {
+      margin: 0 auto;
+      min-width: 1100px;
+      width: 100%;
+    }
+
+    header {
+      padding: 0px var(--main-padding);
+      padding-top: 10px;
+      border-bottom: 1px solid var(--main-color);
+      display: flex;
+      gap: calc(var(--main-gap) * 3);
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .header-wrap {
+      display: flex;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      gap: calc(var(--main-gap) * 5);
+    }
+
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: var(--main-gap);
+    }
+
+    .menus {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .menus-icons {
+      display: flex;
+      gap: var(--main-gap);
+      align-items: center;
+    }
+
+    .menus a {
+      display: block;
+      width: 30px;
+      height: 30px;
+    }
+
+    .menus button {
+      padding: var(--main-gap) 0;
+      cursor: pointer;
+      border: none;
+      border-bottom: 3px solid transparent;
+      background-color: transparent;
+      font-size: 18px;
+    }
+
+    .menus button:hover {
+      border-bottom: 3px solid var(--main-color);
+    }
+
+    .menu-movie:hover ~ .toolbar-movie,
+    .toolbar-movie:hover {
+      visibility: visible;
+    }
+
+    .menu-reservation:hover ~ .toolbar-reservation,
+    .toolbar-reservation:hover {
+      visibility: visible;
+    }
+
+    .menu-cinema:hover ~ .toolbar-cinema,
+    .toolbar-cinema:hover {
+      visibility: visible;
+    }
+
+    .menu-event:hover ~ .toolbar-event,
+    .toolbar-event:hover {
+      visibility: visible;
+    }
+
+    .menu-benefit:hover ~ .toolbar-benefit,
+    .toolbar-benefit:hover {
+      visibility: visible;
+    }
+
+    .nav-toolbar {
+      position: absolute;
+      left: 0;
+      bottom: calc(var(--nav-height) * -1);
+      width: 100%;
+      height: var(--nav-height);
+      background-color: var(--main-color);
+      z-index: 3;
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      gap: var(--main-gap);
+      padding: 0 var(--main-padding);
+      transition: all 0.3s;
+    }
+
+    .nav-toolbar a {
+      text-decoration: none;
+      color: white;
+      width: fit-content;
+      height: auto;
+    }
+
+    #logo {
+      width: var(--logo-width);
+      object-fit: contain;
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+
+    .hamburger {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap.png");
+    }
+
+    .search {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png");
+    }
+
+    .calendar {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png");
+    }
+
+    .mypage {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega.png");
+    }
+
+    .home {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png");
+    }
+
+    .arrow-right {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-arr.png");
+    }
+
+    .arrow-bottom {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png");
+    }
+
+    .youtube {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-youtubeN.png");
+    }
+
+    .instagram {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-instagramN.png");
+    }
+
+    .facebook {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-facebookN.png");
+    }
+
+    .twitter {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-twitterN.png");
+    }
+    nav {
+      background-color: #f8f8fa;
+      padding: 10px var(--main-padding);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-wrap {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      margin: 0 auto;
+    }
+
+    nav a {
+      margin: 0 5px;
+    }
+
+    nav div {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* main */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 25px var(--main-padding);
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--main-gap) * 2);
+    }
+
+    main h2 {
+      font-size: 28px;
+      font-weight: normal;
+    }
+
+    .movie-options {
+      display: flex;
+      width: 100%;
+    }
+
+    .movie-option-box,
+    .movie-option-screen,
+    .movie-option-single,
+    .movie-option-film,
+    .movie-option-classic {
+      flex: 1;
+      text-decoration: none;
+      text-align: center;
+      color: black;
+      border: 1px solid #eee;
+      border-bottom: 1px solid var(--main-color);
+      padding: 10px 0;
+    }
+
+    .selected-option {
+      border-color: var(--main-color);
+      border-bottom: transparent;
+    }
+
+    .main-filter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-opening {
+      display: flex;
+      gap: var(--main-gap);
+      align-items: flex-end;
+    }
+
+    .search-movie {
+      position: relative;
+    }
+
+    .search-movie input {
+      padding: 10px;
+      outline: none;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .search-movie a {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .movie-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: calc(var(--main-gap) * 3) var(--main-gap);
+    }
+
+    .movie-card {
+      width: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--main-gap);
+      position: relative;
+    }
+
+    .movie-number {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 35px;
+      font-weight: 400;
+      color: white;
+      text-shadow: 2px 2px 2px black;
+      z-index: 2;
+    }
+
+    .movie-image-wrap {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      cursor: pointer;
+    }
+
+    .movie-description {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 3;
+      border-radius: 5px;
+      color: white;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .movie-description p {
+      word-break: keep-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 7;
+      margin: 0;
+    }
+
+    .movie-image {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .movie-image-wrap:hover .movie-description {
+      opacity: 1;
+    }
+
+    .movie-score-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .movie-score {
+      display: flex;
+      align-items: center;
+      gap: var(--main-gap);
+    }
+    .score {
+      font-size: 25px;
+      color: aqua;
+    }
+
+    .movie-info-first {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .movie-age {
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      background-position: 50% 50%;
+    }
+
+    .age-all {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png");
+    }
+
+    .age-15 {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png");
+    }
+
+    .age-19 {
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/txt/19_46x46.png");
+    }
+
+    .movie-name {
+      font-size: 20px;
+    }
+
+    .movie-info-second {
+      font-size: 15px;
+      justify-content: space-between;
+    }
+
+    .vt-line {
+      height: 15px;
+      border-right: 1px solid #ccc;
+    }
+
+    .movie-info-second,
+    .movie-info-third {
+      display: flex;
+      gap: 5px;
+    }
+
+    .movie-info-third button:first-child {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 80px;
+      gap: 5px;
+      padding: 10px 15px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .movie-info-third button:not(button:first-child) {
+      display: flex;
+      flex: 1;
+      border: none;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      background-color: var(--main-color);
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .movie-dolby {
+      background-image: url("https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+
+    .heart-score {
+      width: 17px;
+      height: 15px;
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ico/ico-heart-toggle-gray.png");
+      background-repeat: no-repeat;
+    }
+
+    .more {
+      background-color: transparent;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      color: #777;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #f8f8fa;
+      padding: 20px var(--main-padding);
+      display: flex;
+      flex-direction: column;
+      gap: var(--main-gap);
+    }
+
+    .footer-wrap {
+      margin: 0 auto;
+      max-width: var(--max-width);
+    }
+
+    .footer-anchor-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-anchor a {
+      text-decoration: none;
+      color: #222;
+      font-size: 14px;
+    }
+
+    .footer-anchor {
+      display: flex;
+      gap: var(--main-gap);
+    }
+
+    .footer-search-cinema {
+      padding: 5px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      color: #888;
+      border-radius: 20px;
+    }
+
+    .footer-company {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--main-gap);
+    }
+
+    .footer-logo {
+      width: 150px;
+      height: 50px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/ci/logo-opacity_new2.png");
+      background-position: 50% 50%;
+    }
+
+    .footer-address p {
+      font-size: 12px;
+      font-style: normal;
+      margin: 0;
+    }
+
+    .footer-sns {
+      display: flex;
+      gap: 5px;
+    }
+
+    .footer-sns div {
+      padding: 10px;
+    }
+
+    .top-tool {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      background-image: url("https://img.megabox.co.kr/static/pc/images/common/btn/btn-go-top.png");
+      background-repeat: no-repeat;
+    }
+  </style>
+  <body style="margin: 0">
+    <div id="wrap">
+      <header>
+        <div class="header-wrap">
+          <div class="header-container">
+            <div class="links links-left">
+              <a href="#">VIP LOUNGE</a>
+              <a href="#">멤버십</a>
+              <a href="#">고객센터</a>
+            </div>
+            <div class="menus">
+              <div class="menus-icons">
+                <a href="#" class="icon hamburger"></a>
+                <a href="#" class="icon search"></a>
+              </div>
+              <button class="menu-movie">영화</button>
+              <div class="nav-toolbar toolbar-movie">
+                <a href="#">전체영화</a>
+              </div>
+              <button class="menu-reservation">예매</button>
+              <div class="nav-toolbar toolbar-reservation">
+                <a href="#">빠른예매</a>
+                <a href="#">상영시간표</a>
+                <a href="#">더 부티크 프라이빗 예매</a>
+              </div>
+              <button class="menu-cinema">극장</button>
+              <div class="nav-toolbar toolbar-cinema">
+                <a href="#">전체극장</a>
+                <a href="#">특별관</a>
+              </div>
+            </div>
+          </div>
+          <img
+            src="https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png"
+            alt="logo"
+            id="logo"
+          />
+
+          <div class="header-container">
+            <div class="links links-right">
+              <a href="#">로그인</a>
+              <a href="#">회원가입</a>
+              <a href="#">빠른예매</a>
+            </div>
+            <div class="menus">
+              <button class="menu-event">이벤트</button>
+              <div class="nav-toolbar toolbar-event">
+                <a href="#">진행중 이벤트</a>
+                <a href="#">지난 이벤트</a>
+                <a href="#">당첨자발표</a>
+              </div>
+              <button class="menu-store">스토어</button>
+              <button class="menu-benefit">혜택</button>
+              <div class="nav-toolbar toolbar-benefit">
+                <a href="#">메가박스 멤버쉽</a>
+                <a href="#">제휴/할인</a>
+              </div>
+              <div class="menus-icons">
+                <a href="#" class="icon calendar"></a>
+                <a href="#" class="icon mypage"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <nav>
+        <div class="nav-wrap">
+          <div class="icon home"></div>
+          <div class="icon arrow-right"></div>
+          <a href="#">영화</a>
+          <div class="icon arrow-right"></div>
+          <a href="#">전체영화</a>
+        </div>
+      </nav>
+      <main>
+        <h2>전체영화</h2>
+        <div class="movie-options">
+          <a
+            class="movie-option movie-option-box selected-option"
+            onclick="toggle(this)"
+            href="#"
+            >박스오피스</a
+          >
+          <a
+            class="movie-option movie-option-screen"
+            onclick="toggle(this)"
+            href="#"
+            >상영예정작</a
+          >
+          <a
+            class="movie-option movie-option-single"
+            onclick="toggle(this)"
+            href="#"
+            >단독</a
+          >
+          <a
+            class="movie-option movie-option-film"
+            onclick="toggle(this)"
+            href="#"
+            >필름소사이어티</a
+          >
+          <a
+            class="movie-option movie-option-classic"
+            onclick="toggle(this)"
+            href="#"
+            >클래식소사이어티</a
+          >
+        </div>
+        <div class="main-filter">
+          <div class="toggle-opening">
+            <div>
+              <input type="checkbox" name="" id="" />
+              <label for="">개봉작만</label>
+            </div>
+            <span><b>88</b>개의 영화가 검색되었습니다.</span>
+          </div>
+          <div class="search-movie">
+            <input type="text" placeholder="영화명 검색" />
+            <a href="#" class="icon search"></a>
+          </div>
+        </div>
+        <div class="movie-cards">
+          <div class="movie-card">
+            <i class="movie-number">1</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/veoYkRw8THPbrE9FobWUP1BVmEbMOXnp_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  “연주할 때만 느껴지는 감정이 있거든. 그게 널 만나면 느껴져”
+                  유학 중이던 피아니스트 유준은 팔목 치료를 위해 한국에 교환
+                  학생으로 오게 된다. 학교에 처음 간 그날, 신비로운 피아노
+                  선율에 이끌려 도착한 연습실에서 유준은 정아와 마주치고,
+                  운명처럼 끌린 두 사람은 시간을 보내며 가까워진다. 하지만,
+                  연락처조차 알려주지 않는 정아와의 만남은 계속 엇갈리고, 유준의
+                  시선이 늘 자신을 향해 있다고 생각한 인희의 갑작스러운 고백은
+                  정아에게 큰 상처를 입힌다. 그날 이후 사라진 정아의 행방을 찾던
+                  유준은 정아의 비밀을 마주하게 되는데… “너와 나의 시간을 이어
+                  준 연주곡 ‘시크릿’ 그렇게 마법 같은 사랑은 시작된 거야”
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-all"></div>
+              <span class="movie-name">말할 수 없는 비밀</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>42</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">2</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/0XDjkXDLm7waDVJ9leltSNNBOrEpLGEU_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  금지된 곳으로 갈 준비가 되었습니다. ‘유니아’ 수녀(송혜교)는
+                  ‘희준’(문우진)의 몸에 숨어든 악령이 12형상 중 하나라고
+                  확신한다. 당장 올 수 없는 구마 사제를 기다리다가 부마자가
+                  희생될 것이 분명한 상황. 결국 ‘유니아’는 소년을 구하기 위해
+                  ‘서품을 받지 못한 수녀는 구마를 할 수 없다’는 금기를 깨기로
+                  결심한다. 하지만 담당의는 ‘희준’을 살릴 수 있는 것은 오직
+                  의학이라 믿는 ‘바오로’ 신부(이진욱). 우연한 기회에 그의 제자
+                  ‘미카엘라’ 수녀(전여빈)의 비밀을 알아챈 ‘유니아’는 ‘희준’을
+                  병원에서 빼내기 위해 막무가내로 도움을 요청한다. ‘미카엘라’는
+                  거침없는 ‘유니아’ 에게 반발심을 느끼지만, 동질감이 느껴지는
+                  ‘희준’을 위해 힘을 보태기로 한다. 마침내 두 수녀는 수단과
+                  방법을 가리지 않고 오직 소년을 살리기 위한 위험한 의식을
+                  시작하는데... 원칙은 단 하나, 무조건 살린다!
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">검은 수녀들</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 11.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.24</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>316</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">3</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/voFgSlrB9J2LLJqj7p6L6Zx03X3qFf6O_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  1908년 함경북도 신아산에서 안중근이 이끄는 독립군들은
+                  일본군과의 전투에서 큰 승리를 거둔다. 대한의군 참모중장
+                  안중근은 만국공법에 따라 전쟁포로인 일본인들을 풀어주게 되고,
+                  이 사건으로 인해 독립군 사이에서는 안중근에 대한 의심과 함께
+                  균열이 일기 시작한다. 1년 후, 블라디보스토크에는 안중근을
+                  비롯해 우덕순, 김상현, 공부인, 최재형, 이창섭 등 빼앗긴 나라를
+                  되찾기 위해 마음을 함께하는 이들이 모이게 된다. 이토
+                  히로부미가 러시아와 협상을 위해 하얼빈으로 향한다는 소식을
+                  접한 안중근과 독립군들은 하얼빈으로 향하고, 내부에서 새어 나간
+                  이들의 작전 내용을 입수한 일본군들의 추격이 시작되는데…
+                  하얼빈을 향한 단 하나의 목표, 늙은 늑대를 처단하라
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">하얼빈</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>1.4k</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">4</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/GUG7lU6RYPTfqPI5RP5Yq47kDrhf8n0m_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  동화 작가가 꿈이지만 현실은 불법 음란물 단속팀 새내기인
+                  ‘단비’는 스타 작가를 찾던 성인 웹소설계 대부 ‘황대표’와 우연한
+                  사고로 노예 계약을 맺게 되면서 하루아침에 19금 소설을 쓰게
+                  된다. 생전 접한 적 없는 장르를 집필하는 데 난항을 겪던
+                  ‘단비’는 음란물 단속을 하다 권태기에 빠진 선배 ‘정석’의
+                  응원과, 친구들의 생생한 경험담에 힘입어 어느새 자신도 알지
+                  못했던 성스러운 재능을 발견하게 되는데…
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-19"></div>
+              <span class="movie-name">동화지만 청불입니다</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 7.6%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>248</span>
+              </button>
+              <button>예매</button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">1</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/veoYkRw8THPbrE9FobWUP1BVmEbMOXnp_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  “연주할 때만 느껴지는 감정이 있거든. 그게 널 만나면 느껴져”
+                  유학 중이던 피아니스트 유준은 팔목 치료를 위해 한국에 교환
+                  학생으로 오게 된다. 학교에 처음 간 그날, 신비로운 피아노
+                  선율에 이끌려 도착한 연습실에서 유준은 정아와 마주치고,
+                  운명처럼 끌린 두 사람은 시간을 보내며 가까워진다. 하지만,
+                  연락처조차 알려주지 않는 정아와의 만남은 계속 엇갈리고, 유준의
+                  시선이 늘 자신을 향해 있다고 생각한 인희의 갑작스러운 고백은
+                  정아에게 큰 상처를 입힌다. 그날 이후 사라진 정아의 행방을 찾던
+                  유준은 정아의 비밀을 마주하게 되는데… “너와 나의 시간을 이어
+                  준 연주곡 ‘시크릿’ 그렇게 마법 같은 사랑은 시작된 거야”
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-all"></div>
+              <span class="movie-name">말할 수 없는 비밀</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>42</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">2</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/0XDjkXDLm7waDVJ9leltSNNBOrEpLGEU_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  금지된 곳으로 갈 준비가 되었습니다. ‘유니아’ 수녀(송혜교)는
+                  ‘희준’(문우진)의 몸에 숨어든 악령이 12형상 중 하나라고
+                  확신한다. 당장 올 수 없는 구마 사제를 기다리다가 부마자가
+                  희생될 것이 분명한 상황. 결국 ‘유니아’는 소년을 구하기 위해
+                  ‘서품을 받지 못한 수녀는 구마를 할 수 없다’는 금기를 깨기로
+                  결심한다. 하지만 담당의는 ‘희준’을 살릴 수 있는 것은 오직
+                  의학이라 믿는 ‘바오로’ 신부(이진욱). 우연한 기회에 그의 제자
+                  ‘미카엘라’ 수녀(전여빈)의 비밀을 알아챈 ‘유니아’는 ‘희준’을
+                  병원에서 빼내기 위해 막무가내로 도움을 요청한다. ‘미카엘라’는
+                  거침없는 ‘유니아’ 에게 반발심을 느끼지만, 동질감이 느껴지는
+                  ‘희준’을 위해 힘을 보태기로 한다. 마침내 두 수녀는 수단과
+                  방법을 가리지 않고 오직 소년을 살리기 위한 위험한 의식을
+                  시작하는데... 원칙은 단 하나, 무조건 살린다!
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">검은 수녀들</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 11.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.24</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>316</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">3</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/voFgSlrB9J2LLJqj7p6L6Zx03X3qFf6O_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  1908년 함경북도 신아산에서 안중근이 이끄는 독립군들은
+                  일본군과의 전투에서 큰 승리를 거둔다. 대한의군 참모중장
+                  안중근은 만국공법에 따라 전쟁포로인 일본인들을 풀어주게 되고,
+                  이 사건으로 인해 독립군 사이에서는 안중근에 대한 의심과 함께
+                  균열이 일기 시작한다. 1년 후, 블라디보스토크에는 안중근을
+                  비롯해 우덕순, 김상현, 공부인, 최재형, 이창섭 등 빼앗긴 나라를
+                  되찾기 위해 마음을 함께하는 이들이 모이게 된다. 이토
+                  히로부미가 러시아와 협상을 위해 하얼빈으로 향한다는 소식을
+                  접한 안중근과 독립군들은 하얼빈으로 향하고, 내부에서 새어 나간
+                  이들의 작전 내용을 입수한 일본군들의 추격이 시작되는데…
+                  하얼빈을 향한 단 하나의 목표, 늙은 늑대를 처단하라
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">하얼빈</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>1.4k</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">4</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/GUG7lU6RYPTfqPI5RP5Yq47kDrhf8n0m_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  동화 작가가 꿈이지만 현실은 불법 음란물 단속팀 새내기인
+                  ‘단비’는 스타 작가를 찾던 성인 웹소설계 대부 ‘황대표’와 우연한
+                  사고로 노예 계약을 맺게 되면서 하루아침에 19금 소설을 쓰게
+                  된다. 생전 접한 적 없는 장르를 집필하는 데 난항을 겪던
+                  ‘단비’는 음란물 단속을 하다 권태기에 빠진 선배 ‘정석’의
+                  응원과, 친구들의 생생한 경험담에 힘입어 어느새 자신도 알지
+                  못했던 성스러운 재능을 발견하게 되는데…
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-19"></div>
+              <span class="movie-name">동화지만 청불입니다</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 7.6%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>248</span>
+              </button>
+              <button>예매</button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">1</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/veoYkRw8THPbrE9FobWUP1BVmEbMOXnp_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  “연주할 때만 느껴지는 감정이 있거든. 그게 널 만나면 느껴져”
+                  유학 중이던 피아니스트 유준은 팔목 치료를 위해 한국에 교환
+                  학생으로 오게 된다. 학교에 처음 간 그날, 신비로운 피아노
+                  선율에 이끌려 도착한 연습실에서 유준은 정아와 마주치고,
+                  운명처럼 끌린 두 사람은 시간을 보내며 가까워진다. 하지만,
+                  연락처조차 알려주지 않는 정아와의 만남은 계속 엇갈리고, 유준의
+                  시선이 늘 자신을 향해 있다고 생각한 인희의 갑작스러운 고백은
+                  정아에게 큰 상처를 입힌다. 그날 이후 사라진 정아의 행방을 찾던
+                  유준은 정아의 비밀을 마주하게 되는데… “너와 나의 시간을 이어
+                  준 연주곡 ‘시크릿’ 그렇게 마법 같은 사랑은 시작된 거야”
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-all"></div>
+              <span class="movie-name">말할 수 없는 비밀</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>42</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">2</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/06/0XDjkXDLm7waDVJ9leltSNNBOrEpLGEU_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  금지된 곳으로 갈 준비가 되었습니다. ‘유니아’ 수녀(송혜교)는
+                  ‘희준’(문우진)의 몸에 숨어든 악령이 12형상 중 하나라고
+                  확신한다. 당장 올 수 없는 구마 사제를 기다리다가 부마자가
+                  희생될 것이 분명한 상황. 결국 ‘유니아’는 소년을 구하기 위해
+                  ‘서품을 받지 못한 수녀는 구마를 할 수 없다’는 금기를 깨기로
+                  결심한다. 하지만 담당의는 ‘희준’을 살릴 수 있는 것은 오직
+                  의학이라 믿는 ‘바오로’ 신부(이진욱). 우연한 기회에 그의 제자
+                  ‘미카엘라’ 수녀(전여빈)의 비밀을 알아챈 ‘유니아’는 ‘희준’을
+                  병원에서 빼내기 위해 막무가내로 도움을 요청한다. ‘미카엘라’는
+                  거침없는 ‘유니아’ 에게 반발심을 느끼지만, 동질감이 느껴지는
+                  ‘희준’을 위해 힘을 보태기로 한다. 마침내 두 수녀는 수단과
+                  방법을 가리지 않고 오직 소년을 살리기 위한 위험한 의식을
+                  시작하는데... 원칙은 단 하나, 무조건 살린다!
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">검은 수녀들</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 11.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.24</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>316</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">3</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/voFgSlrB9J2LLJqj7p6L6Zx03X3qFf6O_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  1908년 함경북도 신아산에서 안중근이 이끄는 독립군들은
+                  일본군과의 전투에서 큰 승리를 거둔다. 대한의군 참모중장
+                  안중근은 만국공법에 따라 전쟁포로인 일본인들을 풀어주게 되고,
+                  이 사건으로 인해 독립군 사이에서는 안중근에 대한 의심과 함께
+                  균열이 일기 시작한다. 1년 후, 블라디보스토크에는 안중근을
+                  비롯해 우덕순, 김상현, 공부인, 최재형, 이창섭 등 빼앗긴 나라를
+                  되찾기 위해 마음을 함께하는 이들이 모이게 된다. 이토
+                  히로부미가 러시아와 협상을 위해 하얼빈으로 향한다는 소식을
+                  접한 안중근과 독립군들은 하얼빈으로 향하고, 내부에서 새어 나간
+                  이들의 작전 내용을 입수한 일본군들의 추격이 시작되는데…
+                  하얼빈을 향한 단 하나의 목표, 늙은 늑대를 처단하라
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-15"></div>
+              <span class="movie-name">하얼빈</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 34.8%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>1.4k</span>
+              </button>
+              <button>예매</button>
+              <button class="movie-dolby"></button>
+            </div>
+          </div>
+          <div class="movie-card">
+            <i class="movie-number">4</i>
+            <div class="movie-image-wrap">
+              <img
+                class="movie-image"
+                src="https://img.megabox.co.kr/SharedImg/2025/01/08/GUG7lU6RYPTfqPI5RP5Yq47kDrhf8n0m_420.jpg"
+                alt="movie-name"
+              />
+              <div class="movie-description">
+                <p>
+                  동화 작가가 꿈이지만 현실은 불법 음란물 단속팀 새내기인
+                  ‘단비’는 스타 작가를 찾던 성인 웹소설계 대부 ‘황대표’와 우연한
+                  사고로 노예 계약을 맺게 되면서 하루아침에 19금 소설을 쓰게
+                  된다. 생전 접한 적 없는 장르를 집필하는 데 난항을 겪던
+                  ‘단비’는 음란물 단속을 하다 권태기에 빠진 선배 ‘정석’의
+                  응원과, 친구들의 생생한 경험담에 힘입어 어느새 자신도 알지
+                  못했던 성스러운 재능을 발견하게 되는데…
+                </p>
+                <div class="movie-score-wrap">
+                  <hr style="width: 100%; opacity: 0.2" />
+                  <div class="movie-score">
+                    <span>관람평</span>
+                    <span class="score">7.6</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="movie-info-first">
+              <div class="movie-age age-19"></div>
+              <span class="movie-name">동화지만 청불입니다</span>
+            </div>
+            <div class="movie-info-second">
+              <div class="movie-ticketing">예매율 7.6%</div>
+              <div class="vt-line"></div>
+              <span class="movie-open-date">개봉일 2025.01.28</span>
+            </div>
+            <div class="movie-info-third">
+              <button>
+                <div class="heart-score"></div>
+                <span>248</span>
+              </button>
+              <button>예매</button>
+            </div>
+          </div>
+        </div>
+        <button class="more">
+          <span>더보기</span>
+          <div class="icon arrow-bottom"></div>
+        </button>
+      </main>
+      <footer>
+        <div class="footer-wrap">
+          <div class="footer-anchor-wrap">
+            <div class="footer-anchor">
+              <a href="#">화사소개</a>
+              <a href="#">인사채용</a>
+              <a href="#">사회공헌</a>
+              <a href="#">제휴/광고/부대사업문의</a>
+              <a href="#">이용약관</a>
+              <a href="#"><b>위치기반서비스 이용약관</b></a>
+              <a href="#"><b>개인정보처리방침</b></a>
+              <a href="#">윤리경영</a>
+            </div>
+            <button class="footer-search-cinema">
+              <div class="icon search"></div>
+              <span>극장찾기</span>
+            </button>
+          </div>
+          <div class="footer-company">
+            <div class="footer-logo"></div>
+            <address class="footer-address">
+              <p>
+                서울특별시 강남구 테헤란로 87길 22 도심공항터미널 건물 408호 ARS
+                1544-0070 대표이메일 m.dreamcenter@partner.megabox.co.kr
+              </p>
+              <p>
+                대표자명 홍정인, 남용석 · 개인정보보호책임자 강병철 ·
+                사업자등록번호 211-86-59478 · 통신판매업신고번호
+                2023-서울성동-0177
+              </p>
+              <p>COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved</p>
+            </address>
+            <div class="footer-sns">
+              <div class="icon youtube"></div>
+              <div class="icon instagram"></div>
+              <div class="icon facebook"></div>
+              <div class="icon twitter"></div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <button class="top-tool"></button>
+    </div>
+  </body>
+
+  <script>
+    const options = document.querySelectorAll(".movie-option");
+    options.forEach((option) => {
+      option.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+    });
+
+    const toggle = (element) => {
+      const options = document.querySelectorAll(".movie-option");
+      options.forEach((option) => {
+        option.classList.remove("selected-option");
+      });
+      element.classList.add("selected-option");
+    };
+  </script>
 </html>

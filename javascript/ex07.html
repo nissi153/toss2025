@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>데이터타입 - type(형)</title>
+    <script>
+      // 데이터 타입
+      // number : 숫자(정수,실수) 자바:int long short byte float double
+      // string : 문자열,문자한자 자바:String char
+      // boolean : 논리형 true/false 자바:boolean
+      // undefined : 변수가 선언되지 않았을때, 값이 초기화되지 않았을때
+      // object : 객체타입, 배열(리스트),K-V객체  자바:클래스객체
+      // function : 함수타입(함수형 변수) 자바:익명객체, 람다식
+
+      let undefinedType; //선언만 하고 값은 초기화되지 않음.
+      document.write(typeof undefinedType + "<br>");
+      document.write(typeof num + "<br>");
+
+      let number = 10;
+      document.write(typeof number + "<br>");
+
+      let string = "자바스크립트";
+      document.write(typeof string + "<br>");
+
+      let boolean = true;
+      document.write(typeof boolean + "<br>");
+
+      let array = [10, 20, 30]; //배열(리스트)
+      document.write(typeof array + "<br>");
+
+      // key - value 객체(object)
+      let object = { name: "홍길동", age: 30 };
+      document.write(typeof object);
+
+      //함수형 function 변수는 주소값을 가지고 있다.
+      // 참조형 변수
+      function myFunc2() {
+        document.write("함수 호출됨!<br>");
+      }
+      myFunc2();
+      let myFunc = function () {
+        document.write("함수 호출됨!<br>");
+      };
+      myFunc();
+      document.write(typeof myFunc);
+
+      //화살표연산자를 이용한 익명함수 선언
+      let myFunc3 = () => {
+        document.write("함수 호출됨!<br>");
+      };
+      myFunc3();
+      document.write(typeof myFunc3);
+    </script>
+  </head>
+  <body></body>
+</html>
