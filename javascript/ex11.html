@@ -48,6 +48,25 @@
       j = 10;
       document.write(++j + "<br>");
       document.write(j + "<br>");
+
+      // 이항 연산자 : 산술
+      //            연산자 우선순위 : 같은 순위이면 Left to Right
+      document.write(10 + 3);
+      document.write("<br>");
+      document.write(10 + 3 - 5);
+      document.write("<br>");
+      // 나눗셈은 몫(/)과 나머지(%)가 나옴.
+      document.write(10 / 3); //3.333... 실수 표현
+      document.write("<br>");
+      document.write(Math.floor(10 / 3)); //소숫점 버림 연산
+      document.write("<br>");
+      document.write(10 % 3); //나머지
+      document.write("<br>");
+
+      //연산자 우선순위 : 소괄호를 통해 정할 수 있다.
+      // prettier-ignore
+      document.write(10 + 3 * ((6 / 2) - 2));
+      document.write("<br>");
     </script>
   </head>
   <body></body>
