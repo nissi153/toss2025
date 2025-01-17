@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>조건문</title>
+    <!-- 조건문 if문 switch문 -->
+    <!-- 선택적인 실행이 가능하도록 하는 구문 -->
+    <!-- 패턴(형식) -->
+    <!-- 소괄호() : 함수이름() if() switch() for() while() -->
+    <!-- 중괄호{} : 배열요소{} KV객체{} 클래스{} 스코우프{} -->
+    <!-- 대괄호[] : 배열요소[] -->
+    <!-- if( 조건식(절) ) { -->
+    <!--    조건식이 참일때 수행되는 수행문(들) -->
+    <!-- } -->
+    <!-- 조건식 : True/False중 하나, 논리,비교 -->
+    <script>
+      // if문의 4가지 형식
+      //1. 단일 if문
+      if (true) {
+        document.write("true입니다.<br>");
+      }
+      //2. if else문
+      if (false) {
+        document.write("true입니다.<br>");
+      } else {
+        document.write("false입니다.<br>");
+      }
+      //3. if else if문
+      if (false) {
+        //조건식1
+        document.write("조건1이 true<br>");
+      } else if (false) {
+        //조건식2
+        document.write("조건1이 false이고 조건2가 true.<br>");
+      } else {
+        document.write("조건1이 false이고 조건2도 false<br>");
+      }
+      //4. 중첩 if문(if문 if문이 들어감)
+      //  if문은 3중 중첩이상 설계하면, 가독성이 떨어짐.
+      // 1. 함수로 코드를 묶는다.
+      // 2. 클래스로 설계한다.
+      if (true) {
+        if (false) {
+          if (true) {
+            // 1. 함수호출
+          }
+        } else {
+        }
+      }
+
+      //조건문에서 비교 연산
+      if (10 == "10") {
+        document.write("같음");
+      } else {
+        document.write("같지않음");
+      }
+      if (10 === "10") {
+        // === 타입과 값이 모두 같은가?
+        document.write("같음");
+      } else {
+        document.write("같지않음");
+      }
+      if ("abc" === "abc") {
+        document.write("같음");
+      }
+      // 연습문제
+      //1. 1~10까지의 정수중에 하나를 prompt로 입력받고,
+      //   짝수이면, "짝수입니다"
+      //   홀수이면, "홀수입니다"
+      // 1~10외의 수이면, "그외의 수입니다."
+      let num = Number(prompt("입력하세요~"));
+      // 가장 많은 경우의 수를 먼저 처리한다.
+      // 리팩토링 - 한번 짠 코드를 다시 정리하는 것.
+      //    가독성, 중복제거, 논리적
+      if (1 <= num && num <= 10) {
+        if (num % 2 == 0) {
+          document.write("짝수입니다.");
+        } else {
+          document.write("홀수입니다.");
+        }
+      } else {
+        document.write("그외의 수입니다.");
+      }
+
+      //2. 1~10까지의 정수중에 하나를 prompt로 3개 입력받고,
+      //  총합을 출력하시오.
+      let num1 = Number(prompt("입력하세요~"));
+      let num2 = Number(prompt("입력하세요~"));
+      let num3 = Number(prompt("입력하세요~"));
+      document.write(num1 + num2 + num3);
+    </script>
+  </head>
+  <body></body>
+</html>
