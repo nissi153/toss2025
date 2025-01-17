@@ -5,23 +5,125 @@
     <script>
       //for문 사용
       //1. 반복변수 i를 1부터 10까지 출력하시오.
+      document.write("Q1<br>");
+      for (let i = 1; i < 11; i++) {
+        document.write(i + " ");
+      }
+      document.write("<br>");
       //2. 1부터 10사이의 홀수만 출력하시오.
+      document.write("Q2<br>");
+      for (let i = 1; i < 11; i = i + 2) {
+        document.write(i + " ");
+      }
+      document.write("<br>");
+      for (let i = 1; i < 11; i++) {
+        if (i % 2 == 1) {
+          document.write(i + " ");
+        }
+      }
+      document.write("<br>");
       //3. 1부터 10사이의 3의 배수만 출력하시오. 3,6,9
+      document.write("Q3<br>");
+      for (let i = 1; i < 11; i++) {
+        if (i % 3 == 0) {
+          document.write(i + " ");
+        }
+      }
+      document.write("<br>");
       //4. 1부터 100까지의 합을 출력하시오.
+      document.write("Q4<br>");
+      let sum = 0;
+      for (let i = 1; i <= 100; i++) {
+        sum = sum + i;
+      }
+      document.write(`sum:${sum}<br>`);
       //5. 1부터 6사이의 랜덤수 10개를 출력하시오.
+      document.write("Q4<br>");
+      let N = 6;
+      for (let cnt = 1; cnt <= 10; cnt++) {
+        let num = Math.floor(Math.random() * N + 1);
+        document.write(cnt + "번 : " + num + "<br>");
+      }
       //6. 1부터 100사이의 랜덤값을 100개 발생시키고,
       //  그 중 가장 큰 수(Max)을 출력하시오.
-
+      document.write("<br>Q6 <br>");
+      let N2 = 100;
+      let max = 0;
+      for (let cnt = 0; cnt < 100; cnt++) {
+        let num2 = Math.floor(Math.random() * N2 + 1);
+        if (max < num2) {
+          max = num2;
+        }
+      }
+      document.write(`최대값:${max}`);
       // 중급
       //7. 1부터 100까지의 소수의 갯수를 출력하시오.
       //   소수 : 약수가 1과 자신인 수
       //   약수 : 나누어 떨어지는 수
+      console.log("---문제7---");
+      let sosuCount = 0;
+      for (let i = 1; i <= 100; i++) {
+        let yaksuCount = 0;
+        for (let j = 1; j <= i; j++) {
+          if (i % j == 0) yaksuCount++;
+          if (yaksuCount > 2) break;
+        }
+        if (yaksuCount == 2) {
+          console.log("소수:" + i);
+          sosuCount++;
+        }
+      }
+      console.log(sosuCount);
       //8. 이번주 행운의 로또 숫자 6개를 출력하시오.
       //   1부터 45까지의 랜덤한 수 6개를 뽑되
       //   반복허용하지 않음. 재추첨 로직을 넣으시오.
       //   예) 4, 15, 20, 20(재추첨)-> 31, 44, 37
+      console.log("---문제8---");
+      let lotto = [0, 0, 0, 0, 0, 0];
+      loop1: for (let i = 0; i < 6; i++) {
+        let temp = parseInt(Math.random() * 45 + 1);
+        console.log("추첨값:" + temp);
+        for (let j = 0; j < lotto.length; j++) {
+          if (lotto[j] == temp) {
+            console.log("재추첨:" + temp);
+            i--;
+            continue loop1;
+          }
+        }
+        lotto[i] = temp;
+      }
+      for (let num of lotto) {
+        console.log("행운의 로또번호:" + num);
+      }
+
+      document.write("<br>문제8 <br>");
+      let lucky_num = [];
+      let get_num = 0;
+      let time = 0;
+      while (time != 6) {
+        get_num = Math.floor(Math.random() * 45) + 1;
+        if (!lucky_num.includes(get_num)) {
+          lucky_num.push(get_num);
+          time++;
+        }
+      }
+      document.write("로또 번호: " + lucky_num + "<br>");
       //9. 주사위 2개 10번 던져서, 두 주사위 수를 합산한 다음
       //   최소수와 최대수를 출력하시오.
+      //  예) 5, 3 = 8  10번 반복해서 10개 중에서 최소,최대를 구함.
+      console.log("---문제9---");
+      min = Number.MAX_SAFE_INTEGER;
+      max = Number.MIN_SAFE_INTEGER;
+      for (let i = 0; i < 10; i++) {
+        let dice1 = parseInt(Math.random() * 6 + 1);
+        let dice2 = parseInt(Math.random() * 6 + 1);
+        let sumDice = dice1 + dice2;
+        console.log("주사위합:" + sumDice);
+        if (sumDice < min) min = sumDice;
+        if (sumDice > max) max = sumDice;
+      }
+      console.log("max: " + max);
+      console.log("min: " + min);
     </script>
   </head>
   <body></body>
