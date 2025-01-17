@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>반복문 - for while do-while문</title>
+    <script>
+      // 반복문 : 반복적인 실행문을 간단히 처리하기 위한 구문
+      // for문 형식
+      // for( 초기화; 조건식; 증감문 ) {
+      //   조건이 참일때 수행되는 반복적인 실행문
+      // }
+      // 초기화(1) -> 조건식(2) -> 실행문(3) -> 증감문(4)
+      //   -> 2 3 4 2 3 4 -> 2가 false일때 빠져나감.
+      for (let i = 0; i < 5; i++) {
+        document.write(i + "<br>");
+      }
+      // 초기화변수 변경경
+      for (let i = 1; i < 5; i++) {
+        document.write(i + "<br>");
+      }
+      //증감문 변경
+      for (let i = 1; i < 5; i = i + 2) {
+        document.write(i + "<br>");
+      }
+      // 조건식 변경
+      for (let i = 1; i < 10; i = i + 2) {
+        document.write(i + "<br>");
+      }
+      // 런타임 디버깅 : 실행시에 중단점을 활용한
+      // 오류 수정
+      // 1. 중단점 설정
+      // 2. 스텝 오버 : 다음 줄 실행
+      // 3. 스텝 인 : 함수 안으로 들어감
+      // 4. 스텝 아웃 : 함수 밖으로 빠져나옴.
+    </script>
+  </head>
+  <body></body>
+</html>
