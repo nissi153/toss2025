@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>반복문 - break문, continue문</title>
+    <script>
+      //break문 : 해당 반복문(for,while), switch문을 종료함.
+      //continue문 : 해당 회차(Loop)를 건너뜀. 증감문으로 이동.
+      for (let i = 0; i < 10; i++) {
+        document.write(`i:${i}<br>`);
+        if (i > 5) {
+          break;
+        }
+      }
+      for (let i = 0; i < 10; i++) {
+        if (i % 2 == 0) {
+          //2의 배수조건
+          continue;
+        }
+        // 2의 배수가 아닌 것 : 홀수
+        document.write(`i:${i}<br>`);
+      }
+      // 이중 반복문에서 break, continue를 사용할때
+      // 레이블을 사용한다.
+      loop1: for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+          document.write(`i:${i}, j:${j}<br>`);
+          break loop1;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
