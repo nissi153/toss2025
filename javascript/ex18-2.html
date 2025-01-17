@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      // 1부터 100까지의 소수를 찾고, 그 개수를 출력하는 코드
+      let sosuCount = 0; // 소수의 개수를 저장할 변수
+
+      // 1부터 100까지 반복
+      for (let num = 1; num <= 100; num++) {
+        let isSosu = true; // 소수 여부를 저장할 변수
+
+        if (num < 2) {
+          isSosu = false; // 0과 1은 소수가 아님
+        } else {
+          // 0, 1, 자신(num)을 제외하고 나누어 떨어지는가?
+          for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+              isSosu = false; // 나누어 떨어지면 소수가 아님
+              break;
+            }
+          }
+        }
+
+        if (isSosu) {
+          sosuCount++; // 소수라면 카운트 증가
+        }
+      }
+
+      // 결과 출력
+      console.log(`1부터 100까지의 소수의 개수: ${sosuCount}`);
+    </script>
+  </head>
+  <body></body>
+</html>
