@@ -114,14 +114,14 @@
       //   예) 4, 15, 20, 20(재추첨)-> 31, 44, 37
       console.log("---문제8---");
       let lotto = [0, 0, 0, 0, 0, 0];
-      loop1: for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 6; i++) {
         let temp = parseInt(Math.random() * 45 + 1);
         console.log("추첨값:" + temp);
         for (let j = 0; j < lotto.length; j++) {
           if (lotto[j] == temp) {
             console.log("재추첨:" + temp);
             i--;
-            continue loop1;
+            continue;
           }
         }
         lotto[i] = temp;
