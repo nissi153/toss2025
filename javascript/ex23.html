@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>함수 Function</title>
+    <script>
+      //함수 : 코드 뭉치에 이름을 붙여놓은 것
+      //용도
+      //1. 코드 중복 제거 - 재사용성
+      //2. 코드 이름을 붙여서 - 가독성
+      //3. 기능적 분리/결합 - 모듈화
+
+      //fuction (함수선언) / return (함수의 종료)
+
+      //4가지 형식
+      //1. 매개변수 X 반환값 X
+      function myFunc1() {
+        console.log("myFunc1()");
+        return;
+      }
+      myFunc1();
+      //2. 매개변수 O 반환값 X
+      function myFunc2(param) {
+        console.log("myFunc2()" + param);
+        return;
+      }
+      myFunc2("홍길동");
+      //3. 매개변수 X 반환값 O
+      function myFunc3() {
+        return "홍길동2";
+      }
+      const name = myFunc3();
+      console.log(name);
+
+      //4. 매개변수 O 반환값 O
+      function myFunc4(param) {
+        return param * 2;
+      }
+      console.log(myFunc4(2));
+
+      //함수형 변수(익명함수)
+      // 함수를 변수처럼 선언해서 사용하는 것.
+      // 변수는 매개변수 전달가능하다.
+      // 함수형변수도 전달이 가능하게 한 것.
+
+      // 콜백함수(비동기처리)
+      // 비동기 처리 : 번역시간과 처리시간이 다름.
+      //  예) 사용자의 반응(마우스 클릭), 통신 - 호출/응답 시간다름.
+
+      let varFunc = function () {
+        console.log("varFucn()");
+        return;
+      };
+      varFunc();
+
+      //화살표 연산자 사용
+      let varFunc2 = () => {
+        console.log("varFunc2()");
+        return;
+      };
+      let varFunc3 = (param) => {
+        console.log(param);
+      };
+      varFunc3("홍길동");
+
+      let sum = (param1, param2) => {
+        return param1 + param2;
+      };
+      let sub = (param1, param2) => {
+        return param1 - param2;
+      };
+      function calc(param1, param2, method) {
+        return method(param1, param2);
+      }
+      console.log(calc(10, 20, sum));
+      console.log(calc(10, 20, sub));
+
+      //확장 : 버튼 눌렸을때 처리해야할 코드
+      //     : 통신 응답되었을때 처리해야할 코드
+    </script>
+  </head>
+  <body></body>
+</html>
