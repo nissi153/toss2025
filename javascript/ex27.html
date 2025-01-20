@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문자열 제어 함수들</title>
+    <script>
+      //문자열 선언
+      let string1 = "문자열";
+      console.log(typeof string1);
+      let string2 = new String("문자열");
+      console.log(typeof string2);
+      if (string1 === string2) {
+        console.log("같다.");
+      } else {
+        console.log("다르다.");
+      }
+
+      let string3 = "Abcedf";
+      //문자열길이
+      console.log(string3.length);
+      //대문자변경
+      console.log(string3.toUpperCase());
+      //소문자변경
+      console.log(string3.toLowerCase());
+      //문자열 비교전에 호출하는 경우가 있음.
+
+      //문자 한자만 가져오기
+      let char = string3.charAt(0);
+      console.log(char);
+
+      //문자의 인덱스를 찾기
+      let string4 = "java_script_programming";
+      //"script"문자열의 위치(인덱스)?
+      console.log(string4.indexOf("script")); //5
+      //"i"문자(열)의 위치는?
+      //못찾으면 -1을 리턴
+      console.log(string4.lastIndexOf("i"));
+
+      //문자열 치환
+      let replaced = string4.replace("java", "ECMA");
+      console.log(string4); //원본은 그대로 유지
+      console.log(replaced);
+
+      //문자열 일부 가져오기     //start end
+      let substr1 = string4.substring(5, 11);
+      console.log(substr1);
+
+      //문자열 분리 split
+      let string5 = "딸기,배,포도,사과,바나나";
+      let array = string5.split(",");
+      console.log(array);
+
+      //문자열 연결  +  concat함수
+      let string6 = "ECMA";
+      let string7 = "Script";
+      let concated = string6.concat(string7);
+      console.log(string6); //원본 그대로
+      console.log(concated);
+
+      //좌우끝 공백 제거 trim
+      let string8 = "  This is java script  ";
+      console.log(string8.trim());
+
+      //모든 공백 제거 - 정규식
+      let fullTrimStr = string8.replace(/(\s*)/g, "");
+      console.log(fullTrimStr);
+
+      //정규식 - 숫자만 들어왔는지?  010-1234-5678 => 01012345678
+      //       - 이메일 형식인지?  abc@gmail.com
+      //       - 이름 형식으로 들어왔는지?  홍길동 honggildong
+    </script>
+  </head>
+  <body></body>
+</html>
