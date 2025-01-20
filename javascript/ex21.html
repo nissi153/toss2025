@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>배열 선언 2</title>
+    <script>
+      // 대괄호 이용
+      let nums1 = [10, 20, 30];
+      let nums2 = [];
+      // nums2[0] = 10;
+      nums2.push(10);
+      nums2.push(20);
+      nums2.push(30);
+      console.log(typeof nums2); //'object'
+
+      //Array객체 이용
+      //new : 객체생성시 사용하는 예약어
+      //객체(Object) : 코드로 정의(클래스,함수)된 메모리에 적재
+      //       후 활성화된 상태. 인스턴스
+      let arr = new Array(); //생성자함수
+      console.log(typeof arr); //'object'
+      console.log(arr instanceof Array); //true
+
+      arr.push("수박", "망고", "바나나");
+      console.log(arr);
+
+      let arr2 = new Array(5); //길이가 5인 빈배열
+      console.log(arr2.length);
+      console.log(arr2[0]);
+
+      let arr3 = new Array(1, 2, 3, 4, 5);
+      console.log(arr3);
+
+      //Array.of 사용
+      let arr4 = Array.of(5); //데이터 5 길이 1인 배열
+      console.log(arr4);
+      let arr5 = Array.of(1, 2, 3, 4, 5);
+      console.log(arr5);
+
+      //Array.from 사용
+      let arr6 = Array.from("hello");
+      console.log(arr6); //['h', 'e', 'l', 'l', 'o']
+
+      //집합 Set : 중복허용을 하지 않는 자료구조
+      //         : 순번(인덱스)이 없고 키값도 없는 구조
+      //         : 중복되지 않는 데이터: Key값,Index 용도
+      let arr7 = Array.from(new Set([1, 2, 3]));
+      console.log(arr7); // [1, 2, 3]
+
+      //매핑 함수를 적용한 배열
+      let arr8 = Array.from([1, 2, 3], (x) => x * 2);
+      console.log(arr8);
+
+      //연습문제
+      //1. Array.of를 사용하여 값 10, 20, 30, 40, 50이
+      // 포함된 배열을 생성하세요.
+      //2. Array.from을 사용하여 값이 모두 1로 초기화된
+      // 길이 5의 배열을 생성하세요.
+      //3. Set을 활용한 중복 제거
+      //다음 배열에서 중복된 값을 제거한 새로운 배열을 생성하세요
+      let nums = [5, 10, 5, 20, 10, 30];
+      //4. 배열 값 변환 (매핑 함수)
+      //숫자 배열 [1, 2, 3, 4, 5]를 생성하세요.
+      //각 값을 제곱한 새로운 배열을 Array.from의 매핑 함수를 사용하여 생성하세요.
+    </script>
+  </head>
+  <body></body>
+</html>
