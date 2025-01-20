@@ -66,7 +66,32 @@
 
       //정규식 - 숫자만 들어왔는지?  010-1234-5678 => 01012345678
       //       - 이메일 형식인지?  abc@gmail.com
+      //                 @gmail.com gmail.com com abc@com
       //       - 이름 형식으로 들어왔는지?  홍길동 honggildong
+      //         숫자가 들어왔는가?
+
+      //연습문제
+      let string10 = "Hello java script world!";
+      //1."java"문자열만 추출해서 출력하시오.
+      let substring3 = string10.substring(6, 10);
+      console.log(substring3);
+      //2."java"문자열을 "ECMA"로 바꿔서 출력하시오.
+      let replace2 = string10.replace("java", "ECMA");
+      console.log(replace2);
+      //3.string10을 공백으로 구분하여(Split)
+      // 배열 ["Hello", "java", "script", "world!"]을
+      // 만들어 출력하시오.
+      let array2 = string10.split(" ");
+      for (var str of array2) {
+        console.log(str);
+      }
+      //4."script"문자열의 위치를 출력하시오.
+      console.log(string10.indexOf("script"));
+      //5. 문자 한자 한자씩 아스키코드값(유니코드값)으로 출력하시오.
+      // string10.charCodeAt( 인덱스 ) 사용
+      for (let i = 0; i < string10.length; i++) {
+        console.log(string10.charCodeAt(i));
+      }
     </script>
   </head>
   <body></body>
