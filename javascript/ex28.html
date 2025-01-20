@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ES6 최신문법</title>
+    <script>
+      // 템플릿 리터럴
+      let str = "자바스트립트";
+      // prettier-ignore
+      console.log('이것은 ' + str + '입니다.');
+      console.log(`이것은 ${str} 입니다.`);
+
+      //화살표 함수
+      let sum = function (a, b) {
+        return a + b;
+      };
+      //실행문이 한줄일때, 중괄호, return 생략 가능
+      let arrowSum = (a, b) => a + b;
+
+      //모듈 내보내기/가져오기 (export/import)
+
+      //클래스 - 상속 : 부모의 자원을 물려받는 것.
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        nextYearAge() {
+          return Number(this.age) + 1;
+        }
+      }
+      class IntroPerson extends Person {
+        constructor(name, age, city) {
+          super(name, age); //부모생성자함수 호출
+          this.city = city;
+        }
+        nextYearAge() {
+          //부모클래스의 함수를 재정의하는 것: 오버라이드
+          return Number(this.age) + 2;
+        }
+        introduce() {
+          return `저는 ${this.city}에 살고 있는 ${this.name}입니다.`;
+        }
+      }
+      let introPerson = new IntroPerson("홍길동", 30, "한양");
+      console.log(introPerson.introduce());
+      console.log(introPerson.nextYearAge());
+    </script>
+  </head>
+  <body></body>
+</html>
