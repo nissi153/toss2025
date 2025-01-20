@@ -30,6 +30,22 @@
       // 합산과 평균을 내는 익명함수를 각각 sum, avr로 설정하고,
       // 익명함수를 통해, sum과 avr값을 출력하시오.
       // 그리고 국어,영어,수학 점수도 각각 출력하시오.
+      let student = {
+        kor: 70,
+        eng: 80,
+        math: 90,
+        sum: (a, b, c) => {
+          return a + b + c;
+        },
+        avr: (a, b, c) => {
+          return (a + b + c) / 3;
+        },
+      };
+      console.log(student.kor);
+      console.log(student.eng);
+      console.log(student.math);
+      console.log(student.sum(student.kor, student.eng, student.math));
+      console.log(student.avr(student.kor, student.eng, student.math));
     </script>
   </head>
   <body></body>
