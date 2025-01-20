@@ -53,15 +53,25 @@
       //연습문제
       //1. Array.of를 사용하여 값 10, 20, 30, 40, 50이
       // 포함된 배열을 생성하세요.
+      let arr11 = Array.of(10, 20, 30, 40, 50);
+      console.log(arr11);
       //2. Array.from을 사용하여 값이 모두 1로 초기화된
       // 길이 5의 배열을 생성하세요.
+      let arr12 = Array.from("11111");
+      console.log(arr12);
       //3. Set을 활용한 중복 제거
       //다음 배열에서 중복된 값을 제거한 새로운 배열을 생성하세요
       let nums = [5, 10, 5, 20, 10, 30];
+      // new Set(배열)을 넣으면 Set객체를 생성할 수 있음.
+      let nums12 = Array.from(new Set(nums));
+      console.log(nums12);
       //4. 배열 값 변환 (매핑 함수)
       //숫자 배열 [1, 2, 3, 4, 5]를 생성하세요.
       //각 값을 제곱한 새로운 배열을 Array.from의 매핑 함수를
       // 사용하여 생성하세요.
+      let arrNum = [1, 2, 3, 4, 5];
+      let arrNum13 = Array.from(arrNum, (x) => x * x);
+      console.log(arrNum13);
     </script>
   </head>
   <body></body>
