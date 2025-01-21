@@ -32,6 +32,11 @@
       //힌트 : map함수 안에서 map함수 사용하기
       let squared = matrix.map((row) => row.map((num) => num * num)).flat();
       console.log(squared);
+      //flat()은 2차원 배열을 1차원 배열로 평탄화합니다.
+      //flatMap()
+      let squared2 = matrix.flatMap((row) => row.map((num) => num * num));
+      console.log(squared2);
+
       //4번
       const orders = [
         { id: 1, items: [10, 20, 30] },
@@ -45,6 +50,7 @@
         return { id: order.id, total };
       });
       console.log(orderTotals);
+
       //reduce 문을 사용한 연습문제
       //5번
       const nums = [10, 20, 30, 40, 50];

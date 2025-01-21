@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>find, filter함수</title>
+    <script>
+      //find : 특정 값을 찾아낸다. 반환값은 특정값이나 undefined
+      //filter : 필터, 특정요소를 걸러낸다. 반환값은 배열(or 빈배열)
+      //find함수
+      let nums = [10, 20, 30, 40, 50];
+      let foundVal = nums.find((item, index, array) => {
+        //return item < 10; //못찾으면 undefined
+        return item < 35; //10을 반환후 종료
+      });
+      console.log(foundVal);
+
+      //filter함수
+      let arrFilter = nums.filter((item, index, array) => {
+        //return item < 35; //[10, 20, 30]
+        return item < 10; //[] 빈배열
+      });
+      console.log(arrFilter);
+    </script>
+  </head>
+  <body></body>
+</html>
