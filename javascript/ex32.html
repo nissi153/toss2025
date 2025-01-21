@@ -30,7 +30,7 @@
       // 각 숫자를 제곱한 1차원 배열을 만드세요.
       //출력결과 : [1, 4, 9, 16, 25, 36, 49, 64, 81]
       //힌트 : map함수 안에서 map함수 사용하기
-      let squared = matrix.map((row) => row.map((num) => num * num));
+      let squared = matrix.map((row) => row.map((num) => num * num)).flat();
       console.log(squared);
       //4번
       const orders = [
