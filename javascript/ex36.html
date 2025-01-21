@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>innerHTML과 innerText</title>
+    <script>
+      //공통점 : HTML태그의 내용을 문자열로 보관하고 있음.
+      //innerHTML : 문자열이 HTML태그로 인식 "<br>"
+      //innerText : 문자열이 단순 Text로 인식 "<br>"
+    </script>
+  </head>
+  <body>
+    <h1 id="id1">innerHTML의 내용</h1>
+    <h1 id="id2">innerText의 내용</h1>
+    <script>
+      //문서객체를 id로 찾는다.
+      let e1 = document.getElementById("id1");
+      e1.innerHTML = "<ins>변경된내용</ins>";
+      e1.style.color = "red";
+      let e2 = document.getElementById("id2");
+      e2.innerText = "<ins>변경된내용</ins>";
+    </script>
+  </body>
+</html>
