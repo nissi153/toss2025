@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>연습문제 - map, reduce</title>
+    <script>
+      //1번
+      const users = [
+        { id: 1, name: "Alice", age: 25 },
+        { id: 2, name: "Bob", age: 30 },
+        { id: 3, name: "Charlie", age: 35 },
+      ];
+      // 각 사용자의 이름만 추출한 배열을 생성하세요.
+      // 출력결과 :  ["Alice", "Bob", "Charlie"]
+      const names = users.map((user) => user.name);
+      console.log(names);
+
+      //2번
+      const prices = [100, 200, 300];
+      // 각 가격에 10%의 세금을 추가한 배열을 생성하세요.
+      // 출력결과 : [110, 220, 330]
+      const pricesWithTax = prices.map((price) => price * 1.1);
+      console.log(pricesWithTax);
+
+      //3번
+      const matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ];
+      // 각 숫자를 제곱한 1차원 배열을 만드세요.
+      //출력결과 : [1, 4, 9, 16, 25, 36, 49, 64, 81]
+      //힌트 : map함수 안에서 map함수 사용하기
+      let squared = matrix.map((row) => row.map((num) => num * num));
+      console.log(squared);
+      //4번
+      const orders = [
+        { id: 1, items: [10, 20, 30] },
+        { id: 2, items: [5, 15] },
+        { id: 3, items: [100, 200] },
+      ];
+      // 각 주문의 ID와 총액(total)을 포함하는 배열을 만드세요.
+      //출력결과 : [{ id: 1, total: 60 }, { id: 2, total: 20 }, { id: 3, total: 300 }]
+      const orderTotals = orders.map((order) => {
+        const total = order.items.reduce((sum, price) => sum + price, 0);
+        return { id: order.id, total };
+      });
+      console.log(orderTotals);
+      //reduce 문을 사용한 연습문제
+      //5번
+      const nums = [10, 20, 30, 40, 50];
+      //reduce 함수를 이용하여, 35보다 큰 숫자의 갯수를 출력하시오.
+      // 출력예) 2
+      let count2 = nums.reduce((acc, cur) => {
+        if (cur > 35) {
+          acc += 1;
+        }
+        return acc;
+      }, 0);
+      console.log(count2);
+
+      //6번
+      //2.reduce 함수를 이용하여, 배열의 문자열 길이를 구하시오.
+      const strings = ["hong", "lee", "imdan"];
+      //출력예) [4,3,5]
+      let arrLength = strings.reduce((acc, cur) => {
+        //전개연산자
+        return [...acc, cur.length]; //[ , 4] [ 4, 3 ] [ 4, 3, 5]
+      }, []);
+      console.log(arrLength);
+
+      let arrLength2 = strings.reduce((acc, cur) => {
+        acc.push(cur.length); //[].push( 4 );
+        return acc; //[4].push( 3 );
+      }, []); //[4,3].push( 5 );
+      console.log(arrLength2);
+    </script>
+  </head>
+  <body></body>
+</html>
