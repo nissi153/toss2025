@@ -8,6 +8,15 @@
       //1번 a태그의 html내용을 "앵커태그 선택됨"으로 바꾸시오.
       //2번 p태그의 html내용을 각각 "문단태그-1" "문단태그-2"로 바꾸시오.
       //3번 h3태그의 html내용을 "헤더태그 h3선택됨."으로 바꾸시오.
+      window.onload = () => {
+        let anchor = document.getElementById("anchor");
+        anchor.innerHTML = "앵커태그 선택됨";
+        let p = document.getElementsByClassName("para");
+        p[0].innerHTML = "문단태그-1";
+        p[1].innerHTML = "문단태그-2";
+        let h3 = document.getElementsByTagName("h3");
+        h3[0].innerHTML = "헤더태그 h3선택됨.";
+      };
     </script>
   </head>
   <body>

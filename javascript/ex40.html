@@ -5,7 +5,20 @@
     <script>
       //버튼A가 클릭될때, count-a에 현재 카운트를 +1를 올리시오.
       //버튼B가 클릭될때, count-b에 현재 카운트를 +1를 올리시오.
-      window.onload = function () {};
+      window.onload = function () {
+        var buttonA = document.getElementById("button-a");
+        var buttonB = document.getElementById("button-b");
+        var counterA = document.getElementById("counter-a");
+        var counterB = document.getElementById("counter-b");
+
+        buttonA.onclick = () => {
+          //alert("버튼A 클릭됨!");
+          counterA.innerHTML = Number(counterA.innerHTML) + 1;
+        };
+        buttonB.onclick = () => {
+          counterB.innerHTML = Number(counterB.innerHTML) + 1;
+        };
+      };
     </script>
   </head>
   <body>
