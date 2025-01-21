@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>reduce함수</title>
+    <script>
+      // reduce(줄이다) : 하나의 값으로 반환.
+      const nums = [10, 20, 30, 40, 50];
+
+      //배열의 총합
+      let total = 0;
+      for (const num of nums) {
+        total = total + num;
+      }
+      console.log(total);
+
+      //pre(acc) : 이전값, 누적값(최종반환값)
+      //cur : 현재 요소 값
+      let sum = nums.reduce((pre, cur) => {
+        // cur값이 2번째요소값으로 온다.
+        console.log(pre, cur); //10 20,30 30,60 40,100 50
+        return pre + cur;
+      });
+      console.log(sum);
+
+      sum = nums.reduce((pre, cur, index, arr) => {
+        console.log(pre, cur, index, arr); //0 10 0,10 20 1,30 30 2
+        return pre + cur;
+      }, 0); //두번째 인자에 pre의 초기값을 준다.
+
+      //최대값 구하기
+      let max = Number.MIN_SAFE_INTEGER; //-(2^53 - 1)
+      for (const num of nums) {
+        if (max < num) {
+          max = num;
+        }
+      }
+      console.log(max);
+
+      max = nums.reduce((acc, cur) => {
+        return acc > cur ? acc : cur;
+      });
+      console.log(max);
+    </script>
+  </head>
+  <body></body>
+</html>
