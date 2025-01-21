@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문서객체를 선택하는 함수</title>
+    <script>
+      //문서 객체 모델(Document Object Mode)
+      // 웹브라우저가 html문서를 로딩(분석)한 후에
+      // 트리 모양으로 관리하는 데이터 구조 또는 객체
+
+      //문서객체를 선택
+      //1. 아이디로 선택 : getElementById()
+      //2. 클래스로 선택 : getElementsClassName()
+      //3. 태그로 선택 : getElementsByTagName()
+      //4. css선택자로 선택 : querySelector( css선택자 )
+      //                      querySelectorAll( css선택자 )
+
+      //onload()함수 : 웹브라우저가 HTML문서 로딩후에 한번 호출해줌.
+      // 콜백함수 : 먼저 선언(등록)해놓고, 나중에 호출
+      window.onload = () => {
+        let h1 = document.getElementById("header1");
+        console.log(h1); //null
+        h1.innerHTML = "찾음!";
+
+        let arrH2 = document.getElementsByClassName("header-h2");
+        console.log(arrH2);
+        for (let h2 of arrH2) {
+          h2.innerHTML = "찾음!";
+        }
+
+        let arrP = document.getElementsByTagName("p");
+        arrP[0].style.color = "red";
+        for (let p of arrP) {
+          p.innerHTML = "찾음!";
+        }
+
+        let h1_2 = document.querySelector("#header2");
+        h1_2.style.backgroundColor = "green";
+
+        let arrH2_2 = document.querySelectorAll(".header-h2");
+        arrH2_2[0].style.backgroundColor = "yellow";
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="header1">제목태그 1</h1>
+    <h1 id="header2">제목태그 2</h1>
+    <h2 class="header-h2">제목태그 3</h2>
+    <h2 class="header-h2">제목태그 4</h2>
+    <h2 class="header-h2">제목태그 5</h2>
+    <p>문단태그 p</p>
+    <p>문단태그 p</p>
+    <p>문단태그 p</p>
+
+    <script></script>
+  </body>
+</html>
