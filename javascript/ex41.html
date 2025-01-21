@@ -68,6 +68,34 @@
         justify-items: center;
       }
     </style>
+    <script>
+      window.onload = function () {
+        //object
+        var num1 = document.getElementById("num1");
+        var num2 = document.getElementById("num2");
+        var result = document.getElementById("result");
+        var add = document.getElementById("add");
+        var sub = document.getElementById("sub");
+        var mul = document.getElementById("mul");
+        var divide = document.getElementById("divide");
+        var del = document.getElementById("del");
+        add.onclick = function () {
+          result.value = Number(num1.value) + Number(num2.value);
+        };
+        sub.onclick = function () {
+          result.value = Number(num1.value) - Number(num2.value);
+        };
+        mul.onclick = function () {
+          result.value = Number(num1.value) * Number(num2.value);
+        };
+        divide.onclick = function () {
+          result.value = Number(num1.value) / Number(num2.value);
+        };
+        del.onclick = function () {
+          result.value = "";
+        };
+      };
+    </script>
   </head>
   <body>
     <div id="wrap">
