@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>JS로 class명 설정하기</title>
+    <!-- 클래스명을 변경함으로 동적으로 CSS를 적용! -->
+    <style>
+      .active {
+        background-color: aqua;
+        font-size: 24px;
+      }
+      .select {
+        color: red;
+        border: 2px solid blue;
+      }
+    </style>
+    <script>
+      function func1() {
+        let h1 = document.getElementById("header");
+        h1.style.color = "red";
+        if (h1.classList.contains("active")) {
+          h1.classList.remove("active");
+        } else {
+          h1.classList.add("active");
+        }
+      }
+      function func2() {
+        let h1 = document.getElementById("header");
+        if (h1.classList.contains("select")) {
+          h1.classList.remove("select");
+        } else {
+          h1.classList.add("select");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1 id="header" class="">액티브 셀렉트</h1>
+    <button onclick="func1();">액티브 Active</button>
+    <button onclick="func2();">셀렉트 Select</button>
+  </body>
+</html>
