@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>약관동의 체크박스 확인하기</title>
+    <script>
+      //연습문제
+      //1. 모두 동의 체크하기 클릭시  checkAll()
+      //   : 모든 체크박스를 checked 되게 한다.
+      //2. 모두 동의 확인 클릭시 : agree()
+      //  모두 체크되어 있습니다 or 모두 체크되어 있지 않습니다. alert창으로 출력
+      //  checkbox.checked = true; //설정한다.
+      //  if( checkbox.checked == false ) //확인한다.
+      //3. 모두 동의 취소 클릭시 : back()
+      //   모든 체크박스를 unchecked되게 한다.
+      function checkAll() {
+        //모든 체크박스를 checked 되게 한다.
+        var checkboxArray = document.getElementsByTagName("input");
+        for (var cbx of checkboxArray) {
+          cbx.checked = true;
+        }
+      }
+      function agree() {
+        //모두 체크되어 있습니다 or 모두 체크되어 있지 않습니다. alert창으로 출력
+        var checkboxArray = document.getElementsByName("agree");
+        //반복문 전에 boolean변수(flag 깃발)에 초기값.
+        var isAllCheck = true;
+        for (var cbx of checkboxArray) {
+          if (cbx.checked == false) {
+            isAllCheck = false;
+            break; //반복문을 탈출하는 키워드
+            //continue; //반복문의 해당루프를 탈출하는 키워드
+          }
+        }
+        if (isAllCheck == true) {
+          alert("모두 체크되어 있습니다.");
+        } else {
+          alert("모두 체크되어 있지 않습니다.");
+        }
+      }
+      function back() {
+        //모든 체크박스를 unchecked되게 한다.
+        var checkboxArray = document.getElementsByTagName("input");
+        for (var check of checkboxArray) {
+          check.checked = false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <textarea cols="30" rows="3">약관1에 대해서...</textarea> <br />
+      <input type="checkbox" name="agree" id="chk1" /> 약관동의1 <br />
+      <textarea cols="30" rows="3">약관2에 대해서...</textarea> <br />
+      <input type="checkbox" name="agree" id="chk2" /> 약관동의2 <br />
+      <textarea cols="30" rows="3">약관3에 대해서...</textarea> <br />
+      <input type="checkbox" name="agree" id="chk3" /> 약관동의3 <br />
+    </form>
+    <br />
+    <!-- 앵커태그에서 JS함수 호출하기 -->
+    <a href="javascript:checkAll();">모두 동의 체크하기</a> <br />
+    <a href="javascript:agree();">모두 동의 확인</a> <br />
+    <a href="javascript:back();">모두 동의 취소</a> <br />
+  </body>
+</html>

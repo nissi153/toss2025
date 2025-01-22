@@ -8,6 +8,20 @@
       //값 지우기 버튼을 클릭하면, 왼쪽의 입력창의 값을 지우시오.
       window.onload = () => {
         makeTable();
+
+        var btnArray = document.getElementsByTagName("button");
+        for (var i = 0; i < btnArray.length; i++) {
+          //화살표 함수에는 this가 없으므로 function으로
+          //이벤트를 등록합니다.
+          btnArray[i].onclick = function () {
+            //콘솔에 몇번 버튼이 클릭되었는지 출력하고,
+            //왼쪽의 입력창의 값을 지우시오.
+            console.log("i:" + i);
+            console.log(this.value + "번째 클릭됨.");
+            var input = document.getElementById("input" + this.value);
+            input.value = "";
+          };
+        }
       };
       function makeTable() {
         //document.writeln함수를 이용하여
