@@ -13,6 +13,8 @@
         for (var i = 0; i < btnArray.length; i++) {
           //화살표 함수에는 this가 없으므로 function으로
           //이벤트를 등록합니다.
+          //this : 문맥안에서 자신을 의미, function()가능,
+          //       화살표함수에서는 this를 사용할 수 없다.
           btnArray[i].onclick = function () {
             //콘솔에 몇번 버튼이 클릭되었는지 출력하고,
             //왼쪽의 입력창의 값을 지우시오.
