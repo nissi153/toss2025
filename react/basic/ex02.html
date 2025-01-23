@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>순수 JS로 HTML만들기</title>
+  </head>
+  <body>
+    <p>순수 JS로 HTML요소 생성하기</p>
+    <div id="root"></div>
+    <script>
+      // <h1 class="greeting">Hello World!</h1>
+
+      // JS로 h1 문서객체를 생성한다.
+      const h1 = document.createElement("h1");
+      h1.className = "greeting";
+      h1.textContent = "Hello World!";
+
+      // 생성된 h1 문서객체를  root div에 추가한다.
+      document.getElementById("root").appendChild(h1);
+    </script>
+  </body>
+</html>
