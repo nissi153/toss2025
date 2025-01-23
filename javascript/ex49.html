@@ -27,12 +27,33 @@
         let form = document.myFormName;
         console.log(form);
         let inputName = document.getElementById("name");
-        if (!inputName || inputName.length < 2) {
+        if (!inputName || inputName.value.length < 2) {
           alert("아이디가 비어있거나 2자이하입니다.");
           return;
         }
         //form전송을 해준다.
         form.submit();
+
+        //fetch함수를 사용하여 직접 전송한다.
+        fetch("http://myserver.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            //JS객체를 문자열로 변환해주는 함수
+            name: "hong", //inputName.value
+            pass: "1234", //inputPass.value
+          }),
+        })
+          .then((res) => res.json()) //json(): 문자열을 JS 객체로 바꿔주는 함수
+          .then((data) => {
+            console.log(data);
+            myFunc();
+          })
+          .catch((err) => console.error("Error", err));
+
+        function myFunc() {}
       }
     </script>
   </head>
@@ -44,11 +65,23 @@
       onsubmit="return checkValue1()"
     >
       <label for="name">이름</label> <br />
-      <input type="text" id="name" name="name" /><br />
+      <input type="text" id="name" name="name" autocomplete="username" /><br />
       <label for="pass">비밀번호</label> <br />
-      <input type="password" id="pass" name="pass" /> <br />
+      <input
+        type="password"
+        id="pass"
+        name="pass"
+        autocomplete="new-password"
+      />
+      <br />
       <label for="pass-check">비밀번호 확인</label> <br />
-      <input type="password" id="pass-check" name="pass-check" /> <br />
+      <input
+        type="password"
+        id="pass-check"
+        name="pass-check"
+        autocomplete="new-password"
+      />
+      <br />
       <br />
       <!-- <input type="submit" value="로그인" /> <br /> -->
       <button type="submit">로그인(submit)</button> <br />
