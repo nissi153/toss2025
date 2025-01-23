@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex49 -->
+    <title>입력폼 데이터 유효성 체크하기</title>
+    <script>
+      // 데이터 유효성 확인하기
+      // 1. 프론트엔드에서 처리하기
+      // 2. 백엔드에서 처리하기
+
+      //프론트엔드에서 유효성확인
+      //1. form태그의 onsubmit 함수 이용
+      //2. JS에서 유효성확인 후 직접 Form.sumbit함수를 호출
+      //3. JS에서 유효성확인 후 fetch함수(axios함수)로 직접 서버와 통신
+      function checkValue1() {
+        let inputName = document.getElementById("name");
+        if (inputName.value) {
+          //값 있으면
+          return true; //form통신이 정상 수행됨.
+        } else {
+          //값 없으면
+          alert("아이디가 없습니다.");
+          return false; //form통신이 취소됨.
+        }
+      }
+      function checkValue2() {
+        let form = document.myFormName;
+        console.log(form);
+        let inputName = document.getElementById("name");
+        if (!inputName || inputName.length < 2) {
+          alert("아이디가 비어있거나 2자이하입니다.");
+          return;
+        }
+        //form전송을 해준다.
+        form.submit();
+      }
+    </script>
+  </head>
+  <body>
+    <form
+      id="myForm"
+      name="myFormName"
+      action="http://www.myserver.com"
+      onsubmit="return checkValue1()"
+    >
+      <label for="name">이름</label> <br />
+      <input type="text" id="name" name="name" /><br />
+      <label for="pass">비밀번호</label> <br />
+      <input type="password" id="pass" name="pass" /> <br />
+      <label for="pass-check">비밀번호 확인</label> <br />
+      <input type="password" id="pass-check" name="pass-check" /> <br />
+      <br />
+      <!-- <input type="submit" value="로그인" /> <br /> -->
+      <button type="submit">로그인(submit)</button> <br />
+      <br />
+      <button type="button" onclick="checkValue2()">로그인(button)</button>
+    </form>
+  </body>
+</html>

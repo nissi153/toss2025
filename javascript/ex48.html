@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex48 -->
+    <title>JS로 라디오버튼 확인</title>
+    <script>
+      function value_check() {
+        let arrRadio = document.getElementsByName("fruit");
+        for (let radio of arrRadio) {
+          if (radio.checked == true) {
+            let value = radio.value;
+            console.log(value);
+            let text = document.getElementById(value).innerText;
+            console.log(text);
+            let arrHeader = document.getElementsByTagName("h3");
+            arrHeader[0].innerText = "선택된 과일 이름 :" + text;
+            arrHeader[1].innerText = "선택된 과일 value :" + value;
+          }
+        }
+      }
+      function handleChange(inputRadio) {
+        console.log(inputRadio.value);
+        let arrH4 = document.getElementsByTagName("h4");
+        arrH4[0].innerText = "선택된 과일 이름 :" + inputRadio.value;
+      }
+    </script>
+  </head>
+  <body>
+    <h3>선택된 과일 이름 :</h3>
+    <h3>선택된 과일 value :</h3>
+    <input type="radio" name="fruit" value="apple" checked />
+    <span id="apple">사과</span>
+    <input type="radio" name="fruit" value="strawberry" />
+    <span id="strawberry">딸기</span>
+    <input type="radio" name="fruit" value="lemon" />
+    <span id="lemon">레몬</span>
+    <input type="radio" name="fruit" value="mango" />
+    <span id="mango">망고</span>
+    <input type="radio" name="fruit" value="melon" />
+    <span id="melon">메론</span>
+    <button onclick="value_check()">체크된 객체 value 가져오기</button>
+
+    <br /><br />
+    <h4>선택된 과일 이름 :</h4>
+    <label for="radio1">포도</label>
+    <input
+      id="radio1"
+      type="radio"
+      name="myRadios"
+      onchange="handleChange(this);"
+      value="포도"
+    />
+    <label for="radio2">패션후르츠</label>
+    <input
+      id="radio2"
+      type="radio"
+      name="myRadios"
+      onchange="handleChange(this);"
+      value="패션후르츠"
+    />
+  </body>
+</html>
