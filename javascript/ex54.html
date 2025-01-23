@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>페이지 네비게이션 예제</title>
+    <!-- https://www.w3schools.com/howto/howto_css_pagination.asp -->
+    <style>
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+      }
+
+      .pagination a:hover:not(.active) {
+        background-color: #ddd;
+      }
+    </style>
+    <script>
+      function pageMove(pageNum) {
+        var anchors = document.querySelectorAll(".pagination a");
+        for (var anchor of anchors) {
+          anchor.classList.remove("active");
+        }
+        var query = ".pagination a:nth-of-type(" + pageNum + ")";
+        var anchorActive = document.querySelector(query);
+        anchorActive.classList.add("active");
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Pagination</h2>
+    <p>Responsive pagination with hover effects:</p>
+
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="javascript:pageMove(2);">1</a>
+      <a class="active" href="javascript:pageMove(3);">2</a>
+      <a href="javascript:pageMove(4);">3</a>
+      <a href="javascript:pageMove(5);">4</a>
+      <a href="javascript:pageMove(6);">5</a>
+      <a href="javascript:pageMove(7);">6</a>
+      <a href="#">&raquo;</a>
+    </div>
+  </body>
+</html>
