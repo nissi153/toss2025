@@ -30,9 +30,17 @@
           );
         }
       }
+
+      //리액트 함수형 컴퍼넌트 정의
+      const Greeting2 = <h1 className="greeting">Hello World2~</h1>;
+      //const Greeting2 : JSX.Element
+
       //ReactDOM을 이용하여 컴퍼넌트를 root에 렌더링한다.
       const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(React.createElement(Greeting));
+      //클래스형 컴퍼넌트 렌더링
+      // root.render(React.createElement(Greeting));
+      //함수형
+      root.render(Greeting2);
     </script>
   </body>
 </html>
