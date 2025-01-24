@@ -1,0 +1,53 @@
+리액트 프로젝트 시작하기
+
+1. VSCode 터미널 열기(단축키 CTRL + `백틱)
+   react>
+
+2. 윈도우즈 셀은 cmd사용(PowerShell은 오류발생 가능성)
+
+3.node.js 설치 버전 확인
+  node -v
+설치되어 있지 않다면 node.js 설치합니다.
+
+4.npm 모듈 초기화
+  npm init 
+
+5.npx 버전확인
+  npx -v  
+설치되어 있지 않으면, npm i npx -g 로 설치합니다.
+
+6.npx create-react-app 프로젝트명
+  npx create-react-app my-app
+  npx : npm과 달리 해당하는 모듈이 없으면, 설치후 실행한다.
+       create-react-app이 없으면 설치후 실행한다.
+  CRA : 노드 기반의 리액트 프로젝트 템플릿을 만들어주는 모듈.     
+  타입스크립트 기반으로 만들고 싶다면 
+  * npx create-react-app my-app --template typescript
+
+7. 프로젝트 시작
+  cd my-app
+  *리액트가 19버전으로 업그레이드되면서, CRA가 버전호환성 문제발생!
+  npm install react@18 react-dom@18
+  npm i web-vitals
+  npm start
+
+8. http://localhost:3000 에서 실행중...
+  노드 서버는 3000번에서 3030번으로 바꿔서 실행해야 됨.
+
+* npm의 성능향상 버전인 yarn 사용하면, 리액트 19버전이 18버전으로 설정되어 호환성문제 해결됨.
+npm install -g yarn
+yarn create react-app my-app
+
+* CRA의 성능향상 버전인 vite를 사용하면, 리액트 19버전이 18버전으로 설정되어 호환성문제 해결됨.
+npm create vite@latest
+cd my-vite-app
+npm install
+npm run dev: 개발 서버 실행
+npm run build: 프로덕션 빌드 생성
+npm run preview: 프로덕션 빌드를 로컬 서버에서 미리보기
+
+* SWC는 바벨(Babel)의 성능향상 버전임.
+SWC (Speedy Web Compiler)는 Facebook이나 Next.js 등 여러 유명 프로젝트에서 사용되는 고성능 컴파일러입니다.
+Rust로 작성되어 기존 Babel, tsc보다 빠릅니다.
+TypeScript와 JSX를 지원하며, 코드를 ES5, ES6 등의 타겟으로 변환합니다.
+
