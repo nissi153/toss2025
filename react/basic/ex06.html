@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>컴퍼넌트에 값 전달하기(props이용)</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <p>컴퍼넌트에 값 전달하기(props이용)</p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      //함수형 컴퍼넌트 정의
+      function Greeting(props) {
+        // JSX문법에서 JS사용하려면, 중괄호 사용 {}
+        return <h1 className="greegint">Hi~ {props.sayWhat}</h1>;
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      // root.render(<Greeting sayWhat="Good Morning!" />);
+      root.render(React.createElement(Greeting, { sayWhat: "Good Night~" }));
+    </script>
+  </body>
+</html>
