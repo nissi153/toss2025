@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>컴퍼넌트의 상태 값 관리하기(useState 훅(hook) 이용)</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <p>컴퍼넌트의 상태 값 관리하기(useState 훅(hook) 이용)</p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function MyButton() {
+        // useState : 리액트의 상태관리함수, 상태변수가 바뀌면(상위 컴퍼넌트), Re-Render한다.
+        //      상태변수  설정함수                      초기값
+        const [isClicked, setIsClicked] = React.useState(false);
+        return React.createElement(
+          "button",
+          { onClick: () => setIsClicked(true) },
+          isClicked ? "Clicked!" : "Click Here!"
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<MyButton />);
+    </script>
+  </body>
+</html>
