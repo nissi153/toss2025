@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>상태변수에 따른 실시간 렌더링</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <p>상태변수에 따른 실시간 렌더링</p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      //함수형 컴퍼넌트 정의
+      function Clock() {
+        return <h2>현재시간 : {new Date().toLocaleTimeString()} </h2>;
+      }
+      function tick() {
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Clock />);
+      }
+      setInterval(tick, 1000);
+    </script>
+  </body>
+</html>
