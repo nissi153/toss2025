@@ -9,7 +9,7 @@
   node -v
 설치되어 있지 않다면 node.js 설치합니다.
 
-4.npm 모듈 초기화
+4.npm 모듈 초기화 (생략)
   npm init 
 
 5.npx 버전확인
