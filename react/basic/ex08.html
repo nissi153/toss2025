@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>컴퍼넌트의 상태 값 관리하기(useState JSX사용)</title>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <p>컴퍼넌트의 상태 값 관리하기(useState - JSX사용)</p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function MyButton() {
+        const [isClicked, setIsClicked] = React.useState(false);
+        return (
+          // JSX에서 JS코드가 들어가면 {}중괄호 사용한다.
+          <button onClick={() => setIsClicked(true)}>
+            {isClicked ? "Clicked!" : "Click here!"}{" "}
+          </button>
+        );
+      }
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<MyButton />);
+    </script>
+  </body>
+</html>
