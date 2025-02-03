@@ -15,9 +15,11 @@
 5.npx 버전확인
   npx -v  
 설치되어 있지 않으면, npm i npx -g 로 설치합니다.
+ i : install의 약자
+ -g : global의 약자, PC전체경로에 설치
 
 6.npx create-react-app 프로젝트명
-  npx create-react-app my-app
+  react> npx create-react-app my-app
   npx : npm과 달리 해당하는 모듈이 없으면, 설치후 실행한다.
        create-react-app이 없으면 설치후 실행한다.
   CRA : 노드 기반의 리액트 프로젝트 템플릿을 만들어주는 모듈.     
@@ -36,11 +38,12 @@
 
 * npm의 성능향상 버전인 yarn 사용하면, 리액트 19버전이 18버전으로 설정되어 호환성문제 해결됨.
 npm install -g yarn
-yarn create react-app my-app
+yarn create react-app my-app2
 
 * CRA의 성능향상 버전인 vite를 사용하면, 리액트 19버전이 18버전으로 설정되어 호환성문제 해결됨.
-npm create vite@latest
-cd my-vite-app
+cd ..
+react> npm create vite@latest
+cd vite-project
 npm install
 npm run dev: 개발 서버 실행
 npm run build: 프로덕션 빌드 생성
