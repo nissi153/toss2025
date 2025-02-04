@@ -17,6 +17,7 @@ export function Hello(props) {
 // 1. num1과 num2라는 props를 받아 두 값을 더한 결과를
 // 출력하는 Sum 컴포넌트를 만들어 보세요.
 export function Sum(props) {
+  //parseInt, parseFloat, Number(value), Math.floor(num)
   const result = parseInt(props.num1) + parseInt(props.num2);
   return <h1>{`${props.num1} + ${props.num2} = ${result}`}</h1>;
 }
@@ -33,6 +34,7 @@ export function Sum(props) {
 export function DrinkMachine(props) {
   let drink;
   if (props.price === "1000") {
+    console.log(typeof props.price);
     drink = "콜라";
   } else if (props.price === "2000") {
     drink = "사이다";
