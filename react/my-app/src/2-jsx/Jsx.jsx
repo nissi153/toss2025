@@ -65,3 +65,11 @@ export const E7 = (
     })}
   </ul>
 );
+//React함수로 리스트 렌더링
+export const E8 = React.createElement(
+  "ul",
+  null,
+  items.map((item) => {
+    return React.createElement("li", { key: item }, item);
+  })
+);
