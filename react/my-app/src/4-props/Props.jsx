@@ -34,3 +34,74 @@ export function Props1() {
     </div>
   );
 }
+
+//Props로 함수 전달하기
+function Button(props) {
+  return <button onClick={props.onClickFunc}>클릭하세요.</button>;
+}
+
+export function Props2() {
+  function handleClick() {
+    alert("버튼이 클릭되었습니다.");
+  }
+
+  return (
+    <div>
+      {/* 함수이름만 전달한다. ()소괄호 넣지 않는다. */}
+      <Button onClickFunc={handleClick} />
+    </div>
+  );
+}
+
+//기본 props 설정
+function Greeting(props) {
+  return <h1>안녕하세요. {props.name}님! </h1>;
+}
+Greeting.defaultProps = {
+  name: "손님",
+};
+export function Props3() {
+  return (
+    <div>
+      <Greeting name="홍길동" />
+      <Greeting />
+    </div>
+  );
+}
+
+// 객체와 구조분해할당으로 props전달
+function Profile({ name, age, job }) {
+  return (
+    <div>
+      <p>이름: {name}</p>
+      <p>나이: {age}</p>
+      <p>직업: {job}</p>
+    </div>
+  );
+}
+export function Props4() {
+  const user = {
+    name: "이영희",
+    age: 28,
+    job: "개발자",
+  };
+  return <Profile {...user} />;
+}
+
+//children으로 props전달하기
+function Card(props) {
+  return (
+    <div>
+      <h2>{props.title}</h2>
+      {props.children}
+    </div>
+  );
+}
+export function Props5() {
+  return (
+    <Card title="카드 제목">
+      <p>카드내용입니다.</p>
+      <button>자세히 보기</button>
+    </Card>
+  );
+}
