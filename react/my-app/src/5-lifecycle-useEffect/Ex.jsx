@@ -5,6 +5,8 @@
 // useEffect를 사용하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정하세요.
 // 힌트: 빈 배열 []을 의존성 배열로 사용하세요.
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+//npm i axios
 
 export function MountMessage() {
   useEffect(() => {
@@ -45,7 +47,7 @@ export function UpdateMessage() {
 // 1초마다 상태값을 증가시키세요.
 // 힌트: setInterval과 clearInterval 사용
 
-function Timer() {
+export function Timer() {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -73,6 +75,21 @@ function Timer() {
 // 언마운트 시 이벤트 리스너를 해제하세요.
 // 힌트: window.addEventListener와 window.removeEventListener
 
+export function WindowSizeTracker() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    // 언마운트 시 이벤트 리스너 제거
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return <h1>현재 창 너비: {windowWidth}px</h1>;
+}
+
 //연습문제5: API 호출 및 데이터 로드
 // 목표: 컴포넌트가 마운트될 때 API 호출을 통해 데이터를 가져와 화면에 표시하세요.
 // 요구사항:
@@ -81,3 +98,83 @@ function Timer() {
 // 3. useEffect를 사용하여 컴포넌트가 마운트될 때 데이터를 로드하세요.
 // 4. 데이터를 로드한 후 상태에 저장하고 화면에 출력하세요.
 // 힌트: fetch 또는 axios 모듈 사용 가능합니다.
+export function DataFetcher() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // 비동기 함수로 API 호출
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        const result = await response.json();
+        setData(result.slice(0, 10)); // 상위 10개 항목만 표시
+      } catch (error) {
+        console.error("데이터 로드 중 오류 발생:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>데이터 로드</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>
+            <b>id:</b>
+            {item.id}
+            <br />
+            <b>title:</b>
+            {item.title}
+            <br />
+            <b>body:</b>
+            {item.body}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function DataFetcherAxios() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // 비동기 함수로 API 호출
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+        setData(response.data.slice(0, 10)); // 상위 10개 항목만 표시
+      } catch (error) {
+        console.error("데이터 로드 중 오류 발생:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>데이터 로드</h1>
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>
+            <b>id:</b>
+            {item.id}
+            <br />
+            <b>title:</b>
+            {item.title}
+            <br />
+            <b>body:</b>
+            {item.body}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
