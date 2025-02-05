@@ -11,6 +11,7 @@ import axios from "axios";
 export function MountMessage() {
   useEffect(() => {
     console.log("컴포넌트가 마운트되었습니다");
+    document.write("컴포넌트가 마운트되었습니다.");
   }, []); // 빈 배열: 마운트 시 한 번만 실행
 
   return (
@@ -103,11 +104,16 @@ export function DataFetcher() {
 
   useEffect(() => {
     // 비동기 함수로 API 호출
+    // async/await 구문 : JS에서 비동기적인 처리를 할 때 사용하는 구문.
+    // promise/then 구문 :
     const fetchData = async () => {
+      //try catch구문 : 오류(예외)가 발생하기 쉬운 코드에 넣어서 오류처리를 한다.
       try {
         const response = await fetch(
           "https://jsonplaceholder.typicode.com/posts"
         );
+        //response : HTTP 통신의 결과(헤더+데이터)
+        //json(): JSON형태의 문자열을 JSON객체로 변환시키는 함수.
         const result = await response.json();
         setData(result.slice(0, 10)); // 상위 10개 항목만 표시
       } catch (error) {
@@ -149,6 +155,7 @@ export function DataFetcherAxios() {
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/posts"
         );
+        //axios함수는 기본 응답이 json객체 형태이다.
         setData(response.data.slice(0, 10)); // 상위 10개 항목만 표시
       } catch (error) {
         console.error("데이터 로드 중 오류 발생:", error);
@@ -178,3 +185,19 @@ export function DataFetcherAxios() {
     </div>
   );
 }
+
+//통신응답으로 반환된 JSON형태의 문자열
+// {
+//   "userId": 1,
+//   "id": 1,
+//   "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+//   "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+// },
+
+//JS 객체
+// {
+//   userId : 1,
+//   id: 1,
+//   title: "sunt aut facere repel",
+//   body : "quia et suscip"
+// }
