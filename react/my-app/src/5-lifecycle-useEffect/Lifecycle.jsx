@@ -15,10 +15,10 @@
 // componentDidUpdate(): 컴포넌트가 업데이트된 후 실행
 // componentWillUnmount(): 컴포넌트가 언마운트(제거)되기 직전에 실행
 
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 //extends : 상속
-class LifecycleClass extends Component {
+export class LifecycleClass extends Component {
   constructor(props) {
     //자식생성자 함수
     super(props); //부모생성자 함수 호출
@@ -56,4 +56,27 @@ class LifecycleClass extends Component {
       </div>
     );
   }
+}
+
+//부모 컴포넌트
+export function Lifecycle() {
+  //       상태변수  상태설정함수                  초기값
+  const [showComponent, setShowComponent] = useState(true);
+
+  //조건부 렌더링
+  //1. if else
+  //2. 삼항연산자
+  //3. 논리연산자(&& ||)
+  return (
+    <div style={{ padding: "20px" }}>
+      {showComponent && <LifecycleClass />}
+      <button
+        onClick={() => {
+          setShowComponent(!showComponent);
+        }}
+      >
+        {showComponent ? "컴퍼넌트 제거" : "컴퍼넌트 추가"}
+      </button>
+    </div>
+  );
 }
