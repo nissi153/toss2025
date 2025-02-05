@@ -44,6 +44,7 @@ export function LikeButton() {
   return (
     <div>
       <button onClick={toggleLike}>{liked ? "좋아요 취소" : "좋아요"}</button>
+      <p>{liked ? "이 게시물을 좋아합니다." : "좋아요!를 눌러주세요~"}</p>
     </div>
   );
 }
