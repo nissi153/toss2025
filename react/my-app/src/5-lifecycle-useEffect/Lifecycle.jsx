@@ -15,7 +15,7 @@
 // componentDidUpdate(): 컴포넌트가 업데이트된 후 실행
 // componentWillUnmount(): 컴포넌트가 언마운트(제거)되기 직전에 실행
 
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 //extends : 상속
 export class LifecycleClass extends Component {
@@ -58,6 +58,45 @@ export class LifecycleClass extends Component {
   }
 }
 
+// 함수형 컴포넌트에서는 useEffect Hook로 라이프사이클을 관리
+// useEffect는 다음과 같은 역할을 할 수 있습니다:
+// useEffect(() => {}, []): 컴포넌트가 마운트될 때 실행
+// useEffect(() => {}, [state]): 의존성 배열이 변경될 때 실행
+// return () => {}: 컴포넌트가 언마운트될 때 실행 (클린업 함수)
+
+//함수형 컴퍼넌트
+export function LifecycleFunc() {
+  //     상태변수 상태설정함수      초기값
+  const [count, setCount] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  //마운트 & 언마운트
+  useEffect(() => {
+    console.log("컴퍼넌트가 마운트되었습니다.");
+    return () => {
+      console.log("컴퍼넌트가 언마운트되었습니다.");
+    };
+  }, []); //빈배열을 넣으면, 마운트/언마운트시 한번만 호출
+  //업데이트
+  useEffect(() => {
+    console.log("컴퍼넌트가 업데이트되었습니다.");
+  }, [count]); //의존성 상태변수 배열을 설정한다.
+
+  return (
+    <div>
+      <h1>리액트 라이프사이클(함수형 컴퍼넌트)</h1>
+      <p>Count: {count}</p>
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +1
+      </button>
+    </div>
+  );
+}
+
 //부모 컴포넌트
 export function Lifecycle() {
   //       상태변수  상태설정함수                  초기값
@@ -69,7 +108,7 @@ export function Lifecycle() {
   //3. 논리연산자(&& ||)
   return (
     <div style={{ padding: "20px" }}>
-      {showComponent && <LifecycleClass />}
+      {showComponent && <LifecycleFunc />}
       <button
         onClick={() => {
           setShowComponent(!showComponent);
