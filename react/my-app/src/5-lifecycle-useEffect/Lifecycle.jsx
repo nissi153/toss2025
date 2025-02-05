@@ -26,30 +26,34 @@ class LifecycleClass extends Component {
       //상태변수 선언
       count: 0,
     };
-    
-    //마운트 발생시 호출됨.
-    componentDidMount(){
-      console.log("컴퍼넌트가 마운트되었습니다.");
-    }
-    //언마운트 발생시 호출됨.
-    componentWillUnmount(){
-      console.log("컴퍼넌트가 언마운트되었습니다.");
-    }
-    //상태나 props가 변경시 호출됨(update)
-    componentDidUpdate(){
-      console.log(`컴퍼넌트가 업데이트되었습니다.${this.state.count}`);
-    }
-    render() {
-      return (
-        <div>
-          <h1>리액트 라이프사이클(클래스형)</h1>
-          <p>Count: {this.state.count}</p>
-          <button onClick={()=>{
+  }
+
+  //마운트 발생시 호출됨.
+  componentDidMount() {
+    console.log("컴퍼넌트가 마운트되었습니다.");
+  }
+  //언마운트 발생시 호출됨.
+  componentWillUnmount() {
+    console.log("컴퍼넌트가 언마운트되었습니다.");
+  }
+  //상태나 props가 변경시 호출됨(update)
+  componentDidUpdate() {
+    console.log(`컴퍼넌트가 업데이트되었습니다.${this.state.count}`);
+  }
+  render() {
+    return (
+      <div>
+        <h1>리액트 라이프사이클(클래스형)</h1>
+        <p>Count: {this.state.count}</p>
+        <button
+          onClick={() => {
             // setState : 클래스형 컴퍼넌트의 상태변경 함수
-            this.setState({count: this.state.count + 1})
-          }}>+1</button>
-        </div>
-      );
-    }
+            this.setState({ count: this.state.count + 1 });
+          }}
+        >
+          +1
+        </button>
+      </div>
+    );
   }
 }
