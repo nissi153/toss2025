@@ -121,7 +121,7 @@ export function DataFetcher() {
       }
     };
 
-    fetchData();
+    fetchData(); //마운트시에 한번만 호출
   }, []);
 
   return (

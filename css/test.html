@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML, CSS, JS 종합 실습</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      header {
+        background-color: #4caf50;
+        padding: 1rem;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      main {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        background-color: white;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .card h3 {
+        margin-top: 1rem;
+      }
+
+      .card button {
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .card button:hover {
+        background-color: #45a049;
+      }
+
+      .output {
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>HTML, CSS, JS 종합 실습</header>
+
+    <main>
+      <div class="card">
+        <img src="https://via.placeholder.com/300" alt="Placeholder Image" />
+        <h3>카드 타이틀</h3>
+        <p>이 카드는 HTML, CSS, 그리고 JavaScript를 활용하여 제작되었습니다.</p>
+        <button id="showMessageButton">메시지 표시</button>
+      </div>
+
+      <div class="output" id="outputBox">여기에 메시지가 나타납니다.</div>
+    </main>
+
+    <script>
+      document
+        .getElementById("showMessageButton")
+        .addEventListener("click", function () {
+          const outputBox = document.getElementById("outputBox");
+          outputBox.innerText = "버튼이 클릭되었습니다!";
+        });
+    </script>
+  </body>
+</html>
