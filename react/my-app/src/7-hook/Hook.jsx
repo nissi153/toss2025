@@ -10,7 +10,13 @@
 //1. useState 훅
 // 컴퍼넌트 내에서 상태를 관리할 수 있도록 도와주는 훅이다.
 // 상태 변수와 상태를 업데이트하는 함수를 반환합니다.
-import React, { useState, useEffect } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+} from "react";
 
 //App7.js  import * as E from "7-hook/Hook"
 //index.js import App from "App7"
@@ -80,12 +86,25 @@ export function Counter3() {
 
 export function Counter4() {
   const [number, setNumber] = useState(0);
-  coust[(inputValue, setInputValue)] = useState("");
+  const [inputValue, setInputValue] = useState("");
+
+  //number 상태변수가 변경되지 않는한, double값은
+  //재 연산되지 않음.
+  const double = useMemo(() => {
+    console.log("두배 연산중...");
+    return number * 2;
+  }, [number]);
+
+  function doDouble(number) {
+    console.log("doDouble...");
+    return number * 2;
+  }
+  const double2 = doDouble();
 
   return (
     <div>
       <h1>useMemo</h1>
-      <h1>입력한 숫자: {number}</h1>
+      <h2>입력한 숫자: {number}</h2>
       <h2>두 배 결과: {double}</h2>
 
       <input
@@ -100,6 +119,87 @@ export function Counter4() {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="입력하세요."
       />
+    </div>
+  );
+}
+
+// 4. useCallback 훅
+// 개념: useCallback은 메모이제이션된 콜백 함수를 반환하여
+// 함수가 불필요하게 새로 생성되는 것을 방지하는 훅입니다.
+// useMemo와 비슷한 기능으로, useMemo는 값을, useCallback은 함수를 반환.
+// 용도
+// 1. 컴포넌트가 렌더링될 때마다 동일한 함수를 다시 생성하는 것을 피하고 싶을 때
+// 2. 자식 컴포넌트에 함수를 props로 전달할 때, 불필요한 재렌더링을 방지할 수 있습니다.
+export function Counter5() {
+  const [number, setNumber] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+
+  // useMemo로 두 배 계산 결과를 메모이제이션
+  const double = useMemo(() => {
+    console.log("두 배 계산 중...");
+    return number * 2;
+  }, [number]);
+
+  // useCallback으로 숫자 입력 핸들러(콜백함수) 메이제이션
+  // e : JS 이벤트 객체, 이벤트함수에서 전달됨.
+  const handleNumberChange = useCallback(
+    (e) => {
+      console.log("useCallback 메모이제이션1");
+      setNumber(parseInt(e.target.value));
+    },
+    [number]
+  );
+  const handleInputChange = useCallback(
+    (e) => {
+      console.log("useCallback 메모이제이션2");
+      setInputValue(e.target.value);
+    },
+    [inputValue]
+  );
+
+  return (
+    <div>
+      <h1>useCallback</h1>
+      <h2>입력한 숫자: {number}</h2>
+      <h2>두 배 결과: {double}</h2>
+
+      <input type="number" value={number} onChange={handleNumberChange} />
+      <br />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="입력하세요."
+      />
+    </div>
+  );
+}
+
+// 5. useRef 훅
+// 개념: useRef는 리액트에서 변경 가능한 참조 객체를 제공하는 훅입니다.
+// useRef로 생성한 객체는 컴포넌트가 리렌더링되더라도 값이 유지됩니다.
+// 사용 용도
+// 1. DOM 요소에 접근하기 위해 (예: 포커스, 스크롤 제어)
+// 2. 상태값과 다르게 리렌더링 없이 값 유지가 필요한 경우 (예: 이전 값 저장, 타이머 등)
+// 3. 성능 최적화에 유리합니다. 값이 변하더라도 불필요한 리렌더링을 방지할 수 있습니다.
+export function Counter6() {
+  const [count, setCount] = useState(0);
+  const clickCountRef = useRef(0); //useRef로 클릭 횟수 관리
+  //clickCountRef는 컴퍼넌트가 리렌더링될 때 값이 초기화되지 않는다.
+  //count는 리렌더링 시 화면에 즉시 반영하지만,
+  //clickCountRef는 리렌더링을 발생시키지 않고 값만 유지한다.
+
+  const handleClick = () => {
+    setCount(count + 1);
+    clickCountRef.current += 1; // A += B  A = A + B
+    console.log("총 클릭 횟수:", clickCountRef.current);
+  };
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+      <h2>버튼 클릭 횟수: {clickCountRef.current}</h2>
+      <button onClick={handleClick}>증가</button>
     </div>
   );
 }
