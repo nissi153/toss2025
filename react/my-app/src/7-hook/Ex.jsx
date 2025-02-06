@@ -45,6 +45,10 @@ export function AverageCalculator() {
   );
 }
 
+//useEffect : 의존성배열이 바뀌면 업데이트 코드가 수행.
+//useMemo : 의존성배열이 바뀌면 업데이트된 값을 반환.
+//useCallback : 의존성배열이 바뀌면 업데이트된 함수을 반환.
+
 // 연습문제 2: 버튼 클릭 시 숫자 증가하기 (useCallback)
 // 목표:
 // 1. 숫자를 상태로 관리하고, 버튼을 클릭할 때마다 숫자가 1씩 증가합니다.
@@ -56,7 +60,7 @@ export function IncrementWithCallback() {
   // 버튼 클릭 핸들러를 useCallback으로 메모이제이션
   const handleIncrement = useCallback(() => {
     setCount((prev) => prev + 1);
-  }, []);
+  }, [count]);
 
   return (
     <div>
