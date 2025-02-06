@@ -35,6 +35,7 @@ const styles = {
   },
   greeting: {
     marginRight: 8,
+    color: "green",
   },
 };
 
@@ -48,10 +49,61 @@ function Toolbar(props) {
 
       {/* 3. 삼항 연산자 사용 */}
       {isLoggedIn ? (
-        <button onClick={onClickLogin}>로그아웃</button>
+        <button onClick={onClickLogout}>로그아웃</button>
       ) : (
-        <button onClick={onClickLogout}>로그인</button>
+        <button onClick={onClickLogin}>로그인</button>
       )}
     </div>
   );
 }
+
+export function LandingPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const onClickLogin = () => {
+    setIsLoggedIn(true);
+  };
+  const onClickLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <div>
+      <Toolbar
+        isLoggedIn={isLoggedIn}
+        onClickLogin={onClickLogin}
+        onClickLogout={onClickLogout}
+      />
+      <div style={{ padding: 16 }}>랜딩 페이지에 오신 것을 환영합니다.</div>
+    </div>
+  );
+}
+
+//자바스크립트의 Truthy 값
+// 자바스크립트에서 Truthy란 불리언 값으로 변환했을 때 true로 평가되는 값을 의미합니다.
+
+// Falsy 값 목록
+// 다음 값들은 falsy입니다.
+// 이 값들은 if 문이나 조건부 연산에서 거짓(false)으로 평가됩니다:
+// false          // boolean false
+// 0              // 숫자 0
+// -0             // 음수 0
+// 0n             // BigInt 0
+// ""             // 빈 문자열
+// null           // null 값
+// undefined      // undefined 값
+// NaN            // 숫자가 아님 (Not-a-Number)
+// * 위에 나열된 값 외에는 모두 truthy로 간주됩니다.
+
+// Truthy 값의 예
+// 다음과 같은 값들은 truthy로 평가됩니다:
+
+// "문자열"          // 비어있지 않은 문자열
+// 42                // 0이 아닌 숫자
+// -1                // 음수도 truthy
+// 3.14              // 소수도 truthy
+// []                // 빈 배열도 truthy
+// {}                // 빈 객체도 truthy
+// function() {}     // 함수도 truthy
+// new Date()        // Date 객체
+// "false"           // 문자열 "false" (불리언 false와는 다름)
