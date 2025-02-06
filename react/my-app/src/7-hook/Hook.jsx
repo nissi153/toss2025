@@ -203,3 +203,37 @@ export function Counter6() {
     </div>
   );
 }
+export function Counter7() {
+  const [count, setCount] = useState(0);
+  const clickCountRef = useRef(0);
+  const inputRef = useRef(null); //
+
+  const handleClick = () => {
+    setCount(count + 1); //상태변경은 리액트에서 비동기적으로 이루어지므로, 바로 +1이
+    clickCountRef.current += 1;
+    console.log("총 클릭 횟수: ", clickCountRef.current);
+
+    //버튼 클릭시 입력창에 포커스 설정
+    if (inputRef.current) {
+      inputRef.current.value = `현재 카운트: ${count + 1}`;
+      inputRef.current.focus();
+    }
+  };
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+      <h2>버튼 클릭 횟수: {clickCountRef.current}</h2>
+
+      <input type="text" ref={inputRef} placeholder="여기에 입력하세요." />
+      <br />
+      <button onClick={handleClick}>증가 및 입력창 포커스</button>
+    </div>
+  );
+}
+
+//Hook 훅의 규칙
+//1. 무조건 최상위 레벨에서만 호출해야 됨.
+//2. 반복문이나 조건문 또는 중첩된 함수 안에서 호출하면 안됨.
+//3. 컴퍼넌트가 렌더링 될때마다 매번 같은 순서로 호출되어야 함.
+//4. 리액트 함수 컴퍼넌트에서만 호출할 수 있다. 일반적인 JS함수에서 훅을 호출하면 안됨.
