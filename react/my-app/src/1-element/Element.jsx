@@ -14,6 +14,7 @@
 
 import React from "react";
 //React 17이상에서는 import하지 않아도 JSX 사용 가능함.
+import "./element.css";
 
 const E1 = <h1 className="greeting">리액트 엘리먼트1입니다.</h1>;
 export const E2 = React.createElement(
