@@ -138,7 +138,7 @@ export function Counter5() {
   const double = useMemo(() => {
     console.log("두 배 계산 중...");
     return number * 2;
-  }, []); //setNumber는 이전 값을 바탕으로 작동하기 때문에 굳이 number를 의존성으로 넣을 필요가 없습니다.
+  }, [number]);
 
   // useCallback으로 숫자 입력 핸들러(콜백함수) 메이제이션
   // e : JS 이벤트 객체, 이벤트함수에서 전달됨.
@@ -147,14 +147,15 @@ export function Counter5() {
       console.log("useCallback 메모이제이션1");
       setNumber(parseInt(e.target.value));
     },
-    [] //setNumber는 이전 값을 바탕으로 작동하기 때문에 굳이 number를 의존성으로 넣을 필요가 없습니다.
+    [number] //의존성 배열에 number를 포함하면, number 값이 변경될 때마다
+    // handleNumberChange 함수가 새롭게 생성됩니다.
   );
   const handleInputChange = useCallback(
     (e) => {
       console.log("useCallback 메모이제이션2");
       setInputValue(e.target.value);
     },
-    [inputValue]
+    [] //inputValue를 의존성으로 넣을 필요가 없습니다.
   );
 
   return (
