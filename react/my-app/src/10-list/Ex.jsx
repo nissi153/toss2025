@@ -205,6 +205,8 @@ export function DynamicPostList() {
   }, []);
 
   const handleChange = (e) => {
+    // name : key이름
+    // value : 실제 값
     const { name, value } = e.target;
     setNewPost((prev) => ({
       ...prev,
