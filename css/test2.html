@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습문항</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        margin: 0 auto;
+        height: 100%;
+      }
+      .site-header {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        flex: 1 100%;
+        justify-content: space-between;
+        height: 60px;
+        line-height: 60px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+      }
+      .brand-logo {
+        font-size: 24px;
+        color: #2664eb;
+        font-weight: bold;
+        padding: 0 20px;
+        display: flex;
+      }
+      .main-nav {
+        display: flex;
+      }
+      .main-nav .primary-menu {
+        display: flex;
+        flex-direction: row;
+      }
+      .main-nav .primary-menu > li {
+        list-style: none;
+        padding: 0 30px;
+        position: relative;
+      }
+      .main-nav li:hover .submenu {
+        display: block;
+      }
+      .main-nav a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+      }
+      .main-nav .submenu {
+        display: none;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 47px;
+        left: 20px;
+      }
+      .main-nav .submenu li {
+        display: block;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        text-align: left;
+      }
+      .main-nav .submenu li:hover {
+        background-color: #eff7ff;
+      }
+      .main-content {
+        background-color: #f3f5f7;
+        flex-grow: 100;
+        height: 100%;
+      }
+      .page-title {
+        display: flex;
+        flex: 1 100%;
+        padding: 30px 20px;
+      }
+      .content-grid {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 0 20px;
+        gap: 30px;
+        justify-content: center;
+      }
+      .product-box {
+        background-color: #ffffff;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 20px;
+      }
+      .hidden-box {
+        display: none;
+      }
+      .product-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 18px;
+      }
+      .product-name {
+        display: flex;
+        font-weight: bold;
+      }
+      .product-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2664eb;
+      }
+      .product-description {
+        padding: 20px 0;
+        font-size: 16px;
+      }
+      .product-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .product-category {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 10px;
+        border-radius: 10px;
+        background-color: #eff7ff;
+        color: #2664eb;
+      }
+      .add-to-cart-btn {
+        background-color: #2664eb;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 959px) {
+        .product-box {
+          flex: 1 40%;
+        }
+        .hidden-box {
+          visibility: hidden;
+          display: block;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .main-nav {
+          visibility: hidden;
+        }
+        .product-box {
+          flex: 1 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="site-header">
+        <div class="brand-logo">TechStore</div>
+        <div class="main-nav">
+          <ul class="primary-menu">
+            <li>
+              <a href="#">제품</a>
+              <ul class="submenu">
+                <li><a href="#">전자기기</a></li>
+                <li><a href="#">의류</a></li>
+                <li><a href="#">도서</a></li>
+                <li><a href="#">액세사리</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">서비스</a>
+              <ul class="submenu">
+                <li><a href="#">컨설팅</a></li>
+                <li><a href="#">교육</a></li>
+                <li><a href="#">고객지원</a></li>
+                <li><a href="#">유지보수</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">회사소개</a>
+              <ul class="submenu">
+                <li><a href="#">회사정보</a></li>
+                <li><a href="#">팀 소개</a></li>
+                <li><a href="#">채용정보</a></li>
+                <li><a href="#">연락처</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="page-title">
+          <h1>추천 제품</h1>
+        </div>
+        <div class="content-grid">
+          <div class="product-box one">
+            <div class="product-top">
+              <div class="product-name">프리미엄 노트북</div>
+              <div class="product-price">1,599.000원</div>
+            </div>
+            <div class="product-description">최신 사양의 고성능 노트북</div>
+            <div class="product-footer">
+              <div class="product-category">전자기기</div>
+              <button class="add-to-cart-btn">장바구니 담기</button>
+            </div>
+          </div>
+          <div class="product-box two">
+            <div class="product-top">
+              <div class="product-name">무선 헤드폰</div>
+              <div class="product-price">299.000원</div>
+            </div>
+            <div class="product-description">
+              프리미엄 사운드의 노이즈 캔슬링 헤드폰
+            </div>
+            <div class="product-footer">
+              <div class="product-category">전자기기</div>
+              <button class="add-to-cart-btn">장바구니 담기</button>
+            </div>
+          </div>
+          <div class="product-box three">
+            <div class="product-top">
+              <div class="product-name">스마트 워치</div>
+              <div class="product-price">399.000원</div>
+            </div>
+            <div class="product-description">
+              피트니스 트래킹과 스마트 연결 가능
+            </div>
+            <div class="product-footer">
+              <div class="product-category">액세사리</div>
+              <button class="add-to-cart-btn">장바구니 담기</button>
+            </div>
+          </div>
+          <div class="hidden-box product-box">
+            <div class="product-top">
+              <div class="product-name">스마트 워치</div>
+              <div class="product-price">399.000원</div>
+            </div>
+            <div class="product-description">
+              피트니스 트래킹과 스마트 연결 가능
+            </div>
+            <div class="product-footer">
+              <div class="product-category">액세사리</div>
+              <button class="add-to-cart-btn">장바구니 담기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
