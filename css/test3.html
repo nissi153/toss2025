@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>설문조사 폼</title>
+    <!-- Tailwind CSS와 DaisyUI CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body class="bg-base-200">
+    <div class="container mx-auto p-6">
+      <h1 class="text-3xl font-bold text-center mb-6">설문조사</h1>
+      <form
+        class="space-y-6 max-w-lg mx-auto bg-base-100 p-6 rounded-lg shadow-md"
+      >
+        <!-- 이름 입력 -->
+        <div class="form-control">
+          <label class="label" for="name">
+            <span class="label-text">이름</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력하세요"
+            class="input input-bordered"
+            required
+          />
+        </div>
+
+        <!-- 이메일 입력 -->
+        <div class="form-control">
+          <label class="label" for="email">
+            <span class="label-text">이메일</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="이메일을 입력하세요"
+            class="input input-bordered"
+            required
+          />
+        </div>
+
+        <!-- 나이 입력 -->
+        <div class="form-control">
+          <label class="label" for="age">
+            <span class="label-text">나이</span>
+          </label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            placeholder="나이를 입력하세요"
+            class="input input-bordered"
+          />
+        </div>
+
+        <!-- 성별 선택 (라디오 버튼) -->
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">성별</span>
+          </label>
+          <div class="flex items-center space-x-4">
+            <label class="cursor-pointer label">
+              <span class="label-text mr-2">남성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="남성"
+                class="radio radio-primary"
+                required
+              />
+            </label>
+            <label class="cursor-pointer label">
+              <span class="label-text mr-2">여성</span>
+              <input
+                type="radio"
+                name="gender"
+                value="여성"
+                class="radio radio-primary"
+              />
+            </label>
+          </div>
+        </div>
+
+        <!-- 의견/건의사항 (textarea) -->
+        <div class="form-control">
+          <label class="label" for="feedback">
+            <span class="label-text">의견 또는 건의사항</span>
+          </label>
+          <textarea
+            id="feedback"
+            name="feedback"
+            placeholder="의견을 입력하세요"
+            class="textarea textarea-bordered"
+          ></textarea>
+        </div>
+
+        <!-- 제출 버튼 -->
+        <div class="form-control">
+          <button type="submit" class="btn btn-primary">제출하기</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
