@@ -1,0 +1,11 @@
+/* App.css */
+.box {
+  border: 1px solid black;
+  color: white;
+  background-color: gray;
+  font-size: 22px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
