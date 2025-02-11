@@ -1,12 +1,10 @@
 // components/Footer.js
 import React from "react";
+import "../index.css";
 
 const Footer = () => {
   return (
-    <div
-      id="footer"
-      className="border border-black text-white bg-[#556B2F] text-[22px] flex flex-row flex-nowrap justify-center items-center h-[50px]"
-    >
+    <div id="footer" className="box bg-[#556B2F] h-[50px]">
       Footer
     </div>
   );

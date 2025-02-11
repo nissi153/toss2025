@@ -1,12 +1,10 @@
 // components/Header.js
 import React from "react";
+import "../index.css";
 
 const Header = () => {
   return (
-    <div
-      id="header"
-      className="border border-black text-white bg-purple-500 text-[22px] flex flex-row flex-nowrap justify-center items-center h-[50px]"
-    >
+    <div id="header" className="box bg-purple-500 h-[50px]">
       Header
     </div>
   );

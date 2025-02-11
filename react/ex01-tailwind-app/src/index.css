@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .box {
+    @apply border border-black text-white text-[22px] flex flex-row flex-nowrap justify-center items-center;
+  }
+}
