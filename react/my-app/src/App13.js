@@ -1,9 +1,9 @@
 // App13.js
 import React from "react";
-import InlineStyle from "./13-style/Style";
+import StyledComponent1 from "./13-style/StyledComponent1";
 
 function App() {
-  return <InlineStyle />;
+  return <StyledComponent1 />;
 }
 
 export default App;
