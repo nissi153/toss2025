@@ -2,8 +2,8 @@ import { useState, useCallback } from "react";
 import ThemeContext from "./ThemeContext";
 import ThemeContextUseContext from "./ThemeContextUseContext";
 
-function ThemeContextProvider() {
-  const [theme, setTheme] = useState("light");
+function ThemeContextProvider({ initTheme }) {
+  const [theme, setTheme] = useState(initTheme);
 
   //useMemo : 값이 저장해 놓음.
   //useCallback : 함수을 저장해 놓음.
