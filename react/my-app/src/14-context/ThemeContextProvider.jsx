@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import ThemeContext from "./ThemeContext";
 import ThemeContextUseContext from "./ThemeContextUseContext";
+import ThemeContextConsumer from "./ThemeContextConsumer";
 
 function ThemeContextProvider({ initTheme }) {
   const [theme, setTheme] = useState(initTheme);
@@ -18,6 +19,7 @@ function ThemeContextProvider({ initTheme }) {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <ThemeContextUseContext />
+      <ThemeContextConsumer />
     </ThemeContext.Provider>
   );
 }
