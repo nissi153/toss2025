@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .menuLi {
+    @apply list-none px-[30px] relative;
+  }
+  .submenu {
+    @apply hidden bg-[#ffffff] rounded-[10px] shadow absolute top-[47px] left-[20px]
+    group-hover:block;
+  }
+  .submenuLi {
+    @apply block w-[150px] h-[40px] leading-[40px] px-[15px] text-left
+    hover:bg-[#eff7ff];
+  }
+}
