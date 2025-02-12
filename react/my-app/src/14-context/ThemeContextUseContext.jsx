@@ -3,7 +3,7 @@ import ThemeContext from "./ThemeContext";
 
 function ThemeContextUseContext(props) {
   //전역상태관리에 저장된 theme(테마)값을 가져온다.
-  const [theme, toggleTheme] = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const styles = {
     width: "100vw",
