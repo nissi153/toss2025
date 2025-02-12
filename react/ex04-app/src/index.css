@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .topmenu {
+    @apply flex flex-row gap-5 text-[12px];
+  }
+  .menubar {
+    @apply flex flex-row justify-between m-4 pl-12 pr-12;
+  }
+  .arr {
+    @apply h-[10px] object-contain mt-1;
+  }
+  .categoryBox {
+    @apply border text-[14px] flex-1 p-2 text-center border-b-purple-400;
+  }
+  .selectcategoryBox {
+    @apply border-t border-l border-r border-purple-700 flex-1 p-2 text-[14px] text-center;
+  }
+
+  text-small {
+    @apply text-[13px];
+  }
+}
