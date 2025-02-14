@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PostList from "../list/PostList";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
-import data from "../../data.json";
+import data from "../../../data.json";
 
 const Wrapper = styled.div`
   padding: 16px;
@@ -89,6 +89,7 @@ function PostViewPage(props) {
 
     const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
     const updatedPosts = storedPosts.map((item) =>
+      //post목록에서 수정된 post아이템만 업데이트한다.
       item.id == postId ? updatedPost : item
     );
 
