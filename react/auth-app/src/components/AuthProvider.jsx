@@ -17,15 +17,19 @@ export const AuthProvider = ({ children }) => {
     setUsers([...users, newUser]);
     return { success: true };
   };
-  const login = (email.password) => {
-    const user = users.find((user)=> user.email === email && user.password === password);
-    if(!user){
-      return {error: "이메일 또는 비밀번호가 올바르지 않습니다."};
+  const login = (email, password) => {
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (!user) {
+      return { error: "이메일 또는 비밀번호가 올바르지 않습니다." };
     }
     setCurrentUser(user);
-    return {success: true};
+    return { success: true };
   };
-  const logout = () => {};
+  const logout = () => {
+    setCurrentUser(null);
+  };
 
   return (
     <AuthContext.Provider value={{ users, currentUser, signup, login, logout }}>
