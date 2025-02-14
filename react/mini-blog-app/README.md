@@ -1,8 +1,29 @@
-# React + Vite
+mini-blog-app 프로젝트
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. react 폴더에서
+2. mini-blog-app 프로젝트 생성
+3. npm create vite@latest
+4. cd mini-blog-app
+5. npm install react-router-dom styled-components
+6. code .
+7. npm run dev
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+/mini-blog-app
+├── src
+│ ├── components
+│ │ ├── list
+│ │ │ ├── CommentList.jsx
+│ │ │ ├── CommentListItem.jsx
+│ │ │ ├── PostList.jsx
+│ │ │ ├── PostListItem.jsx
+│ │ ├── pages
+│ │ │ ├── MainPage.jsx
+│ │ │ ├── PostViewPage.jsx
+│ │ │ ├── PostWritePage.jsx
+│ │ ├── ui
+│ │ │ ├── Button.jsx
+│ │ │ ├── TextInput.jsx
+│ ├── App.jsx
+├── package.json
+├── data.json
+├── main.jsx
