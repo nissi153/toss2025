@@ -2,7 +2,29 @@ import { useState } from "react";
 import { useAuth } from "../components/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const Singup = () => {
+const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { signup, login } = useAuth();
+  const navigate = useNavigate();
+
+  //회원가입 액션
+  const handleSignup = () => {
+    const result = signup(email, password);
+    if (result.error) {
+      //회원가입 실패
+      setError(result.error); //에러 출력
+    } else {
+      //회원가입 성공
+      //useNavigate("/login"); //로그인 화면으로 이동
+
+      //자동 로그인
+      login(email, password);
+      useNavigate("/");
+    }
+  };
+
   return (
     <div>
       <h2>회원가입</h2>
@@ -21,7 +43,7 @@ const Singup = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <br />
-      <button> 가입하기</button>
+      <button onClick={handleSignup}>가입하기</button>
     </div>
   );
 };
