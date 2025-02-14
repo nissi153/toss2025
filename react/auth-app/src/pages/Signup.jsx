@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../components/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
@@ -17,11 +17,11 @@ const Signup = () => {
       setError(result.error); //에러 출력
     } else {
       //회원가입 성공
-      //useNavigate("/login"); //로그인 화면으로 이동
+      navigate("/login"); //로그인 화면으로 이동
 
       //자동 로그인
-      login(email, password);
-      useNavigate("/");
+      // login(email, password);
+      // navigate("/");
     }
   };
 
