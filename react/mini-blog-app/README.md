@@ -27,3 +27,25 @@ mini-blog-app 프로젝트
 ├── package.json
 ├── data.json
 ├── main.jsx
+
+### 프로덕션 배포하기
+
+npm run build
+
+빌드된 파일 실행
+npm install -g serve
+serve -s dist
+
+### dist폴더를 Github Pages에 배포하기 위한 모듈
+
+npm install -g gh-pages
+
+### package.json
+
+"scripts": {
+"build": "vite build",
+"predeploy": "npm run build",
+"deploy": "gh-pages -d dist"
+}
+
+npm run deploy
