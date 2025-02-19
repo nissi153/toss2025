@@ -1,7 +1,7 @@
 //ex11-express-server.js
 const express = require('express')
 const app = express()
-const PORT = 3000
+const port = 3000
 
 //get메소드를 지원하는 서버를 생성
 app.get('/', (req, res) => {
@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   res.send('<!Doctype html><html></html>')
 })
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(`${PORT}번 포트에서 서버 실행 중...`)
 })
 
