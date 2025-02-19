@@ -6,16 +6,19 @@ const app = express()
 const port = 3000
 
 //인덱스 페이지
+//localhost:3000/
 app.get('/', (req, res) => {
   res.status(200)
   res.send('Hello Express~')
 })
 //게시글 목록 조회
+//localhost:3000/posts
 app.get('/posts', (req, res) => {
   res.status(200)
   res.send('게시글 목록 조회')
 })
 //게시글 단건 조회
+//localhost:3000/posts/100
 app.get('/posts/:id', (req, res) => {
   res.status(200)
   res.send(`게시글 단건 조회 ID:${req.params.id}`)
