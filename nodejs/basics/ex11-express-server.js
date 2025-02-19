@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`${PORT}번 포트에서 서버 실행 중...`)
+  console.log(`${port}번 포트에서 서버 실행 중...`)
 })
 
 //상태코드
