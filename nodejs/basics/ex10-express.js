@@ -27,7 +27,14 @@ const server = http.createServer((req, res) => {
   console.log('HTTP 요청 발생')
 })
 
-//3000번 포트에서 서버 실행
-server.listen(3000, () => {
-  console.log('3000번 포트에서 서버 실행 중...')
+//5000번 포트에서 서버 실행
+server.listen(5000, () => {
+  console.log('5000번 포트에서 서버 실행 중...222')
 })
+
+//node ex10-express.js
+//nodemon ex10-express.js
+//WB localhost:3000
+
+//리액트 CRA-3000, VITE-5176
+//노드 3000
