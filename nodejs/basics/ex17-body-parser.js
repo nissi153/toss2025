@@ -44,8 +44,11 @@ app.use(express.urlencoded({ extended: true })) //qs모듈 사용
 //   "email" : "hong@mail.com",
 //   "phone" : "010-1111-2222"
 // }
+// localhost:3000/join
 app.post('/join', (req, res) => {
   console.log('받은 데이터', req.body)
+  console.log('name', req.body.name)
+  console.log('email', req.body.email)
   res.json({ message: '데이터가 성공적으로 수신됨.', recevivedData: req.body })
 })
 
