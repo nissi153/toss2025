@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware 설정
-app.use(cors());
+app.use(cors()); //모든 도메인에서 요청 허용(보안이 필요하지 않은 테스트 환경)
 app.use(express.json());
 
 // MongoDB Atlas 연결
