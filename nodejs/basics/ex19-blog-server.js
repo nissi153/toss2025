@@ -58,9 +58,59 @@ app.get('/posts/:id', async (req, res) => {
   }
 })
 // 게시글 추가
+app.post('/posts', async (req, res) => {
+  try {
+    const { title, content } = req.body
+    //새 도큐먼트 객체 만들기
+    const newPost = new Post({ title, content, comments: [] })
+    await newPost.save() //도큐먼트 저장!
+    res.status(201).json(newPost)
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 // 게시글 수정
+app.put('/posts/:id', async (req, res) => {
+  try {
+    const { title, content } = req.body
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      { title, content },
+      { new: true } //업데이트된 도큐먼트를 리턴한다.
+    )
+    if (!updatedPost) {
+      return res.status(404).json({ message: 'Post Not Found' })
+    }
+    res.status(201).json(updatedPost)
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 // 게시글 삭제
+app.delete('/posts/:id', async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.id)
+    res.json({ message: 'Post Deleted' })
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 // 댓글 추가
+app.post('/posts/:id/comments', async (req, res) => {
+  try {
+    const { content } = req.body
+    const post = await Post.findById(req.params.id)
+    if (!post) {
+      res.status(404).json({ message: 'Post Not Fount' })
+    }
+
+    post.comments.push({ content })
+    await post.save()
+    res.json(post)
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 
 //서버 실행
 app.listen(PORT, () => {
