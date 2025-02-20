@@ -13,7 +13,7 @@ app.use(express.json())
 
 // MongoDB Atlas 연결
 const MONGO_URI =
-  'mongodb+srv://admin:1234@mongodb-cluster.i7qod.mongodb.net/posts'
+  'mongodb+srv://admin:1234@mongodb-cluster.i7qod.mongodb.net/blog'
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
@@ -46,6 +46,17 @@ app.get('/posts', async (req, res) => {
   }
 })
 // 게시글 단건 조회
+app.get('/posts/:id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+    if (!post) {
+      return res.status(404).json({ message: 'Post Not Found' })
+    }
+    res.status(200).json(post)
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 // 게시글 추가
 // 게시글 수정
 // 게시글 삭제
