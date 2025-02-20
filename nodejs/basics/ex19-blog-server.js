@@ -12,8 +12,8 @@ app.use(cors()) //모든 도메인(포트)의 요청을 허용(테스트서버�
 app.use(express.json())
 
 // MongoDB Atlas 연결
-const MONGO_URI =
-  'mongodb+srv://admin:1234@mongodb-cluster.i7qod.mongodb.net/blog'
+const MONGO_URI = 'mongodb+srv://본인계정/blog'
+//'mongodb+srv://admin:1234@mongodb-cluster.*****.mongodb.net/blog'
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
