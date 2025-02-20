@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+
+//Pages
+import MainPage from "./components/pages/MainPage";
+import PostWritePage from "./components/pages/PostWritePage";
+import PostViewPage from "./components/pages/PostViewPage";
+
+const MainTitleText = styled.p`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <MainTitleText>홍길동의 미니블로그</MainTitleText>
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="post-write" element={<PostWritePage />} />
+        {/* "post/1" */}
+        <Route path="post/:postId" element={<PostViewPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
