@@ -20,16 +20,31 @@ mongoose
   .catch((err) => console.log(err))
 
 // Mongoose 모델 정의
-const PostSchema = new mongoose.Schema({
-  title: String,
-  content: String,
-  comments: [{ content: String }],
-})
+const PostSchema = new mongoose.Schema(
+  {
+    title: String,
+    content: String,
+    comments: [{ content: String }],
+  },
+  { collection: 'posts' } // 컬렉션 이름 강제 지정
+)
 
 //몽고DB 도큐먼트 객체
+//몽고DB에서는 모델 이름의 소문자+복수형(s)가 자동으로 컬렉션 이름이 됩니다.
 const Post = mongoose.model('Post', PostSchema)
 
 // 게시글 목록 조회
+app.get('/posts', async (req, res) => {
+  try {
+    //select * from posts
+    //posts 콜렉션의 모든 도큐먼트리스트를 가져온다.
+    const posts = await Post.find()
+    console.log(posts)
+    res.json(posts)
+  } catch (err) {
+    res.status(500).json({ errer: err.message })
+  }
+})
 // 게시글 단건 조회
 // 게시글 추가
 // 게시글 수정
