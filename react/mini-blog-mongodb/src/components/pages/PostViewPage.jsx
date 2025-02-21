@@ -88,12 +88,17 @@ function PostViewPage(props) {
       .catch((err) => console.error("Error adding comment:", err));
   };
 
+  //게시글 삭제하기
   const handleDeletePost = () => {
-    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    const updatedPosts = storedPosts.filter((item) => item.id != postId);
-
-    localStorage.setItem("posts", JSON.stringify(updatedPosts));
-    navigate("/");
+    fetch(`http://localhost:5000/posts/${postId}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((msg) => {
+        console.log(msg);
+        navigate("/");
+      })
+      .catch((err) => console.error("Error deleting post", err));
   };
 
   if (!post) {
