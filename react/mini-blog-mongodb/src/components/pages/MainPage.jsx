@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"; //하이퍼링크-바로가기
 import styled from "styled-components";
 import Button from "../ui/Button";
 import PostList from "../list/PostList";
-import data from "../../data.json";
 
 //모든 콘텐츠를 감싸는 최상위 DIV
 const Wrapper = styled.div`
@@ -51,7 +50,7 @@ function MainPage() {
         <PostList
           posts={posts}
           onClickItem={(item) => {
-            navigate(`/post/${item.id}`);
+            navigate(`/post/${item._id}`); //몽고DB의 _id 사용함.
           }}
         ></PostList>
       </Container>

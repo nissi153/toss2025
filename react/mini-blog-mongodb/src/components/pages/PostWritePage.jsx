@@ -27,22 +27,28 @@ function PostWritePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  //게시글 작성 함수
   const handleSubmit = () => {
-    // 로컬 스토리지에 저장
+    if (!title || !content) {
+      alert("제목과 내용을 입력해주세요.");
+      return;
+    }
     const newPost = {
-      id: Date.now(), // 임의의 고유 ID 생성
       title,
       content,
-      comments: [], // 빈 댓글 배열 초기화
+      comments: [], //빈 배열
     };
-    //localStorage에서 게시물 정보를 가져옴.
-    const existingPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    existingPosts.push(newPost);
-    //JSON.stringify : JSON 객체를 문자열로 만들어주는 함수
-    localStorage.setItem("posts", JSON.stringify(existingPosts));
-
-    // 홈 페이지로 이동
-    navigate("/");
+    fetch("http://localhost:5000/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPost), //stringify() : JS객체를 json형태의 문자열로 변환
+    })
+      .then((res) => res.json())
+      .then((msg) => {
+        console.log(msg);
+        // 홈 페이지로 이동
+        navigate("/");
+      });
   };
 
   return (
