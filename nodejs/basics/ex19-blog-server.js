@@ -12,8 +12,8 @@ app.use(cors()) //모든 도메인(포트)의 요청을 허용(테스트서버�
 app.use(express.json())
 
 // MongoDB Atlas 연결
-const MONGO_URI = 'mongodb+srv://본인계정/blog'
-//'mongodb+srv://admin:1234@mongodb-cluster.*****.mongodb.net/blog'
+const MONGO_URI =
+  'mongodb+srv://admin:1234@mongodb-cluster.****.mongodb.net/blog'
 mongoose
   .connect(MONGO_URI)
   .then(() => console.log('MongoDB Connected'))
@@ -42,7 +42,7 @@ app.get('/posts', async (req, res) => {
     console.log(posts)
     res.json(posts)
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 // 게시글 단건 조회
@@ -54,7 +54,7 @@ app.get('/posts/:id', async (req, res) => {
     }
     res.status(200).json(post)
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 // 게시글 추가
@@ -66,7 +66,7 @@ app.post('/posts', async (req, res) => {
     await newPost.save() //도큐먼트 저장!
     res.status(201).json(newPost)
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 // 게시글 수정
@@ -83,7 +83,7 @@ app.put('/posts/:id', async (req, res) => {
     }
     res.status(201).json(updatedPost)
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 // 게시글 삭제
@@ -92,7 +92,7 @@ app.delete('/posts/:id', async (req, res) => {
     await Post.findByIdAndDelete(req.params.id)
     res.json({ message: 'Post Deleted' })
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 // 댓글 추가
@@ -108,7 +108,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     await post.save()
     res.json(post)
   } catch (err) {
-    res.status(500).json({ errer: err.message })
+    res.status(500).json({ error: err.message })
   }
 })
 
