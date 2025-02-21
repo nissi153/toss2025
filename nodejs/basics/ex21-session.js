@@ -47,6 +47,22 @@ app.get('/', (req, res) => {
   }
 })
 
+app.get('/session', (req, res) => {
+  console.log(req.session)
+  res.send('세션 정보 조회')
+})
+
+app.get('/delete-session', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.clearCookie('connect.sid')
+      res.send('세션 삭제')
+    }
+  })
+})
+
 app.listen(5000, () => {
   console.log(`5000번 포트에서 서버 실행 중...`)
 })
