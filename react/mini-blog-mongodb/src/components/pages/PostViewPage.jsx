@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import PostList from "../list/PostList";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 
@@ -56,21 +55,20 @@ function PostViewPage(props) {
   const navigate = useNavigate();
   const { postId } = useParams();
 
-  // const post = data.find((item) => {
-  //   return item.id == postId;
-  // });
-
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState("");
 
-  //useEffect : 컴퍼넌트 생명주기(Mount, Update)
+  //백엔드에서 게시글 단건 조회하기
   useEffect(() => {
-    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    console.log("storedPosts:" + storedPosts);
-    const foundPost = storedPosts.find((item) => item.id == postId);
-    console.log("postId:" + postId);
-    console.log("foundPost:" + foundPost);
-    setPost(foundPost);
+    fetch(`http://localhost:5000/posts/${postId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setPost(data);
+        } else {
+          console.error("Post not found");
+        }
+      });
   }, [postId]);
 
   const handleAddComment = () => {
