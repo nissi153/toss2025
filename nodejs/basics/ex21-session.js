@@ -20,7 +20,7 @@ const app = express()
 app.use(cookieParser())
 
 const MONGO_URI =
-  'mongodb+srv://admin:1234@mongodb-cluster.****.mongodb.net/blog'
+  'mongodb+srv://admin:1234@mongodb-cluster.***.mongodb.net/blog'
 
 //미들웨어 express-session 등록
 app.use(
