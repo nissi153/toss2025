@@ -71,27 +71,21 @@ function PostViewPage(props) {
       });
   }, [postId]);
 
+  //댓글 추가 함수
   const handleAddComment = () => {
     if (!comment) return;
 
-    const newComment = {
-      id: Date.now().toString(),
-      content: comment,
-    };
-
-    const updatedPost = {
-      ...post,
-      comments: [...post.comments, newComment],
-    };
-
-    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    const updatedPosts = storedPosts.map((item) =>
-      item.id == postId ? updatedPost : item
-    );
-
-    localStorage.setItem("posts", JSON.stringify(updatedPosts));
-    setPost(updatedPost);
-    setComment("");
+    fetch(`http://localhost:5000/posts/${postId}/comments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: comment }),
+    })
+      .then((res) => res.json())
+      .then((updatedPost) => {
+        setPost(updatedPost); //업데이트된 게시글 상태 반영
+        setComment("");
+      })
+      .catch((err) => console.error("Error adding comment:", err));
   };
 
   const handleDeletePost = () => {
