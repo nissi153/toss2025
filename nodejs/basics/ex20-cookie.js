@@ -25,6 +25,16 @@ app.get('/', (req, res) => {
   res.send('쿠키 생성했음.')
 })
 
+app.get('/cookie', (req, res) => {
+  console.log(req.cookies)
+  res.send('쿠키 전송됨(프론트->백엔드)')
+})
+
+app.get('/delete-cookie', (req, res) => {
+  res.clearCookie('id-number')
+  res.send('쿠키 삭제')
+})
+
 app.listen(5000, () => {
   console.log(`5000번 포트에서 서버 실행 중...`)
 })
