@@ -123,7 +123,7 @@ function PostViewPage(props) {
 
         {post.comments.length > 0 && <CommentLabel>댓글</CommentLabel>}
         {post.comments.map((comment) => (
-          <CommentContainer key={comment.id}>
+          <CommentContainer key={comment._id}>
             <ContentText>{comment.content}</ContentText>
           </CommentContainer>
         ))}
