@@ -15,6 +15,8 @@ let bool1: boolean = true
 let null1: null = null
 // undefined
 let unde1: undefined = undefined
+// 리터럴 타입
+let lit1: 10 = 10
 
 //"strictNullChecks": true,
 // null값을 변수에 할당하지 못하도록 한다.
