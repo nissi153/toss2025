@@ -18,3 +18,20 @@ let user2: {
 }
 //(property) id: number
 user2.id
+
+let user3: {
+  // 선택적 프로퍼티를 통해 속성 생략 가능
+  id?: number,
+  name: string
+} = { 
+  name: '홍길동'
+}
+
+let config:{
+  // 읽기전용 속성으로 지정
+  readonly apiKey: string
+} = {
+  apiKey: "MY API KEY"
+}
+
+config.apiKey = "1223234"
