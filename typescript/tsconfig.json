@@ -3,7 +3,9 @@
     "target": "ESNext",
     "module": "ESNext",
     "outDir": "dist",
-    // "strict": true,
+    "strict": true,
+    "strictNullChecks": true,
+    // "noImplicitAny": true,
     "moduleDetection": "force",
     "skipLibCheck": true
   },
