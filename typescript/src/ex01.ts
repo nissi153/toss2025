@@ -3,7 +3,7 @@
 
 // 명시적 타입선언 vs 암묵적 타입선언
 // let myNum1: number = 123
-// let myNum2 = 123
+let myNum2 = 123
 
 // number
 let num1: number = 123
