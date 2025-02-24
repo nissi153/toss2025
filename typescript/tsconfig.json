@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "dist",
+    // "strict": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "include": ["src"]
+}
+
+// target : 컴파일 결과 생성되는 자바스크립트 코드의 버전 결정,
+//          "ESNext": 최신 ECMAScript 문법 유지
+//          "ES5": 오래된 브라우저 호환 필요할 때
+//          "ES6"(= "ES2015") ~ "ES2022": 특정 ECMAScript 버전 지정
+// module : 컴파일 결과 생성되는 자바스크립트 코드의 모듈 시스템 결정
+//					"CommonJS": Node.js 환경에서 기본 사용
+//					"ESNext": 최신 ECMAScript 모듈 사용
+// moduleResolution : 타입스크립트가 모듈을 어떻게 찾을지 결정합니다.
+//          node는 Node.js 방식으로 모듈을 해석합니다.
+//          "node": Node.js의 require/import 방식 따름
+//          "classic": TypeScript 1.x 방식 (과거의 비표준 방식)
+// outDir : 컴파일 결과 생성되는 자바스크립트 파일들의 위치 결정
+// strict : 엄격한 타입 검사 여부 설정
+//     "strictNullChecks": null 및 undefined 타입을 엄격하게 검사
+//     "strictFunctionTypes": 함수 매개변수와 반환 타입 검사
+//     "strictPropertyInitialization": 클래스 필드 초기화 검사
+//     "noImplicitAny": any 타입을 명확히 선언하도록 강제
+//     "alwaysStrict": use strict 자동 추가
+// moduleDetection :  어떤 파일을 모듈로 간주할지 결정합니다.
+//     "force"는 모든 .ts 파일이 자동으로 모듈이 되도록 만듭니다.
+//     "auto": import 또는 export가 있는 파일만 모듈로 인식
+//     "legacy": 과거 방식(예전 TS 버전과 호환)
+//
+//ts-node : ECMAScript 모듈(ESM) 방식으로 실행하도록 강제
+// 기본적으로 ts-node는 CommonJS(.cjs) 모듈 시스템을 사용합니다.
+//   "esm" : true
+//  하지만 TypeScript의 ESNext 모듈을 사용하려면 ECMAScript 모듈(ESM, .mjs)을 지원해야 합니다.
+// include : tsc로 컴파일 할 타입스크립트 파일의 범위 설정
+//     ["src", "tests"]: src/와 tests/ 폴더 컴파일
+//     ["**/*.ts"]: 프로젝트 전체에서 .ts 파일 컴파일
+
+//@types 버전이 20버전 이상으로 업데이트되면서 특정 라이브러리에서 타입 검사 오류가 발생하고 있습니다.
+//따라서 tsconfig.json에 compilerOption 내부에 skibLibCheck 옵션을 추가 해 주시기 바랍니다
