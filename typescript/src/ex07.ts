@@ -32,7 +32,28 @@ let union3: Union1 = {
   lang: '',
 }
 let union4: Union1 = {
-  name: '',
+  // name: '',
+  color: '',
 }
 
 //교집합 타입 - Intersection
+
+//never타입으로 추정된다.
+let neverVar: string & number
+
+type Intersection = Dog & Person
+
+let inter1: Intersection = {
+  name: '',
+  color: '',
+  lang: '',
+}
+
+//객체 타입의 호환성
+let dog: Dog
+let person: Person
+
+dog = inter1 //타입 호환됨.
+person = inter1 //타입 호환됨.
+inter1 = dog //타입 호환안됨.
+inter1 = person //타입 호환안됨.
