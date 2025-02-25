@@ -15,6 +15,8 @@ func3<number>(10)
 func3<string>('hong')
 func3<number[]>([1, 2, 3])
 func3<Function>(() => {})
+func3<() => number>(() => 1)
+func3<() => void>(() => {})
 func3<{ name: string }>({ name: 'hong' })
 
 function func4<T, U>(a: T, b: U) {
