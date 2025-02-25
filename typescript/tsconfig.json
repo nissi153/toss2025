@@ -4,8 +4,8 @@
     "module": "ESNext",
     "outDir": "dist",
     // "strict": true,
-    "moduleDetection": "force"
-    // "skipLibCheck": true
+    "moduleDetection": "force",
+    "skipLibCheck": true
   },
   "ts-node": {
     "esm": true
