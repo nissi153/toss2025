@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 export const MyButton = styled.button`
@@ -19,6 +19,11 @@ export const Button = ({ label }) => {
 export const ExampleFunc = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState(null);
+  const inputRef = useRef();
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+  };
 
   return <div></div>;
 };
