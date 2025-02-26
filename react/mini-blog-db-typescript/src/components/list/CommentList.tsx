@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import CommentListItem from "./CommentListItem";
+import React from 'react'
+import styled from 'styled-components'
+import CommentListItem from './CommentListItem'
 
 // 댓글 타입 정의
 interface Comment {
-  _id: string;
-  content: string;
+  _id: string
+  content: string
 }
 
 interface CommentListProps {
-  comments: Comment[];
+  comments: Comment[]
 }
 
 const Wrapper = styled.div`
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
       margin-bottom: 16px;
     }
   }
-`;
+`
 
 const CommentList: React.FC<CommentListProps> = ({ comments }) => {
   return (
@@ -32,7 +32,7 @@ const CommentList: React.FC<CommentListProps> = ({ comments }) => {
         <CommentListItem key={comment._id} comment={comment} />
       ))}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default CommentList;
+export default CommentList

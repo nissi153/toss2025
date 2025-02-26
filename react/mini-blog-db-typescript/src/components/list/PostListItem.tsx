@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 // 게시글 타입 정의
 interface Post {
-  _id: string;
-  title: string;
-  content: string;
+  _id: string
+  title: string
+  content: string
 }
 
 interface PostListItemProps {
-  post: Post;
-  onClick: () => void;
+  post: Post
+  onClick: () => void
 }
 
 const Wrapper = styled.div`
@@ -28,20 +28,20 @@ const Wrapper = styled.div`
   :hover {
     background: lightgrey;
   }
-`;
+`
 
 const TitleText = styled.p`
   font-size: 20px;
   font-weight: 500;
   width: 100%;
-`;
+`
 
 const PostListItem: React.FC<PostListItemProps> = ({ post, onClick }) => {
   return (
     <Wrapper onClick={onClick}>
       <TitleText>{post.title}</TitleText>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default PostListItem;
+export default PostListItem

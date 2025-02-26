@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 // 댓글 타입 정의
 interface Comment {
-  _id: string;
-  content: string;
+  _id: string
+  content: string
 }
 
 interface CommentListItemProps {
-  comment: Comment;
+  comment: Comment
 }
 
 const Wrapper = styled.div`
@@ -25,18 +25,18 @@ const Wrapper = styled.div`
   :hover {
     background: lightgrey;
   }
-`;
+`
 
 const ContentText = styled.p`
   font-size: 14px;
-`;
+`
 
 const CommentListItem: React.FC<CommentListItemProps> = ({ comment }) => {
   return (
     <Wrapper>
       <ContentText>{comment.content}</ContentText>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default CommentListItem;
+export default CommentListItem
