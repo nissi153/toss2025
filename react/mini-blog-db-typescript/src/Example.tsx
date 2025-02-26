@@ -6,7 +6,7 @@ interface ButtonProps {
   label: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label }) => {
+const Button: React.FC<ButtonProps> = ({ label }: ButtonProps) => {
   return <button>{label}</button>;
 };
 
