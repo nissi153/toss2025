@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 interface MyButtonProps {
@@ -23,4 +23,16 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ label }: ButtonProps) => {
   return <button>{label}</button>;
+};
+
+interface User {
+  id: number;
+  name: string;
+}
+
+export const ExampleFunc: React.FC = () => {
+  const [count, setCount] = useState<number>(0);
+  cosnt[(user, setUser)] = useState<User | null>(null);
+
+  return <div></div>;
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export const MyButton = styled.button`
@@ -14,4 +14,11 @@ export function CustomButton() {
 
 export const Button = ({ label }) => {
   return <button>{label}</button>;
+};
+
+export const ExampleFunc = () => {
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null);
+
+  return <div></div>;
 };
