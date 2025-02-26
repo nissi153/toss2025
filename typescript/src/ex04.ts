@@ -55,5 +55,5 @@ type CountryCodes3 = {
   Korea: 'ko' //Korea는 꼭 있어야 됨.
 }
 let countryCodes3: CountryCodes3 = {
-  Korea: 'ko',
+  Korea: 'ko', //꼭 있어야 됨.
 }
