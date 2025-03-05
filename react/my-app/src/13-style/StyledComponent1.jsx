@@ -10,7 +10,7 @@ const Button = styled.button`
   color: red;
   font-size: 24px;
   /* background-color: lightblue; */
-  background-color: ${(props) => (props.dark ? "black" : "lightblue")};
+  background-color: ${(props) => (props.$dark ? "black" : "lightblue")};
   border: 1px solid green;
 `;
 
@@ -18,7 +18,7 @@ function StyledComponent1() {
   return (
     <div>
       <Button>Normal</Button>
-      <Button dark="dark">Dark</Button>
+      <Button $dark="dark">Dark</Button>
     </div>
   );
 }
