@@ -14,6 +14,10 @@ const Button = styled.button`
   border: 1px solid green;
 `;
 
+// Transient props
+// styled-components에서 styled component에만 전달되고
+// HTML에는 전달되지 않는 props를 생성할 수 있습니다.
+// 이를 위해서는 '$' 접두사를 사용하면 됩니다.
 function StyledComponent1() {
   return (
     <div>
