@@ -77,7 +77,12 @@ WHERE 도시 = '부산광역시' AND 마일리지 < 1000;
 SELECT *
 FROM 고객
 WHERE 도시 LIKE '%서울%'
-AND 마일리지 BETWEEN 15000 AND 20000;
+AND (마일리지 >= 15000 AND 마일리지 <= 20000);
+
+SELECT *
+FROM 고객
+WHERE 도시 LIKE '%서울%'
+BETWEEN 15000 AND 20000;
 
 -- 2. 세계무역의 고객들은 어느 지역, 어느 도시에 사는지 지역과 도시를 
 -- 한 번씩만 보이시오.
@@ -87,6 +92,10 @@ SELECT DISTINCT 지역, 도시
 FROM 고객
 ORDER BY 1, 2;
 
+-- 값이 안보인다?
+-- NULL인가? '' 빈칸인가? '   ' 공백인가?
+
+-- 필수적으로 지역 컬럼을 NULL로 변경한다.
 UPDATE 고객
 SET 지역 = NULL
 WHERE 지역 = '';
@@ -94,6 +103,11 @@ WHERE 지역 = '';
 -- 3. ‘춘천시’나 ‘과천시’ 또는 ‘광명시’에 사는 고객 중에서 담당자직위에
 --    ‘이사’ 또는 ‘사원’이 들어가는 고객의 모든 정보를 보이시오.
 -- LIKE절
+SELECT *
+FROM 고객
+WHERE 도시 = '춘천시' OR 도시 = '과천시' OR 도시 = '광명시'
+AND (담당자직위 LIKE '%이사%' OR 담당자직위 LIKE '%사원%');
+
 SELECT *
 FROM 고객
 WHERE 도시 IN ('춘천시', '과천시', '광명시')
