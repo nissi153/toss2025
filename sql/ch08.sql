@@ -226,7 +226,7 @@ UPDATE 학과 SET 학과번호 = '03' WHERE 학과번호 = '02';
 DELETE FROM 학과 WHERE 학과번호 = '01';
 
 
-
+-- https://codinggangsa.notion.site/8-DDL-a742549b665b4ef8991584b4a5d056f9
 -- 연습문제
 -- 1. 제품 테이블의 재고 컬럼에 CHECK 제약조건을 추가하시오
 ALTER TABLE 제품 MODIFY COLUMN 재고 int CHECK(재고 >= 0);
