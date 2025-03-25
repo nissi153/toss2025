@@ -17,6 +17,8 @@ CREATE TABLE posts(
 -- 테이블 구조 확인
 DESC posts; 
 
+
+
 CREATE TABLE comments(
 	comment_no INT(10) PRIMARY KEY AUTO_INCREMENT,
 	comment_content VARCHAR(255), -- 내용
