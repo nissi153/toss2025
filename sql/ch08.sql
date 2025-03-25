@@ -228,7 +228,57 @@ DELETE FROM 학과 WHERE 학과번호 = '01';
 
 
 -- 연습문제
--- 실전문제
+-- 1. 제품 테이블의 재고 컬럼에 CHECK 제약조건을 추가하시오
+ALTER TABLE 제품 MODIFY COLUMN 재고 int CHECK(재고 >= 0);
+-- 2. 제품 테이블에 재고금액 컬럼을 추가하시오. 
+--    이 때 재고금액은 '단가 * 재고'가 자동계산되어 저장되도록 합니다.
+ALTER TABLE 제품 ADD COLUMN 재고금액 int AS (단가*재고) STORED;
+-- 3. 제품 테이블에서 제품 레코드를 삭제하면 
+--    주문세부 테이블에 있는 관련 레코드도 함께 삭제되도록 
+--    주문세부 테이블의 제품번호 컬럼에 외래키 제약조건과 옵션을 설정하시오.
+ALTER TABLE 주문세부 ADD CONSTRAINT fk_제품번호 FOREIGN KEY (제품번호) REFERENCES 제품(제품번호) ON DELETE CASCADE;
+
+-- 실전 문제
+-- 1. 영화 테이블과 평점관리 테이블을 만들고자 합니다. 다음 테이블 명세서를 참고하여 테이블을 생성하시오.
+CREATE TABLE 영화(
+	영화번호 char(5) PRIMARY KEY,
+	타이틀 varchar(100) NOT NULL,
+	장르 varchar(20) CHECK(장르 IN ('코미디', '드라마', '다큐', 'SF', '액션', '역사', '기타')),
+	배우 varchar(100) NOT NULL,
+	감독 varchar(50) NOT NULL,
+	제작사 varchar(150) NOT NULL,
+	개봉일 date,
+	등록일 date DEFAULT(curdate()),
+);
+-- 2. 다음 테이블 명세서를 참고하여 평점관리 테이블을 생성하시오.
+CREATE TABLE 평점관리(
+	번호 int AUTO_INCREMENT PRIMARY KEY,
+	평가자닉네임 varchar(50) NOT NULL,
+	영화번호 char(20) REFERENCES 영화(영화번호),
+	평점 int CHECK(평점 BETWEEN 1 AND 5) NOT NULL,
+	평가 varchar(2000) NOT NULL,
+	등록일 date default(curdate()),
+	FOREIGN KEY (영화번호) REFERENCES 영화(영화번호)
+);
+-- 3. 영화 테이블에 다음과 같이 데이터를 추가하시오.
+INSERT INTO 영화 (영화번호, 타이틀, 장르, 배우, 감독, 제작사, 개봉일)
+VALUES ('00001', '파묘', '드라마', '최민식, 김고은', '장재현', '쇼박스', '2024-02-22'),
+	('00002', '듄:파트2', '액션', '티미시 샬라메, 젠데이아', '드니 뵐뇌브', '레전더리 픽처스', '2024-02-28');
+
+-- 4. 평점관리 테이블에 다음과 같이 데이터를 추가하시오.
+INSERT INTO 평점관리 (번호, 평가자닉네임, 영화번호, 평점, 평가)
+VALUES (1, '영화광', '00001', 5, '미치도록 스릴이 넘쳐요'),
+	(2, '무비러브', '00002', 4, '장엄한 스케일이 좋다');
+
+-- 5. 영화번호를 00003으로도 새로운 레코드를 넣어서 오류 발생 여부를 확인하시오.
+INSERT INTO 평점관리 (번호, 평가자닉네임, 영화번호, 평점, 평가)
+VALUES (3, '영화광', '00003', 5, '미치도록 스릴이 넘쳐요');
+
+-- 6. 영화테이블에서 레코드를 지우면 외래키 제약조건에 의해 오류가 발생하는지 확인하시오.
+DELETE FROM 영화 WHERE 영화번호='00001';
+
+-- 7. ON CASCADE 옵션을 통해 6번 문제를 해결하시오.
+ALTER TABLE 평점관리 ADD CONSTRAINT fk_영화번호 FOREIGN KEY (영화번호) REFERENCES 영화(영화번호) ON DELETE CASCADE;
 
 
 
