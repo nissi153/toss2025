@@ -10,7 +10,8 @@ app.use(cors()); //모든 도메인에서 요청 허용(보안이 필요하지 �
 app.use(express.json());
 
 // MongoDB Atlas 연결
-const MONGO_URI = "mongodb+srv://admin:1234@cluster0.i7qod.mongodb.net/posts";
+const MONGO_URI =
+  "mongodb+srv://admin:1234@mongodb-cluster.i7qod.mongodb.net/blog";
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB Connected"))
