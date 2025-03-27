@@ -26,6 +26,7 @@ export default function Error({ error, reset }: Props) {
       <h1>{message}</h1>
       <button
         onClick={() => {
+          // 에러 상태 초기화 & 컴포넌트 재시도 트리거
           reset()
         }}
       >
