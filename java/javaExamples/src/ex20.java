@@ -8,6 +8,14 @@
 //  행동을 실행시켜보자.
 // sale함수를 호출하면 coffeeCount가 하나 준다.
 // sale함수를 3번 호출후, coffeeCount를 출력하시오.
+class Cafe {
+    int coffeeCount = 10;
+
+    void sale() {
+        this.coffeeCount--;
+        System.out.println("커피를 판다.");
+    }
+}
 
 //2.
 // 당근농장을 클래스로 설계해 보자
@@ -18,9 +26,29 @@
 //       호출시 "당근을 1개 생산했습니다." 출력한다.
 // 당근을 plant()함수를 이용하여 5개 생산한 후 당근 갯수를
 // 출력하시오.
+class Farm {
+    int carrot = 0;
+    void plant() {
+        this.carrot++;
+        System.out.println("당근을 1개 생산했습니다.");
+    }
+}
 
 public class ex20 {
     public static void main(String[] args) {
+        Cafe cafe = new Cafe();
+        cafe.sale();
+        cafe.sale();
+        cafe.sale();
+        System.out.println(cafe.coffeeCount);
+
+        Farm farm = new Farm();
+        farm.plant();
+        farm.plant();
+        farm.plant();
+        farm.plant();
+        farm.plant();
+        System.out.println(farm.carrot);
 
     }
 }
