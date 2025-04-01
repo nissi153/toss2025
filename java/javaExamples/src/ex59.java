@@ -19,8 +19,10 @@ class Student {
 }
 
 public class ex59 {
+
     public static List<Student> scoreList =
             new ArrayList<Student>();
+
     public static void main(String[] args) {
 
         //ArrayList 관련 함수들 : 전체지우기, 추가, 삭제, 검색(직접 코드로)
