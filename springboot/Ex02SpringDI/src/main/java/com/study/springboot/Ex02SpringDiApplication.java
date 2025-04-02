@@ -19,6 +19,7 @@ public class Ex02SpringDiApplication {
 
 	public static void main(String[] args) {
 		// ApplicationContext 객체 받기
+		// ApplicationContext, Spring Context : 빈을 관리하는 곳.
 		ApplicationContext context = SpringApplication.run(Ex02SpringDiApplication.class, args);
 
 		// 모든 빈 이름 가져오기
