@@ -44,16 +44,33 @@ public class Ex01FirstAppApplication {
 		System.out.println("Hello Springboot!");
 
 		//스프링 컨테이너에 등록된 빈(객체)를 사용해 보자.
-		ApplicationContext context =
-				new AnnotationConfigApplicationContext(MyConfig.class);
-		Student obj = (Student) context.getBean("student");
-		System.out.println( obj.name );
+//		ApplicationContext context =
+//				new AnnotationConfigApplicationContext(MyConfig.class);
+//		Student obj = (Student) context.getBean("student");
+//		System.out.println( obj.name );
+//
+//		//스프링 컨테이너에 등록된 빈 목록을 출력해보자.
+//		String[] beanDefinionNames = context.getBeanDefinitionNames();
+//		System.out.println(Arrays.toString(beanDefinionNames));
+//
+//		SpringApplication.run(Ex01FirstAppApplication.class, args);
 
-		//스프링 컨테이너에 등록된 빈 목록을 출력해보자.
-		String[] beanDefinionNames = context.getBeanDefinitionNames();
-		System.out.println(Arrays.toString(beanDefinionNames));
+		// ApplicationContext 객체 받기
+		ApplicationContext context = SpringApplication.run(Ex01FirstAppApplication.class, args);
 
-		SpringApplication.run(Ex01FirstAppApplication.class, args);
+		// 모든 빈 이름 가져오기
+		String[] beanNames = context.getBeanDefinitionNames();
+
+		// 정렬 후 출력
+		Arrays.sort(beanNames);
+		System.out.println("등록된 빈 목록:");
+		for (String beanName : beanNames) {
+			System.out.println(beanName);
+		}
+
+		// Member 빈 확인
+		Student student = context.getBean(Student.class);
+		System.out.println("Student name: " + student.name);
 	}
 
 }
