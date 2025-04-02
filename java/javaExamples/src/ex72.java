@@ -68,6 +68,7 @@ public class ex72 {
             //"cde"
             //"de"
             //"e"
+            //""
             reverseWord(str.substring(1));
             //첫글자만 출력함.
             System.out.print(str.charAt(0));
