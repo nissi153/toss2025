@@ -18,10 +18,22 @@ public class Ex02SpringDiApplication {
 	//  3) 생성자(constructor) 주입 : 추천하는 방법
 
 	public static void main(String[] args) {
+		// ApplicationContext 객체 받기
+		ApplicationContext context = SpringApplication.run(Ex02SpringDiApplication.class, args);
 
+		// 모든 빈 이름 가져오기
+		String[] beanNames = context.getBeanDefinitionNames();
 
+		// 정렬 후 출력
+		Arrays.sort(beanNames);
+		System.out.println("등록된 빈 목록:");
+		for (String beanName : beanNames) {
+			System.out.println(beanName);
+		}
 
-		SpringApplication.run(Ex02SpringDiApplication.class, args);
+		// Member 빈 확인
+		Member member = context.getBean(Member.class);
+		System.out.println("Member name: " + member.getName());
 	}
 
 }
