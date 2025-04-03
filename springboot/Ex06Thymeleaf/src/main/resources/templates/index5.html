@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>타임리프 index5.html</title>
+</head>
+<body>
+<h2>클래스 객체와 객체 리스트 출력</h2>
+<p th:text="${ member.username }"></p>
+<p th:text="${ member.password }"></p>
+
+th:object : 객체를 선택한다.<br>
+*{ 변수 } : 선택한 객체의 필드에 접근<br>
+<th:block th:object="${ member }">
+    <p th:text="*{ username }"></p>
+    <p th:text="*{ password }"></p>
+</th:block>
+
+객체 리스트 출력<br>
+<table border="1">
+    <tr th:each="member, status : ${ list }">
+        <td><span th:text="${ status.count }"></span></td>
+        <td><span th:text="${ member.username }"></span></td>
+        <td><span th:text="${ member.password }"></span></td>
+    </tr>
+</table>
+
+<br>
+status.index : 현재 반복 인덱스 (0부터 시작합니다.)<br>
+status.count : 현재 반복 인덱스 (1부터 시작합니다.)<br>
+status.size : 총 요소 수<br>
+status.current : 현재 요소, (0부터 시작합니다.)<br>
+status.even : 현재 반복이 짝수인지 여부 (boolean값)<br>
+status.odd : 현재 반복이 홀수인지 여부 (boolean값)<br>
+status.first : 현재 반복이 첫번째인지 여부 (boolean값)<br>
+status.last : 현재 반복이 마지막인지 여부 (boolean값)<br>
+
+
+</body>
+</html>

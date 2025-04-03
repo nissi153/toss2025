@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         version="3.0"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <!--  WEB-INF/web.xml-->
+    <!-- 서블릿 클래스 등록 -->
+    <servlet>
+        <servlet-name>exampleServlet</servlet-name>
+        <servlet-class>ExampleServlet</servlet-class>
+    </servlet>
+
+    <!-- 서블릿 URL 매핑 -->
+    <servlet-mapping>
+        <servlet-name>exampleServlet</servlet-name>
+        <url-pattern>/example</url-pattern>
+    </servlet-mapping>
+
+</web-app>

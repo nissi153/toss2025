@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>타임리프 index2.html</title>
+</head>
+<body>
+  <h2>타임리프의 널 체크</h2>
+
+  <!-- 조건적인 렌더링 -->
+  th:if <br>
+  <!-- th:block : 자체적인 로직을 위한 블럭 -->
+  <th:block th:if="${ address_null == null }">
+    <p>address_null은 null입니다.</p>
+  </th:block>
+
+  th:unless <br>
+  <th:block th:unless="${ address_null == null }">
+      <p>address_null은 null이 아닙니다.</p>
+  </th:block>
+
+    삼항연산자 ?: 널이면 대체문구로 대입되고, 널이 아니면 원래값으로 출력 <br>
+    <p th:text=" ${ address_null } ?: 'address_null은 null입니다.' ">삼항연산자</p>
+
+
+  defaultString함수 <br>
+  <p th:text="${ #strings.defaultString(address_null, 'address_null은 null입니다.') }">
+      defaultString함수 결과
+  </p>
+
+  isEmpty 함수<br>
+  <!-- th:if가 true일때 th:text가 실행되어 innerText가 변경된다.  -->
+  <p th:if="${ #strings.isEmpty(address_empty) }" th:text="|address_empy은 empty입니다.|">
+      isEmpty함수 결과
+  </p>
+
+  <p th:if="${not #strings.isEmpty(address)}"
+     th:text="|address은 emtpy가 아닙니다.|">
+      not isEmpty함수 결과
+  </p>
+
+</body>
+</html>
+
+
+
+
+
+
+

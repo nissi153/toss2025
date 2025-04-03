@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>타임리프 index4.html</title>
+</head>
+<body>
+<h2>타임리프 조건적인 출력</h2>
+<!--  if( 조건식 ) -->
+<p th:if="${ role } == 'admin'" th:text="|사용자는 관리자입니다.|"></p>
+<!--  if( ! 조건식 ) -->
+<p th:unless="${ role } == 'admin'" th:text="|사용자는 관리자가 아님.|"></p>
+
+<!-- th:block에서 조건적 처리  -->
+<th:block th:if="${ role } == 'admin'">
+  <a href="/admin-main">관리자페이지 링크</a>
+</th:block>
+<th:block th:unless="${ role } == 'admin'">
+  사용자는 관리자가 아닙니다.
+</th:block>
+
+<!-- th:switch에서 조건적 처리 -->
+<div th:switch="${ role }">
+  <p th:case="'admin'">사용자는 관리자입니다.</p>
+  <p th:case="'guest'">사용자는 손님입니다.</p>
+  <p th:case="*">사용자는 그외 권한입니다.</p>
+</div>
+
+</body>
+</html>
