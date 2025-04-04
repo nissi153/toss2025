@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postForm.html</title>
+</head>
+<body>
+    <!-- 페이지 이동 방법   -->
+    <!-- redirect : 내부데이터(model,request,response) 버리고 이동   -->
+    <!--          : a태그, js-location.href이동, form태그  -->
+    <!-- forward(dispatch) : 내부데이터를 가지고 이동   -->
+
+    <!-- http://localhost:8080/model2 -->
+    <form action="/model2" method="post">
+        <label>이름</label>
+        <input type="text" name="name" value=""><br>
+        <label>나이</label>
+        <input type="text" name="age" value="">
+        <input type="submit">
+    </form>
+</body>
+</html>
