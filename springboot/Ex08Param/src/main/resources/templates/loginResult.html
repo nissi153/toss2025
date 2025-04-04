@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 결과 화면</title>
+</head>
+<body>
+
+<h2>로그인 결과 화면</h2>
+<h2 th:text="|당신의 아이디는 ${ username } 입니다.|">username 값</h2>
+<h2 th:text="|당신의 암호는 ${ password } 입니다.|">password 값</h2>
+
+</body>
+</html>
