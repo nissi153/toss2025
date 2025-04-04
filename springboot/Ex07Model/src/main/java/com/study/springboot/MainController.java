@@ -5,7 +5,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 //Java코드에서 UI템플릿(타임리프,JSP,머스테치)으로 데이타 전달
@@ -41,7 +43,26 @@ public class MainController {  //HttpServlet클래스를 상속받아서, 서블
 
         return "index";
     }
-
-
+    @GetMapping("/post-form")
+    public String postForm(){
+        return "postForm"; //postForm.html 파일을 반환.
+    }
+    @GetMapping("/model2") //GET localhost:8080/model2?name=변사또&age=40
+    @PostMapping("/model2")
+    public String model2(HttpServletRequest request){
+        String param_name = request.getParameter("name"); //Input태그 name속성의 값
+        String param_age = request.getParameter("age");
+        request.setAttribute("name", param_name);
+        request.setAttribute("age", param_age);
+        return "index";
+    }
+    //ModelAndView : 모델(데이터)와 View(HTML)을 동시에 저장하는 객체
+    @RequestMapping("/model3") //localhost:8080/model3
+    public ModelAndView model3(ModelAndView mv){
+        mv.addObject("name", "춘향이");
+        mv.addObject("age", "18");
+        mv.setViewName("index");
+        return mv;
+    }
 
 }
