@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    <form action="#" method="post">
+        <input type="text" name="username" value="" /> <br>
+        <input type="password" name="password" value="" /> <br>
+        <button type="button" onclick="onLogin()">로그인</button>
+    </form>
+
+    <p id="result_status">응답상태:</p>
+    <p id="result_message">메시지:</p>
+
+    <script>
+        function onLogin(){
+            let inputID = document.getElementsByName("username");
+            let inputPW = document.getElementsByName("password");
+            if (!inputID[0].value){ //널체크
+                alert('아이디를 입력하세요.');
+                return;
+            }
+            //fetch() : JS6에서 서버에 AJAX통신하는 함수
+            fetch("http://localhost:8080/api/v1/login",{
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ //객체를 문자열로 만듦.
+                    username: inputID[0].value,
+                    password: inputPW[0].value
+                })
+            })
+            .then((response) => { //HTTP 응답객체
+                console.log(response);
+                return response.json();
+            })
+            .then((json) =>  { //JSON객체
+                //{ status: "ok", message: "로그인되었습니다." }
+                console.log(json);
+                //응답메시지 표시하기
+                document.getElementById("result_status").innerText
+                     = json.status;
+                document.getElementById("result_message").innerText
+                     = json.message;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+        }
+    </script>
+</body>
+</html>
