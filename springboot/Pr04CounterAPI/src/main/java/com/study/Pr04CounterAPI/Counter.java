@@ -6,5 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 public class Counter {
-    private int count;
+    //{ count : 1 }
+    private int count = 0;
 }

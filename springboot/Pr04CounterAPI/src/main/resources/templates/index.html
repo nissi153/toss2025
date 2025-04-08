@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>카운터</title>
+  </head>
+  <body>
+    <h3 id="count" th:text="|카운트 : ${ count }|">카운트 : 0</h3>
+    <button type="button" onclick="plus()">더하기</button>
+    <button type="button" onclick="minus()">빼기</button>
+
+    <script>
+      function plus() {
+        fetch("http://localhost:8080/api/v1/plus") // 요청할 URL
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("네트워크 응답에 문제가 있습니다");
+            }
+            return res.json(); // JSON 형식으로 변환
+          })
+          .then((json) => {
+            console.log(json); // 가져온 데이터 출력
+          })
+          .catch((error) => {
+            console.error("데이터를 가져오는 중 오류 발생:", error);
+          });
+      }
+      function minus() {
+        window.location.href = "/minus";
+      }
+    </script>
+  </body>
+</html>

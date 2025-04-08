@@ -1,8 +1,7 @@
 package com.study.Pr04CounterAPI;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController //@Controller + @ResponseBody
 @RequestMapping("/api/v1")
@@ -11,6 +10,22 @@ public class ApiController {
     //{ count : 1 }
     @GetMapping("/")  //localhost:8080/api/v1/
     public String main(){
-        return "Api Server OK.";
+        return "Api Server OK";
     }
+
+    @Autowired
+    private Counter counter;
+
+    @GetMapping("/plus")
+    public @ResponseBody Counter plus(){
+        counter.setCount(counter.getCount() + 1 );
+        return counter;
+        // "{ count : 1 }"
+    }
+    @GetMapping("/minus")
+    public @ResponseBody Counter minus(){
+        counter.setCount(counter.getCount() - 1);
+        return counter;
+    }
+
 }
