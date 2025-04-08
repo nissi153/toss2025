@@ -11,7 +11,13 @@
 
     <script>
       function plus() {
-        fetch("http://localhost:8080/api/v1/plus") // 요청할 URL
+        getCount("plus");
+      }
+      function minus() {
+        getCount("minus");
+      }
+      function getCount(opType) {
+        fetch("http://localhost:8080/api/v1/" + opType) // 요청할 URL
           .then((res) => {
             if (!res.ok) {
               throw new Error("네트워크 응답에 문제가 있습니다");
@@ -20,13 +26,12 @@
           })
           .then((json) => {
             console.log(json); // 가져온 데이터 출력
+            let countText = document.getElementById("count");
+            countText.innerText = "카운트 : " + json.count;
           })
           .catch((error) => {
             console.error("데이터를 가져오는 중 오류 발생:", error);
           });
-      }
-      function minus() {
-        window.location.href = "/minus";
       }
     </script>
   </body>
