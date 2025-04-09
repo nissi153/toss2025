@@ -143,6 +143,21 @@
 
         submit_form();
       };
+      sub.onclick = function () {
+        let calcType = document.getElementById("calType");
+        calcType.value = "sub";
+        submit_form();
+      };
+      mul.onclick = function () {
+        let calcType = document.getElementById("calType");
+        calcType.value = "mul";
+        submit_form();
+      };
+      div.onclick = function () {
+        let calcType = document.getElementById("calType");
+        calcType.value = "div";
+        submit_form();
+      };
 
       function submit_form() {
         let form = document.formCalc;

@@ -21,10 +21,20 @@ public class HtmlController {
                 ", calType = " + calType);
 
         int result = 0;
+        int num1 = Integer.parseInt(number1);
+        int num2 = Integer.parseInt(number2);
+
         if( calType.equals("add") ) {
-            int num1 = Integer.parseInt(number1);
-            int num2 = Integer.parseInt(number2);
             result = num1 + num2;
+        }
+        if( calType.equals("sub") ) {
+            result = num1 - num2;
+        }
+        if( calType.equals("mul") ) {
+            result = num1 * num2;
+        }
+        if( calType.equals("div") ) {
+            result = num1 / num2;
         }
 
         model.addAttribute("num1", number1);
