@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>계산기</title>
+    <style>
+      #wrap {
+        border: 1px solid black;
+        padding: 0;
+        /* 가로중앙 정렬 */
+        margin: 0 auto;
+        width: 300px;
+        height: 500px;
+        /* flexbox : Flexable Grid 사용 - 컨테이너에 적용 */
+        display: flex;
+        /* 콘텐츠가 넘치면 줄바꿈한다. */
+        flex-wrap: wrap;
+        /* 주축방향 세로로 */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      #res {
+        display: flex;
+      }
+      #num1,
+      #num2 {
+        background-color: rgb(216, 213, 213);
+        margin-bottom: 18px;
+        margin-left: 20px;
+        width: 150px;
+        height: 25px;
+        text-align: center;
+        border: 1px solid rgb(112, 112, 112);
+      }
+      #result {
+        background-color: rgb(112, 112, 112);
+        color: white;
+        margin-bottom: 18px;
+        margin-left: 5px;
+        width: 150px;
+        height: 25px;
+        text-align: center;
+        border: 1px solid rgb(112, 112, 112);
+      }
+      #add,
+      #mul,
+      #sub,
+      #div {
+        width: 220px;
+        height: 30px;
+        background-color: rgb(40, 108, 209);
+        /* 검은색 테두리 제거 */
+        border: 0px;
+        color: white;
+        margin-bottom: 5px;
+      }
+      #del {
+        width: 220px;
+        height: 30px;
+        background-color: rgb(241, 50, 50);
+        border: 0px;
+        color: white;
+      }
+      #btn-group {
+        display: flex;
+        flex-flow: column wrap;
+        justify-items: center;
+        gap: 15px;
+      }
+    </style>
+    <script></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div>
+        <p>계산기</p>
+      </div>
+      <!--  get : getParameter() -->
+      <!--  post : body string -->
+      <form name="formCalc" action="/calc" method="get">
+        <div>
+          <label>숫자 1</label>
+          <input
+            type="text"
+            id="num1"
+            name="num1"
+            th:value="${num1}"
+            value="0"
+          /><br />
+        </div>
+        <div>
+          <label>숫자 2</label>
+          <input
+            type="text"
+            id="num2"
+            name="num2"
+            th:value="${num2}"
+            value="0"
+          /><br />
+        </div>
+        <!--  서버에 보낼 데이타이므로 사용자에게 감춘다.  -->
+        <input type="hidden" id="calType" name="calType" value="" />
+        <div id="res">
+          <label>연산 결과</label>
+          <input
+            type="text"
+            disabled="disbled"
+            id="result"
+            th:value="${ result }"
+            value=""
+          />
+        </div>
+        <br />
+        <div id="btn-group">
+          <button type="button" id="add">덧셈</button>
+          <button type="button" id="sub">뺄셈</button>
+          <button type="button" id="mul">곱셈</button>
+          <button type="button" id="div">나눗셈</button>
+          <button type="button" id="del">지우기</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      let num1 = document.getElementById("num1");
+      let num2 = document.getElementById("num2");
+      let result = document.getElementById("result");
+      let add = document.getElementById("add");
+      let sub = document.getElementById("sub");
+      let mul = document.getElementById("mul");
+      let div = document.getElementById("div");
+      let del = document.getElementById("del");
+
+      del.onclick = function () {
+        num1.value = "0";
+        num2.value = "0";
+        result.value = "";
+      };
+
+      add.onclick = function () {
+        let calcType = document.getElementById("calType");
+        calcType.value = "add";
+
+        submit_form();
+      };
+
+      function submit_form() {
+        let form = document.formCalc;
+        form.action = "/calc-submit";
+        form.method = "get";
+        form.submit();
+      }
+    </script>
+  </body>
+</html>
