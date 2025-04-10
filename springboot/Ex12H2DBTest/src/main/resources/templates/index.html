@@ -29,13 +29,13 @@
                 </thead>
                 <tbody>
                     <tr th:each="member, status: ${ list }">
-                        <td><span th:text="${stataus.count}"></span></td>
-                        <td><span th:text="|ID : ${member.id}}"></span></td>
-                        <td><span th:text="|아이디 : ${member.userId}}"></span></td>
-                        <td><span th:text="|비번 : ${member.userPw}}"></span></td>
-                        <td><span th:text="|이름 : ${member.userName}}"></span></td>
-                        <td><span th:text="|권한 : ${member.userRole}}"></span></td>
-                        <td><span th:text="|가입일 : ${member.joindate}}"></span></td>
+                        <td><span th:text="${status.count}"></span></td>
+                        <td><span th:text="|ID : ${member.id}"></span></td>
+                        <td><span th:text="|아이디 : ${member.userId}"></span></td>
+                        <td><span th:text="|비번 : ${member.userPw}"></span></td>
+                        <td><span th:text="|이름 : ${member.userName}"></span></td>
+                        <td><span th:text="|권한 : ${member.userRole}"></span></td>
+                        <td><span th:text="|가입일 : ${member.joindate}"></span></td>
                     </tr>
                 </tbody>
             </table>
