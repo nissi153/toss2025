@@ -66,6 +66,25 @@ class MemberRepositoryTest {
             assertEquals("홍길동", unwrapped.getUserName());
         }, () -> fail("member 엔티티가 null입니다.") );
     }
+    @Test
+    @DisplayName("count 테스트")
+    public void count(){
+        Long count = memberRepository.count(); //select count(*) from member
+        assertEquals(3, count);
+    }
+    @Test
+    @DisplayName("쿼리 테스트")
+    public void query() {
+        //JPA 쿼리함수 패턴 : find + By + 필드이름 + And + 필드이름
+        List<MemberEntity> list =
+                memberRepository.findAll();
+        assertEquals(3, list.size());
 
-
+        List<MemberEntity> list2 =
+                //사용자 정의 쿼리 함수
+                memberRepository.findFirst5ByUserIdAndUserNameOrderByIdDesc(
+                        "hong", "홍길동"
+                );
+        assertEquals(1, list2.size());
+    }
 }
