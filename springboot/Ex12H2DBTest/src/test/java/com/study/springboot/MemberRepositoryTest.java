@@ -76,15 +76,34 @@ class MemberRepositoryTest {
     @DisplayName("쿼리 테스트")
     public void query() {
         //JPA 쿼리함수 패턴 : find + By + 필드이름 + And + 필드이름
-        List<MemberEntity> list =
-                memberRepository.findAll();
-        assertEquals(3, list.size());
+//        List<MemberEntity> list =
+//                memberRepository.findAll();
+//        assertEquals(3, list.size());
 
-        List<MemberEntity> list2 =
-                //사용자 정의 쿼리 함수
+//        List<MemberEntity> list2 =
+//                //사용자 정의 쿼리 함수
+//                memberRepository.findByUserId("hong");
+//        assertEquals(1, list2.size());
+
+        List<MemberEntity> list3 =
                 memberRepository.findFirst5ByUserIdAndUserNameOrderByIdDesc(
                         "hong", "홍길동"
                 );
-        assertEquals(1, list2.size());
+        assertEquals(1, list3.size());
+
+        Boolean isExist =
+                memberRepository.existsByJoindateLessThanEqual( LocalDate.now() );
+        System.out.println("isExist = " + isExist);
+
+        long count = memberRepository.countByUserNameIgnoreCaseLike("%길%");
+        System.out.println("count = " + count);
     }
+    @Test
+    @DisplayName("JPQL 테스트")
+    public void jpqlQuery(){
+        List<MemberEntity> list =
+                memberRepository.findByUserId_JPQL("hong");
+        assertEquals(1, list.size());
+    }
+
 }
