@@ -11,6 +11,14 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+//JPA 함수 정리
+//1. 쿼리(Select)
+//  - 간단한 쿼리 JPA기본함수,사용자정의함수
+//  - JPQL, NativeQuery
+//  - MyBatis(SQL을 XML기반으로 사용하는 템플릿 라이브러리)
+//2. DML(Update, Insert, Delete)문
+//  - JPA 기본함수(save() : update, insert 와 delete())
+
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     //JpaRepository의 기본함수
