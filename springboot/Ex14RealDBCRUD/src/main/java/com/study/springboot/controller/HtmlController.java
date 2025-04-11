@@ -81,5 +81,22 @@ public class HtmlController {
 
         return "<script>alert('회원정보수정성공');location.href='/';</script>";
     }
+    @GetMapping("/deleteMember")
+    @ResponseBody
+    public String deleteMember(@RequestParam("id") Long id){
+        Optional<MemberEntity> optional = memberRepository.findById(id);
+        if(!optional.isPresent()){
+            return "<script>alert('회원정보삭제실패');history.back();</script>";
+        }
+        MemberEntity entity = optional.get(); //unwrapping한다.
+        try{
+            memberRepository.delete(entity);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원정보삭제실패');history.back();</script>";
+        }
 
+        return "<script>alert('회원정보삭제성공');location.href='/';</script>";
+    }
 }
