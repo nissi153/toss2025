@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원목록 조회</title>
+</head>
+<body>
+<h2>회원 목록</h2>
+<table border="1">
+    <tr th:each="member, status : ${ list } ">
+        <td><span th:text="${status.count}"></span></td>
+        <td><span th:text="|id : ${member.id}|"></span></td>
+        <td><span th:text="|아이디 : ${member.userId}|"></span></td>
+        <td><span th:text="|비번 : ${member.userPw}|"></span></td>
+        <td><span th:text="|이름 : ${member.userName}|"></span></td>
+        <td><span th:text="|권한 : ${member.userRole}|"></span></td>
+        <td><span th:text="|가입일 : ${member.joinDate}|"></span></td>
+    </tr>
+</table>
+
+</body>
+</html>
