@@ -33,7 +33,7 @@ public class HtmlController {
 
     @PostMapping("/joinAction")
     public String joinAction(@ModelAttribute MemberSaveDto dto){
-        System.out.println("dto = " + dto.getId());
+        System.out.println("dto = " + dto.getUserId());
         return "index";
     }
 
