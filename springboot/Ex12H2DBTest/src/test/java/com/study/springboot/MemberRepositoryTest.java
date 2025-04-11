@@ -105,5 +105,23 @@ class MemberRepositoryTest {
                 memberRepository.findByUserId_JPQL("hong");
         assertEquals(1, list.size());
     }
+    @Test
+    @DisplayName("Native Query 테스트")
+    public void nativeQuery(){
+        List<MemberEntity> list =
+                memberRepository.findByUserId_Native("admin");
+        assertEquals(1, list.size());
+
+        int count = memberRepository.updateById_Native(1L, "gildong");
+        assertEquals(1, count);
+
+        Optional<MemberEntity> optional = memberRepository.findById(1L);
+        optional.ifPresentOrElse( unwrapped -> {
+            assertEquals("gildong", unwrapped.getUserId());
+        }, () -> {
+            fail("1L 엔티티를 찾지 못했습니다.");
+        } );
+
+    }
 
 }
