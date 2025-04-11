@@ -33,6 +33,7 @@
           <td><span th:text="|${member.userRole}|"></span></td>
           <td><span th:text="|${member.joinDate}|"></span></td>
           <td>
+            <!-- onclick="location.href='viewMember?id=3'" -->
             <button
               type="button"
               th:onclick="|location.href='viewMember?id=${member.id}'|"
@@ -41,6 +42,9 @@
             </button>
           </td>
           <td>
+            <!-- @{}는 Thymeleaf의 URL 표현식으로, 내부적으로 ServletContext의 경로를 고려해 절대 경로를 자동 생성합니다. -->
+            <!-- th:href="@{/path(id=${변수})}" → URL에 파라미터 넣기 -->
+            <!-- onclick="location.href='/deleteMember?id=5'" -->
             <button
               type="button"
               th:onclick="|location.href='@{deleteMember(id=${member.id})}'|"
@@ -51,5 +55,10 @@
         </tr>
       </tbody>
     </table>
+
+    <br /><br />
+    <button type="button" onclick="location.href='/joinForm'">
+      회원가입폼으로 이동
+    </button>
   </body>
 </html>
