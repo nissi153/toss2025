@@ -123,5 +123,45 @@ class MemberRepositoryTest {
         } );
 
     }
+    @Test
+    @DisplayName("문제1")
+    public void ex01() {
+        boolean isExists = memberRepository.existsByUserPw("1234");
+        assertEquals( true, isExists);
+    }
+    @Test
+    @DisplayName("문제2")
+    public void ex02() {
+        LocalDate start = LocalDate.of(2025, 4, 1);
+        LocalDate end = LocalDate.of(2025, 4, 30);
+        boolean isExists = memberRepository.existsByJoindateBetween(start, end);
+        assertEquals( true, isExists);
+    }
+    @Test
+    @DisplayName("문제3")
+    public void ex03(){
+        boolean isExists = memberRepository.existsByUserId("hong");
+        assertEquals(true, isExists);
 
+    }
+    @Test
+    @DisplayName("문제3-2")
+    public void ex03_2(){
+        boolean isExists = memberRepository.existsByUserId("lee");
+        assertEquals(true, isExists);
+    }
+    @Test
+    @DisplayName("문제4")
+    public void ex04(){
+        int count = memberRepository.updateByUserId_Native(
+                "tom", "마이클", "3456");
+        assertEquals(1, count);
+
+        Optional<MemberEntity> optional = memberRepository.findByUserId("tom");
+        optional.ifPresentOrElse( unwrapped -> {
+            assertEquals("마이클", unwrapped.getUserName());
+        }, () -> {
+            fail("UserId(\"tom\") 엔티티를 찾지 못했습니다.");
+        } );
+    }
 }

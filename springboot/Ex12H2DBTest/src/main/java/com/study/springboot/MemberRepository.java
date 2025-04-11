@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
@@ -23,7 +24,8 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     //findBy열이름() : SQL - select 열이름 from 테이블 문으로 실행
     //  예) findById(2L) : select * from member where id=2
     //  예) findByUserId("hong") : select * from where user_id='hong'
-    List<MemberEntity> findByUserId(String userId);
+//    List<MemberEntity> findByUserId(String userId);
+    Optional<MemberEntity> findByUserId(String userId);
 
     List<MemberEntity> findFirst5ByUserIdAndUserNameOrderByIdDesc(
             String userid, String username
@@ -59,9 +61,17 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     //연습문제
     // JPA 메소드 쿼리
     //1. member 테이블 안에 암호가 "1234"인 회원이 있는지 테스트 하시오.
+    Boolean existsByUserPw(String userpw);
     //2. 23년도 3월에 가입한 회원의 수가 1인지 테스트하시오.
+    Boolean existsByJoindateBetween(LocalDate start, LocalDate end);
     //3. "lee"라는 아이디로 회원가입하고자 할때, 아이디 중복인지 테스트하시오.
+    Boolean existsByUserId(String userpw);
     // JPQL or NativeQuery
     //4. "tom"이라는 아이디의 회원정보를 수정하고, 잘 수정되었는지 테스트하시오.
     //    톰아저씨 -> 마이클, 암호 -> 3456
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE member SET user_name = :username, user_pw = :userpw" +
+                   " WHERE user_id = :userid", nativeQuery = true )
+    int updateByUserId_Native(@Param("userid") String userid, @Param("username") String username, @Param("userpw") String userpw);
 }
