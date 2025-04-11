@@ -7,12 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,6 +49,37 @@ public class HtmlController {
         System.out.println("회원가입 성공!");
 
         return "<script>alert('회원가입성공!');location.href='/';</script>";
+    }
+
+    //viewMember?id=1
+    @GetMapping("/viewMember")
+    public String viewMember(@RequestParam("id") Long id, Model model){
+        System.out.println("id = " + id);
+
+        Optional<MemberEntity> optional = memberRepository.findById(id);
+        if( !optional.isPresent() ) {
+            return "redirect:/list";
+        }
+
+        optional.ifPresent( (entity)->{
+            model.addAttribute("member", entity.toSaveDto());
+        });
+
+        return "modifyForm";
+    }
+    @PostMapping("/modifyAction")
+    @ResponseBody
+    public String modifyAction(@ModelAttribute MemberSaveDto dto){
+        try{
+            MemberEntity entity = dto.toSaveEntity();
+            memberRepository.save( entity );
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원정보수정실패');history.back();</script>";
+        }
+
+        return "<script>alert('회원정보수정성공');location.href='/';</script>";
     }
 
 }

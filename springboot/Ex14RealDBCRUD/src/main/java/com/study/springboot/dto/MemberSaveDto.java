@@ -33,6 +33,7 @@ public class MemberSaveDto {
         //  1. 매개변수의 순서와 갯수를 지켜야 된다.
         //  2. Setter경우 코드가 길어진다.
         return MemberEntity.builder()
+                .id(id)
                 .userId(userId)
                 .userPw(userPw)
                 .userName(userName)
