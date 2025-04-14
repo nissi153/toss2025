@@ -60,6 +60,21 @@
 		3. 1부터 100사이의 2의 배수이면서 5의 배수인 수만 출력하시오.
 		JSTL/EL로 출력하시오.
 	-->
+	<c:set var="sum" value="0" scope="page" />
+    <c:forEach var="i" begin="0" end="100" step="1">
+        <c:set var="sum" value="${sum + i}" />
+    </c:forEach>
+    <p>결과 : ${sum}</p>
+    <br>
+    <c:forEach var="i" begin="1" end="9" step="1" > <br>
+       7 x ${i} = ${ i*7 }
+    </c:forEach>
+
+    <c:forEach var="i" begin="1" end="100" step="1">
+       <c:if test="${i%2 == 0 && i%5 == 0}" > <br>
+           i : ${i}
+       </c:if>
+   </c:forEach>
 
 </body>
 </html>
