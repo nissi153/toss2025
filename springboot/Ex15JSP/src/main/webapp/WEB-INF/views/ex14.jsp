@@ -64,8 +64,8 @@
     <c:forEach var="i" begin="0" end="100" step="1">
         <c:set var="sum" value="${sum + i}" />
     </c:forEach>
-    <p>결과 : ${sum}</p>
-    <br>
+    <p>결과 : ${sum}</p>    <br>
+
     <c:forEach var="i" begin="1" end="9" step="1" > <br>
        7 x ${i} = ${ i*7 }
     </c:forEach>

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Ex14RealDbCRUDApplication {
+public class Ex16JSPCRUDApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Ex14RealDbCRUDApplication.class, args);
+		SpringApplication.run(Ex16JSPCRUDApplication.class, args);
 	}
 
 }
