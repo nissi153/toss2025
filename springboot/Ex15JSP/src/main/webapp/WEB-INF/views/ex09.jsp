@@ -34,8 +34,31 @@ pageEncoding="UTF-8" %>
       <!-- HTML/CSS -> JS -->
 
       <!-- 스크립트릿 -->
-      <% users.setUserName("임꺽정")  %>
-      <%= 표현식 -->
+      <% users.setUserName("임꺽정");  %>
+      <!-- 표현식 -->
+      <%= users.getUserName() %> <br>
+      <!-- EL -->
+      ${ users.getUserName() } <br>
+
+      <!-- 표현식 : 반복문 -->
+      <%
+         for(int i=0; i<5; i++) {
+      %>
+            i: <%= i %> <br>
+      <%
+         }
+      %>
+
+      <!-- EL : 반복문 -->
+      <!-- EL에서는 스크립트릿 변수를 바로 접근해서 출력할 수 없다.
+      <!-- JSTL을 사용해서 EL을 출력한다. -->
+      <%
+        for(int i=0; i<5; i++){
+      %>
+          i: ${ i } <br>
+      <%
+        }
+      %>
 
   </body>
 </html>
