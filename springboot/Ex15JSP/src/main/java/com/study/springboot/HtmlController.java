@@ -14,6 +14,7 @@ public class HtmlController {
     //url : localhost:8080/ex/02
     @GetMapping("/ex/{no}")
     public String ex(@PathVariable String no, Model model){
+        model.addAttribute("name", "홍길동");
         return "ex" + no; // ex02.jsp 응답
     }
 }
