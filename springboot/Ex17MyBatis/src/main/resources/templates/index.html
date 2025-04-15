@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="member, status : ${ member_list }" align="center">
+            <tr th:each="member, status : ${ list }" align="center">
                 <td><span th:text="${status.count}"></span></td>
                 <td><span th:text="|${member.id}|"></span></td>
                 <td><span th:text="|${member.userId}|"></span></td>
