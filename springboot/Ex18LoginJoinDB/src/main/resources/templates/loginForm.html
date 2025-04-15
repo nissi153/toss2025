@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 화면</title>
+</head>
+<body>
+<h3>로그인 화면</h3>
+
+<!-- 로그인 아이디/암호보호 : post -->
+<!-- HTTPS : SSL 인증서로 암호화 -->
+<form action="/loginAction" method="post">
+  <table border="1" style="width: 300px;">
+    <tr>
+      <td>아이디</td>
+      <td>
+        <input type="text" name="userId" id="userId"
+               placeholder="아이디를 입력하세요."
+               required>
+      </td>
+    </tr>
+    <tr>
+      <td>비밀번호</td>
+      <td>
+        <input type="password" name="userPw" id="userPw"
+               placeholder="비밀번호를 입력하세요."
+               required>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;">
+        <button type="submit">로그인하기</button>
+        <button type="button" onclick="location.href='/joinForm'">
+          회원가입하기
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>
