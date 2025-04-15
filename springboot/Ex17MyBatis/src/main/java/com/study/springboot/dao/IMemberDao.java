@@ -12,4 +12,6 @@ public interface IMemberDao {
     public List<MemberDto> list();
     //select count(*)
     public int count();
+    //insert
+    public int insert(MemberDto dto);
 }

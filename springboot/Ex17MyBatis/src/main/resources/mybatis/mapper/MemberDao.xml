@@ -16,5 +16,9 @@
     <select id="count" resultType="_int">
         SELECT COUNT(*) FROM member
     </select>
+    <insert id="insert" parameterType="com.study.springboot.dto.MemberDto">
+        INSERT INTO member VALUES
+        (0, #{userId}, #{userPw}, #{userName}, #{userRole}, #{joinDate})
+    </insert>
 </mapper>
 

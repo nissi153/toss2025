@@ -39,7 +39,20 @@ public class HtmlController {
     //public String joinAction(@RequestParam String userId){
     public String joinAction(@ModelAttribute MemberDto dto){
         System.out.println("dto = " + dto.getUserId());
-        return "joinAction";
+
+        try {
+            int result = memberDao.insert(dto);
+            System.out.println("result = " + result);
+            if (result != 1) {
+                return "<script>alert('회원가입실패');history.back();</script>";
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원가입실패');history.back();</script>";
+        }
+
+        return "<script>alert('회원가입성공');location.href='/list';</script>";
     }
 
 
