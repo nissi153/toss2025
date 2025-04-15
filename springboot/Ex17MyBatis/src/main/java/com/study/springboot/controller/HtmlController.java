@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -51,9 +52,18 @@ public class HtmlController {
             e.printStackTrace();
             return "<script>alert('회원가입실패');history.back();</script>";
         }
-
         return "<script>alert('회원가입성공');location.href='/list';</script>";
     }
-
+    @GetMapping("/viewMember")
+    public String viewMember(@RequestParam int id, Model model) {
+        Optional<MemberDto> optional = memberDao.findById( id );
+        if( optional.isPresent() ){
+            model.addAttribute( "member", optional.get() );
+        } else {
+            System.out.println("회원정보가 없습니다.");
+            return "redirect:/list";
+        }
+        return "modifyForm";
+    }
 
 }
