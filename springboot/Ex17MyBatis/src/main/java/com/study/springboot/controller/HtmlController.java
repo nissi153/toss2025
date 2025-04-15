@@ -65,5 +65,20 @@ public class HtmlController {
         }
         return "modifyForm";
     }
+    @PostMapping("/modifyAction")
+    @ResponseBody
+    public String modifyAction(@ModelAttribute MemberDto dto){
+        try{
+            int result = memberDao.update( dto );
+            if( result != 1 ){
+                return "<script>alert('회원수정실패');history.back();</script>";
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원수정실패');history.back();</script>";
+        }
+        return "<script>alert('회원수정성공');location.href='/list';</script>";
+    }
 
 }
