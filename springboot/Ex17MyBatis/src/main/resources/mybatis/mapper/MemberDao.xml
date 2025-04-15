@@ -7,8 +7,14 @@
 <mapper namespace="com.study.springboot.dao.IMemberDao">
     <!--  public List<MemberDto> list();  -->
     <!--  SQL문 뒤에 세미콜론은 찍지 않는다.  -->
+    <!--  id는 함수이름이다.   -->
     <select id="list" resultType="com.study.springboot.dto.MemberDto">
         SELECT * FROM member ORDER BY join_date DESC
+    </select>
+    <!-- int : _int   -->
+    <!-- Integer : int   -->
+    <select id="count" resultType="_int">
+        SELECT COUNT(*) FROM member
     </select>
 </mapper>
 

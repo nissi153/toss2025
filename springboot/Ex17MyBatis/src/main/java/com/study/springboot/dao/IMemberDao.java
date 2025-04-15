@@ -8,5 +8,8 @@ import java.util.List;
 // @Mapper : 인터페이스 DAO와 MyBatis XML과 연결하는 용도
 @Mapper
 public interface IMemberDao {
+    //select *
     public List<MemberDto> list();
+    //select count(*)
+    public int count();
 }
