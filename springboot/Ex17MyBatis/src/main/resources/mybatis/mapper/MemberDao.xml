@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.springboot.dao.IMemberDao">
+    <!--  public List<MemberDto> list();  -->
+    <!--  SQL문 뒤에 세미콜론은 찍지 않는다.  -->
+    <select id="list" resultType="com.study.springboot.dto.MemberDto">
+        SELECT * FROM member ORDER BY join_date DESC
+    </select>
+</mapper>
+
