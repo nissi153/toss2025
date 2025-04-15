@@ -16,9 +16,36 @@
     <select id="count" resultType="_int">
         SELECT COUNT(*) FROM member
     </select>
+
+    <!--  param1 : 첫번째 매개변수 예약어  -->
+    <select id="findById" resultType="com.study.springboot.dto.MemberDto">
+        SELECT * FROM member WHERE id=#{ param1 }
+    </select>
+
     <insert id="insert" parameterType="com.study.springboot.dto.MemberDto">
         INSERT INTO member VALUES
         (0, #{userId}, #{userPw}, #{userName}, #{userRole}, #{joinDate})
     </insert>
+    <insert id="insertMap" parameterType="map">
+        INSERT INTO member VALUES
+        (0, #{userId}, #{userPw}, #{userName}, #{userRole}, #{joinDate})
+    </insert>
+    <update id="update" parameterType="com.study.springboot.dto.MemberDto">
+        UPDATE member SET user_id=#{userId}, user_pw=#{userPw},
+          user_name=#{userName}, user_role=#{userRole}, join_date=#{joinDate}
+          WHERE id=#{ id }
+    </update>
+    <delete id="delete">
+        DELETE FROM member WHERE id=#{ param1 }
+    </delete>
+
+    <delete id="deleteParam">
+        DELETE FROM member WHERE id=#{ param1 } and user_id=#{ param2 }
+    </delete>
+
+    <delete id="deleteMap" parameterType="map" >
+        DELETE FROM member WHERE id=#{ id } and user_id=#{ userId }
+    </delete>
+
 </mapper>
 
