@@ -80,5 +80,19 @@ public class HtmlController {
         }
         return "<script>alert('회원수정성공');location.href='/list';</script>";
     }
-
+    @GetMapping("/deleteMember")
+    @ResponseBody
+    public String deleteMember(@RequestParam int id){
+        try{
+            //int result = memberDao.delete( id );
+            int result = memberDao.deleteMap( id, "su" );
+            if( result != 1 ){
+                return "<script>alert('회원삭제실패');history.back();</script>";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원삭제실패');history.back();</script>";
+        }
+        return "<script>alert('회원삭제성공');location.href='/list';</script>";
+    }
 }
