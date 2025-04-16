@@ -13,5 +13,6 @@ public interface MemberRepository
 
     //사용자정의 메소드(JPA함수, JPQL, NativeQuery)
     Optional<MemberEntity> findByUserId(String userId);
-    Optional<MemberEntity> findByUserPw(String userPw);
+    Optional<MemberEntity> findByUserIdAndUserPw(String userId, String userPw);
+
 }

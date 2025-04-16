@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -60,7 +61,7 @@ public class HtmlController {
             return "<script>alert('아이디가 없습니다.'); history.back();</script>";
         }
         Optional<MemberEntity> optional2 =
-                memberRepository.findByUserPw(dto.getUserPw());
+                memberRepository.findByUserIdAndUserPw(dto.getUserId(), dto.getUserPw());
         if( !optional2.isPresent() ) {
             return "<script>alert('암호가 맞지 않습니다.'); history.back();</script>";
         }
@@ -69,13 +70,33 @@ public class HtmlController {
         session.setAttribute("userId", dto.getUserId());
         session.setAttribute("userRole", optional2.get().getUserRole());
 
-        return "<script>alert('로그인 성공'); location.href='/';</script>";
+        String userRole = optional2.get().getUserRole();
+        if( userRole.equals("ROLE_ADMIN") ){
+            return "<script>alert('관리자 로그인 성공'); location.href='/admin';</script>";
+        }else{
+            return "<script>alert('로그인 성공'); location.href='/';</script>";
+        }
     }
-
     @GetMapping("/logoutAction")
+    @ResponseBody
     public String logoutAction(HttpSession session){
-        session.invalidate();
-        return "index";
+        //로그아웃 액션
+        session.setAttribute("isLogin", null);
+        session.setAttribute("userId", null);
+        session.setAttribute("userRole", null);
+
+        session.invalidate(); //세션종료(JSESSIONID 값을 삭제)
+
+        return "<script>alert('로그아웃되었습니다.'); location.href='/';</script>";
+    }
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        List<MemberEntity> list =
+                memberRepository.findAll();
+        model.addAttribute("list", list);
+        model.addAttribute("listcount", list.size());
+
+        return "admin";
     }
 
 }

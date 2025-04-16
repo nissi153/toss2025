@@ -35,8 +35,8 @@ public class MemberJoinDto {
     private String userName;
 
     @NotBlank(message = "null, 빈문자열, 스페이스문자열만 넣을 수 없습니다.")
-    @Pattern(regexp = "^(USER_ROLE|ADMIN_ROLE)$",
-            message = "USER_ROLE 또는 ADMIN_ROLE만 입력 가능합니다.")
+    @Pattern(regexp = "^(ROLE_USER|ROLE_ADMIN)$",
+            message = "ROLE_USER 또는 ROLE_ADMIN만 입력 가능합니다.")
     private String userRole;
     private String userAddress; //입력폼에는 있고, Member테이블에 없는 정보.
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
