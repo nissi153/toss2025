@@ -1,7 +1,9 @@
 package com.study.springboot.entity;
 
+import com.study.springboot.dto.MemberJoinDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,6 +16,7 @@ import java.time.LocalDate;
 //@Setter는 update커스텀 메소드로 만든다.
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +34,14 @@ public class MemberEntity {
     private LocalDate joinDate;
 
     public MemberJoinDto toSaveDto(){
-        
+        return MemberJoinDto.builder()
+                .id(id)
+                .userId(userId)
+                .userPw(userPw)
+                .userName(userName)
+                .userRole(userRole)
+                .joinDate(joinDate)
+                .build();
     }
 }
 
