@@ -1,0 +1,8 @@
+/* myglobal.css */
+* {
+    /* 초기화 코드 */
+    margin: 0 auto;
+    padding: 0;
+
+    border: 1px solid black;
+}
