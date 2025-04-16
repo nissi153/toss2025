@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: local
+
+logging:
+  level:
+    com:
+      study:
+        ExLogger: debug
+  pattern:
+    file: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+    level:
+
+  file:
+    name: logs/mylog.log
+
+  logback:
+    max-history: 30
+    file-name-pattern: "logs/mylog.%d{yyyy-MM-dd}.%i"
