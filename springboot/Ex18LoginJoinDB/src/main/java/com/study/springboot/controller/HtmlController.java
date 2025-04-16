@@ -1,5 +1,6 @@
 package com.study.springboot.controller;
 
+import com.study.springboot.dto.MemberJoinDto;
 import com.study.springboot.dto.MemberLoginDto;
 import com.study.springboot.entity.MemberEntity;
 import com.study.springboot.entity.MemberRepository;
@@ -9,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -98,5 +96,76 @@ public class HtmlController {
 
         return "admin";
     }
+    @GetMapping("/joinForm")
+    public String joinForm(){
+        return "joinForm";
+    }
+    @PostMapping("/joinAction")
+    @ResponseBody
+    public String joinAction(@Valid @ModelAttribute MemberJoinDto dto,
+                             BindingResult bindingResult){
+        if( bindingResult.hasErrors() ){
+            String detail = bindingResult.getFieldError().getDefaultMessage();
+            String bindResultCode = bindingResult.getFieldError().getCode();
+            return "<script>alert('"+ detail +"'); history.back();</script>";
+        }
+        System.out.println("userId = " + dto.getUserId());
+        try{
+            MemberEntity entity = dto.toSaveEntity();
+            MemberEntity newEntity = memberRepository.save(entity);
+        }catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원가입 실패'); history.back();</script>";
+        }
+
+        return "<script>alert('회원가입 성공'); location.href='/';</script>";
+    }
+    @GetMapping("/viewMember")
+    public String viewMember(@RequestParam int id, Model model){
+        Optional<MemberEntity> optional =
+            memberRepository.findById( (long) id );
+        if( !optional.isPresent() ){
+            return "redirect:/admin"; //관리자 메인화면
+        }
+        optional.ifPresent( (entity) -> {
+            model.addAttribute("member", entity.toSaveDto());
+        });
+        return "modifyForm";
+    }
+    @GetMapping("/modifyForm")
+    public String modifyForm(){
+        return "modifyForm";
+    }
+    @PostMapping("/modifyAction")
+    @ResponseBody
+    public String modifyAction(@ModelAttribute MemberJoinDto dto){
+        try {
+            MemberEntity entity = dto.toUpdateEntity();
+            memberRepository.save( entity );
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원수정 실패'); history.back();</script>";
+        }
+        return "<script>alert('회원수정 성공'); location.href='/admin';</script>";
+    }
+    @GetMapping("/deleteMember")
+    @ResponseBody
+    public String deleteMember(@RequestParam int id){
+        Optional<MemberEntity> optional =
+                memberRepository.findById((long)id);
+        if(!optional.isPresent()){
+            return "<script>alert('회원삭제 실패'); history.back();</script>";
+        }
+        MemberEntity entity = optional.get();
+        try{
+            memberRepository.delete( entity );
+        }catch (Exception e){
+            e.printStackTrace();
+            return "<script>alert('회원삭제 실패'); history.back();</script>";
+        }
+        return "<script>alert('회원삭제 성공'); location.href='/admin';</script>";
+    }
+
 
 }
