@@ -17,6 +17,8 @@ public class HtmlController {
     }
     @PostMapping("/loginAction")
     public String loginAction(){
+        //DB에 member테이블에 userId, userPw를 가진 행을 찾는다.
+        //session에 로그인 처리한다.
         return "index";
     }
 
