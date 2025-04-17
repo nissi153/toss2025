@@ -15,6 +15,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.entry;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -37,5 +44,59 @@ public class AssertJTest {
         Assertions.assertThat("".isEmpty()).isTrue();
         Assertions.assertThat(user.getName().isEmpty()).isFalse();
         Assertions.assertThat(user.getNickname().isEmpty()).isTrue();
+    }
+    @Test
+    @DisplayName("list 테스트")
+    void test2(){
+        //given
+        //when
+        List<String> list = Arrays.asList("1", "2", "3");
+        //then
+        Assertions.assertThat(list).contains("1");
+        Assertions.assertThat(list).isNotEmpty();
+        Assertions.assertThat(list).startsWith("1");
+        Assertions.assertThat(list)
+                .isNotEmpty()
+                .contains("1")
+                .doesNotContainNull()
+                .containsSequence("2", "3"); //"2" 다음은 "3" 인가?
+    }
+    @Test
+    @DisplayName("객체 비교 테스트")
+    void test3(){
+        //given when
+        User user1 = new User("hong", "도둑", "test@mail.com");
+        User user2 = new User("hong", "도둑2", "test@mail.com");
+        //then
+        //객체 주소 비교(얇은 비교)
+        Assertions.assertThat(user1).isEqualTo(user2);
+        //객체 내용 비교(깊은 비교)
+        Assertions.assertThat(user1).usingRecursiveComparison().isEqualTo(user2);
+    }
+    @Test
+    @DisplayName("맵 테스트")
+    void test4(){
+        //given when
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "hong");
+        //then
+        Assertions.assertThat(map)
+                .isNotEmpty()
+                .containsKeys("name")
+                .doesNotContainKeys("age")
+                .contains(entry("name", "hong"));
+    }
+    @Test
+    @DisplayName("예외테스트")
+    void test5(){
+        //given
+        String input = "abc";
+        //input.charAt( 3 );
+        //when then
+        //"java.lang.StringIndexOutOfBoundsException: String index out of range: 3"
+        Assertions.assertThatThrownBy( ()->{ input.charAt( 3 ); } )
+                .isInstanceOf(StringIndexOutOfBoundsException.class)
+                .hasMessageContaining("String index out of range")
+                .hasMessageContaining(String.valueOf( 3 ));
     }
 }
