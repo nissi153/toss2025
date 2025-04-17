@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MemberDto {
     private String loginId;
     private String loginPw;
