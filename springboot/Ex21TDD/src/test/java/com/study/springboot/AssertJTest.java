@@ -11,6 +11,7 @@ package com.study.springboot;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.entry;
+import static org.assertj.core.api.Assertions.offset;
 
 @Getter
 @Setter
@@ -98,5 +100,47 @@ public class AssertJTest {
                 .isInstanceOf(StringIndexOutOfBoundsException.class)
                 .hasMessageContaining("String index out of range")
                 .hasMessageContaining(String.valueOf( 3 ));
+    }
+    @Test
+    @DisplayName("문자열 테스트")
+    void test6(){
+        //given when
+        String msg = "Hello, world! Nice to meet you.";
+        //then
+        Assertions.assertThat(msg)
+                .isNotEmpty()
+                .contains("Nice")
+                .contains("world")
+                .doesNotContain("zzz")
+                .startsWith("Hello")
+                .endsWith("u.")
+                .isEqualTo("Hello, world! Nice to meet you.");
+    }
+    @Test
+    @DisplayName("숫자 테스트")
+    void test7(){
+        //given when then
+        Assertions.assertThat(3.14d)
+                .isPositive()
+                .isGreaterThan(3)
+                .isLessThan(4)
+                .isEqualTo(3, offset(1d)) //일의 자릿수까지 비교
+                .isEqualTo(3.1, offset(0.1d)) //소숫점 첫째자리까지 비교
+                .isEqualTo(3.14);
+    }
+    @Test
+    @DisplayName("SoftAssertions 사용하기")
+    void test8(){
+        //given when
+        User user = new User("hong", "thief", "bank@mail.com");
+        //then
+        //SoftAssertions : 동시에 여러 테스트를 진행하고, 중간에 에러가 나도
+        //  모든 검사를 수행한 후에 결과를 보여줌.
+        SoftAssertions soft = new SoftAssertions();
+        soft.assertThat(user).isNotNull();
+        soft.assertThat(user.getName()).isEqualTo("hong");
+        soft.assertThat(user.getNickname()).isEqualTo("");
+        soft.assertThat(user.getEmail()).isEqualTo("bank@mail.com");
+        soft.assertAll();
     }
 }
