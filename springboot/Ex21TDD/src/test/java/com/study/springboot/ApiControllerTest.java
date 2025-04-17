@@ -60,6 +60,7 @@ class ApiControllerTest {
         //Jackson 라이브러리가 Springboot의 공식 라이브러리이다.
         //@ModelAttribute, @RequestBody, @ResponseBody
         //*기본생성자가 없으면 오류!
+        //com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot construct instance of ...
         String jsonString2 = new ObjectMapper().writeValueAsString( dto );
 
         mockMvc.perform(post("/api/v1/loginAction")
