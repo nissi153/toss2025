@@ -13,7 +13,7 @@
   </li>
   <li>
     <span th:text="${file.fileName}"></span>
-    <a href="#" th:href="${'/download?uuid='+file.uuid+'&fileName='+file.fileName}">[download]</a>
+    <a th:href="@{'/upload/' + ${file.uuid} + '_' + ${file.fileName}}">[download]</a>
   </li>
 </ul>
 
