@@ -22,18 +22,19 @@ public class Scheduler {
 //        //log.info("FixedRate task1 - {}", System.currentTimeMillis()/1000);
 //        log.info("FixedRate task1 - {}", LocalTime.now());
 //    }
+//    @Scheduled(fixedRate = 1000, initialDelay = 5000)
+//    public void task2() throws InterruptedException {
+//        log.info("FixedRate task2 - {}", LocalTime.now());
+//        Thread.sleep( 5000 ); //5초동안 멈춤.
+//        log.info("dead!");
+//    }
+    static int threadId = 0;
+//    @Async
     @Scheduled(fixedRate = 1000)
-    public void task2() throws InterruptedException {
-        log.info("FixedRate task2 - {}", LocalTime.now());
-        Thread.sleep( 5000 ); //5초동안 멈춤.
-        log.info("dead!");
-    }
-    @Async
-    @Scheduled(fixedRate = 1000, initialDelay = 5000)
     public void task3() throws InterruptedException{
-        log.info("FixedRate task3 - {}", LocalTime.now());
-        Thread.sleep( 5000 ); //5초동안 멈춤.
-        log.info("dead!");
+        log.info("FixedRate task3 {} - {}", threadId, LocalTime.now());
+        Thread.sleep( 2000 ); //2초동안 멈춤.
+        log.info("dead! {}", threadId++);
     }
 
 }
