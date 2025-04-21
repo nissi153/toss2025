@@ -1,10 +1,13 @@
 package com.study.springboot;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -52,6 +55,19 @@ public class Scheduler {
         String strDate = sdf.format( now );
         log.info("cron task - {}", strDate);
     }
+    @Autowired
+    RestTemplate restTemplate;
+    @Scheduled(fixedRate = 5000)
+    public void task5(){
+        log.info("task5 - {}", LocalTime.now());
+
+        String url = "http://localhost:8080/api/batch-job";
+        ResponseEntity response =
+                restTemplate.getForEntity(url, String.class);
+        log.info((String) response.getBody());
+
+    }
+
 }
 
 
