@@ -38,7 +38,9 @@
           <td th:text="${ status.count }">1</td>
           <td th:text="${ dto.boardName }">홍길동</td>
           <td>
-            <a th:href="|/board/contentForm?boardIdx=${dto.boardIdx}|"
+            <a
+              th:href="|/board/contentForm?boardIdx=${dto.boardIdx}|"
+              th:text="${ dto.boardTitle }"
               >글제목</a
             >
           </td>
@@ -54,5 +56,17 @@
         </tr>
       </tbody>
     </table>
+
+    <script>
+      /* 웹브라우저 back키 누를때, 페이지 재로딩 => 조회수 증가  */
+      window.onpageshow = function (event) {
+        if (
+          event.persisted ||
+          (window.performance && window.performance.navigation.type == 2)
+        ) {
+          document.location.reload();
+        }
+      };
+    </script>
   </body>
 </html>

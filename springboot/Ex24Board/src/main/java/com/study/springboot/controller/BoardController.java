@@ -64,6 +64,17 @@ public class BoardController {
 
         return "contentForm";
     }
+    @PostMapping("/updateAction")
+    @ResponseBody
+    public String updateAction(@ModelAttribute BoardSaveRequestDto dto,
+                               @RequestParam("boardIdx") Long boardIdx){
+        boolean isOk = boardService.update( boardIdx, dto );
+        if( isOk == true ){
+            return "<script>alert('글수정 성공'); location.href='/board/listForm';</script>";
+        }else{
+            return "<script>alert('글수정 실패'); history.back();</script>";
+        }
+    }
 }
 
 
