@@ -3,6 +3,7 @@ package com.study.springboot.service;
 import com.study.springboot.domain.reply.Reply;
 import com.study.springboot.domain.reply.ReplyRepository;
 import com.study.springboot.dto.ReplyResponseDto;
+import com.study.springboot.dto.ReplySaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,15 @@ public class ReplyService {
         Reply entity = replyRepository.findById(replyIdx)
                 .orElseThrow( () -> new IllegalArgumentException("댓글 인덱스 오류입니다. replyIdx:"+replyIdx) );
         replyRepository.delete( entity) ;
+    }
+    @Transactional
+    public Long save(final ReplySaveRequestDto dto){
+        Reply entity = replyRepository.save( dto.toEntity() );
+        return entity.getReplyIdx();
+    }
+    @Transactional(readOnly = true)
+    public boolean existsById(final Long replyIdx) {
+        boolean isFound = replyRepository.existsById( replyIdx );
+        return isFound;
     }
 }
