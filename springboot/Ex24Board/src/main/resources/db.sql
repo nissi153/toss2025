@@ -21,7 +21,7 @@ SELECT * FROM board;
 
 DROP TABLE IF EXISTS reply;
 
--- reply_board_idx : 외래키 - 다른 테이블의 인덱스키를 가지고 있음.
+-- reply_board_idx : 외래키(FK) - 다른 테이블의 인덱스키를 가지고 있음.
 CREATE TABLE reply(
     reply_idx       BIGINT PRIMARY KEY AUTO_INCREMENT,
     reply_name      VARCHAR(255),

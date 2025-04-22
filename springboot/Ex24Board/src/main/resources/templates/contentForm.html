@@ -22,6 +22,8 @@
     </style>
   </head>
   <body>
+    <h3>글 목록</h3>
+
     <form action="/board/updateAction" method="post">
       <input type="hidden" name="boardIdx" th:value="${ dto.boardIdx }" />
       <input type="hidden" name="boardHit" th:value="${ dto.boardHit }" />
@@ -80,5 +82,32 @@
         </tr>
       </table>
     </form>
+
+    <!-- 댓글목록 -->
+    <h3>댓글목록</h3>
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <th>별명</th>
+        <th>내용</th>
+        <th>날짜</th>
+        <th>삭제</th>
+      </tr>
+      <tr th:each="replyDto, status : ${ replyList }">
+        <td>[[ ${ replyDto.replyName } ]]</td>
+        <td>[[ ${ replyDto.replyContent } ]]</td>
+        <td>
+          [[ ${ #temporals.format(replyDto.replyDate, 'yyyy-MM-dd HH:mm') } ]]
+        </td>
+        <td style="text-align: center">
+          <a
+            th:href="|/reply/deleteAction?replyIdx=${ replyDto.replyIdx }&boardIdx=${ dto.boardIdx }|"
+          >
+            <button type="button">삭제</button>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- 댓글쓰기 -->
   </body>
 </html>
