@@ -7,10 +7,7 @@ import com.study.springboot.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,10 +40,24 @@ public class BoardController {
     //HTTP Body(JS)의 값을 값을 받아오는 방법
     //1. @RequestBody
     @PostMapping("/writeAction")
+    @ResponseBody
     public String writeAction(@ModelAttribute BoardSaveRequestDto dto){
+        Long newIdx = boardService.save( dto );
 
+        boolean isFound = boardService.existsById( newIdx );
+        if( isFound == true ) {
+            return "<script>alert('글쓰기 성공'); location.href='/board/listForm';</script>";
+        }else{
+            return "<script>alert('글쓰기 실패'); history.back();</script>";
+        }
+    }
+    @GetMapping("/contentForm")
+    public String contentForm(@RequestParam Long boardIdx, Model model){
+        //게시글 단건 조회
+        BoardResponseDto dto = boardService.findById( boardIdx );
+        model.addAttribute( "dto", dto);
 
-        return "listForm";
+        return "contentForm";
     }
 }
 

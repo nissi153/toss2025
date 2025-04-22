@@ -3,6 +3,7 @@ package com.study.springboot.service;
 import com.study.springboot.domain.board.Board;
 import com.study.springboot.domain.board.BoardRepository;
 import com.study.springboot.dto.BoardResponseDto;
+import com.study.springboot.dto.BoardSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -40,10 +41,25 @@ public class BoardService {
         //List<Board>를 List<BoardResponseDto>로 변환 : stream() 메소드 사용
         return list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
     }
-//    @Transactional
-//    public Long save(final BoardSaveRequestDto dto){
-//
-//    }
+    @Transactional // begin(), close()
+    public Long save(final BoardSaveRequestDto dto){
+        //persist(), commit(), rollback()
+        Board entity = boardRepository.save( dto.toEntity() );
+        return entity.getBoardIdx();
+    }
+    @Transactional(readOnly = true)
+    public boolean existsById(Long boardIdx){
+        boolean isFound = boardRepository.existsById( boardIdx );
+        return isFound;
+    }
+    @Transactional(readOnly = true)
+    public BoardResponseDto findById( Long boardIdx){
+        Board entity = boardRepository.findById( boardIdx )
+                .orElseThrow( ()->
+                        new IllegalArgumentException( "없는 글인덱스입니다. boardIdx:"+boardIdx) );
+
+        return new BoardResponseDto(entity);
+    }
 }
 
 

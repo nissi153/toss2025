@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글 수정</title>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      td,
+      h2 {
+        text-align: center;
+      }
+      table,
+      td {
+        width: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/board/updateAction" method="post">
+      <input type="hidden" name="boardIdx" th:value="${ dto.boardIdx }" />
+      <input type="hidden" name="boardHit" th:value="${ dto.boardHit }" />
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>DB인덱스</td>
+          <td th:text="${ dto.boardIdx }"></td>
+        </tr>
+        <tr>
+          <td>조회수</td>
+          <td th:text="${ dto.boardHit }"></td>
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td>
+            <input
+              type="text"
+              name="boardName"
+              th:value="${ dto.boardName }"
+              size="50"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>제목</td>
+          <td>
+            <input
+              type="text"
+              name="boardTitle"
+              th:value="${ dto.boardTitle }"
+              size="50"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>내용</td>
+          <td>
+            <textarea
+              rows="10"
+              cols="48"
+              name="boardContent"
+              th:text="${ dto.boardContent }"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">글수정</button>&nbsp;&nbsp;
+            <a href="/board/listForm"
+              ><input type="button" value="목록보기"
+            /></a>
+            <a href="/board/deleteAction?boardIdx=${ dto.boardIdx }"
+              ><input type="button" value="삭제하기"
+            /></a>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
