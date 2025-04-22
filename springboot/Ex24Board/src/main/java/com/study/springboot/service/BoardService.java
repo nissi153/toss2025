@@ -29,6 +29,8 @@ public class BoardService {
     //    2. B계좌 : 1000원 증가  -> 통신오류!
     //    3. 송금 내역 저장
 
+    //@Transactional : find(select) 생략가능, insert, update, delete 반드시 기술해야 됨.
+
     //전체목록보기
     @Transactional(readOnly = true)
     public List<BoardResponseDto> findAll() {
@@ -36,9 +38,12 @@ public class BoardService {
         List<Board> list = boardRepository.findAll( sort );
 
         //List<Board>를 List<BoardResponseDto>로 변환 : stream() 메소드 사용
-        List<BoardResponseDto> list2 = list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
         return list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
     }
+//    @Transactional
+//    public Long save(final BoardSaveRequestDto dto){
+//
+//    }
 }
 
 
