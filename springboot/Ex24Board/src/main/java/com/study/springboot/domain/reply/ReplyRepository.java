@@ -10,5 +10,5 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
     //기본함수
     //사용자 커스텀 쿼리 메소드
     //게시글 인덱스로 댓글 목록 찾기
-    List<Reply> findAllByReplayBoardIdxOrderByReplyDateDesc(Long replyBoardIdx);
+    List<Reply> findAllByReplyBoardIdxOrderByReplyDateDesc(Long replyBoardIdx);
 }

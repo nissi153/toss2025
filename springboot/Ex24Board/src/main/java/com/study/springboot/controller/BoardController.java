@@ -3,7 +3,9 @@ package com.study.springboot.controller;
 
 import com.study.springboot.dto.BoardResponseDto;
 import com.study.springboot.dto.BoardSaveRequestDto;
+import com.study.springboot.dto.ReplyResponseDto;
 import com.study.springboot.service.BoardService;
+import com.study.springboot.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
+    private final ReplyService replyService;
 
     @GetMapping("/")
     public String main(){
@@ -61,6 +64,10 @@ public class BoardController {
 
         dto.setBoardHit( dto.getBoardHit() + 1);
         model.addAttribute( "dto", dto);
+
+        //댓글 목록 조회
+        List<ReplyResponseDto> replyList = replyService.findAllByReplyBoardIdx( boardIdx );
+        model.addAttribute("replyList", replyList);
 
         return "contentForm";
     }
