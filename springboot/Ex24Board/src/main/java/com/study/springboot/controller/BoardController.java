@@ -55,6 +55,11 @@ public class BoardController {
     public String contentForm(@RequestParam Long boardIdx, Model model){
         //게시글 단건 조회
         BoardResponseDto dto = boardService.findById( boardIdx );
+
+        //조회수 증가
+        boardService.updateHit(boardIdx, dto.getBoardHit() + 1);
+
+        dto.setBoardHit( dto.getBoardHit() + 1);
         model.addAttribute( "dto", dto);
 
         return "contentForm";

@@ -60,6 +60,26 @@ public class BoardService {
 
         return new BoardResponseDto(entity);
     }
+    @Transactional
+    public void updateHit(final Long boardIdx, final Long hit){
+        Board entity = boardRepository.findById( boardIdx )
+                .orElseThrow( ()->
+                        new IllegalArgumentException( "없는 글인덱스입니다. boardIdx:"+boardIdx) );
+        //엔티티 클래스의 필드(멤버변수)값만 바꿔도 자동으로 저장된다. save() 별도로 호출안해도 됨.
+        entity.updateHit( hit );
+        //트랜잭션 함수를 벗어날때 자동 update, commit이 된다.
+    }
+    @Transactional
+    public boolean update(final Long boardIdx, final BoardSaveRequestDto dto){
+        Board entity = boardRepository.findById( boardIdx )
+                .orElseThrow( ()->
+                        new IllegalArgumentException( "없는 글인덱스입니다. boardIdx:"+boardIdx) );
+
+        entity.update(dto.getBoardName(), dto.getBoardTitle(),
+                      dto.getBoardContent(), dto.getBoardHit());
+
+        return true;
+    }
 }
 
 
