@@ -75,6 +75,12 @@ public class BoardController {
             return "<script>alert('글수정 실패'); history.back();</script>";
         }
     }
+    @GetMapping("/deleteAction")
+    @ResponseBody
+    public String deleteAction(@RequestParam Long boardIdx ){
+        boardService.delete( boardIdx );
+        return "<script>alert('글삭제 성공'); location.href='/board/listForm';</script>";
+    }
 }
 
 

@@ -73,7 +73,7 @@
             <a href="/board/listForm"
               ><input type="button" value="목록보기"
             /></a>
-            <a href="/board/deleteAction?boardIdx=${ dto.boardIdx }"
+            <a th:href="|/board/deleteAction?boardIdx=${ dto.boardIdx }|"
               ><input type="button" value="삭제하기"
             /></a>
           </td>

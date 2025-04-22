@@ -4,6 +4,7 @@ import com.study.springboot.domain.board.Board;
 import com.study.springboot.domain.board.BoardRepository;
 import com.study.springboot.dto.BoardResponseDto;
 import com.study.springboot.dto.BoardSaveRequestDto;
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -79,6 +80,13 @@ public class BoardService {
                       dto.getBoardContent(), dto.getBoardHit());
 
         return true;
+    }
+    @Transactional
+    public void delete(final Long boardIdx) {
+        Board entity = boardRepository.findById( boardIdx )
+                .orElseThrow( ()->
+                        new IllegalArgumentException( "없는 글인덱스입니다. boardIdx:"+boardIdx) );
+        boardRepository.delete( entity );
     }
 }
 
