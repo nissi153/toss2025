@@ -71,25 +71,13 @@ public class BoardService2 {
     }
     @Transactional
     public void delete(final Long boardIdx) {
-        Board entity = boardRepository.findById( boardIdx )
-                .orElseThrow( ()->
-                        new IllegalArgumentException( "없는 글인덱스입니다. boardIdx:"+boardIdx) );
-        boardRepository.delete( entity );
+        Board entity = em.find( Board.class, boardIdx );
+        if( entity == null ) {
+            throw new IllegalArgumentException("없는 글인덱스입니다. boardIdx:" + boardIdx);
+        }
+        em.remove( entity );
     }
 
-    @PersistenceContext
-    private EntityManager em;
-
-    @Transactional
-    public Long emTest(final BoardSaveRequestDto dto){
-
-        //Board entity = boardRepository.save( dto.toEntity() );
-
-        Board entity = dto.toEntity();
-        em.persist(entity); // 직접 persist 호출
-
-        return entity.getBoardIdx();
-    }
 }
 
 
