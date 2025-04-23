@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>apiForm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+//게시글 전체 조회 <br>
+//URI : GET localhost:8080/api/boards<br>
+<button type="button" id="btn-findall">게시글 전체 조회</button><hr>
+//게시글 단건 조회<br>
+//GET	/api/boards/1<br>
+<input id="board-idx" type="text" value="1"/>
+<button type="button" id="btn-findbyid">게시글 단건 조회</button><hr>
+//게시글 댓글 조회<br>
+//GET	/api/boards/1/replys<br>
+//GET	/api/replys?postId=1<br>
+<input id="board-idx2" type="text" value="1"/>
+<button type="button" id="btn-reply">게시글 댓글 조회</button><hr>
+//게시글 추가하기<br>
+//POST	/api/boards<br>
+<input id="board-name" type="text" value="" placeholder="이름"/>
+<input id="board-title" type="text" value="" placeholder="제목"/>
+<input id="board-content" type="text" value="" placeholder="내용"/>
+<button type="button" id="btn-save">게시글 추가하기</button><hr>
+//게시글 수정하기<br>
+//PUT/PATCH	/api/boards/1<br>
+<input id="board-name2" type="text" value="홍길동" placeholder="이름"/>
+<input id="board-title2" type="text" value="제목" placeholder="제목"/>
+<input id="board-content2" type="text" value="내용" placeholder="내용"/>
+<input id="board-hit2" type="text" value="0" placeholder="조회수"/>
+<input id="board-idx3" type="text" value="11"/>
+<button type="button" id="btn-update">게시글 수정하기</button><hr>
+//게시글 삭제하기<br>
+//DELETE /api/boards/10<br>
+<input id="board-idx4" type="text" value="10"/>
+<button type="button" id="btn-delete">게시글 삭제하기</button><hr>
+
+<script>
+    var main = {
+      init : function () {
+          var _this = this;
+          //조회/폼 요청
+          document.getElementById('btn-findall').addEventListener('click', function () {
+              _this.findall();
+          });
+          document.getElementById('btn-findbyid').addEventListener('click', function () {
+              _this.findbyid();
+          });
+          document.getElementById('btn-reply').addEventListener('click', function () {
+              _this.reply();
+          });
+
+          //액션
+          document.getElementById('btn-save').addEventListener('click', function () {
+              _this.save();
+          });
+
+          document.getElementById('btn-update').addEventListener('click', function () {
+              _this.update();
+          });
+
+          document.getElementById('btn-delete').addEventListener('click', function () {
+              _this.delete();
+          });
+      },
+      findall : function () {
+         fetch('/api/boards', {
+             method: 'GET',
+             headers: {
+                 'Content-Type': 'application/json; charset=utf-8'
+             }
+         })
+         .then(response => {
+             if (!response.ok) {
+                 throw new Error('Network response was not ok');
+             }
+             return response.json();
+         })
+         .then(data => {
+             console.log(JSON.stringify(data));
+             data.forEach((el, index) => {
+                 console.log(index + ':' + el.board_title);
+             });
+         })
+         .catch(error => {
+             alert('Error: ' + error.message);
+         });
+      },
+      findbyid : function () {
+        var board_idx = document.getElementById('board-idx').value;
+
+        fetch('/api/boards/' + board_idx, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(JSON.stringify(data));
+            console.log(data.board_name);
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        });
+      },
+      reply : function () {
+        var board_idx2 = document.getElementById('board-idx2').value;
+
+        fetch('/api/boards/' + board_idx2 + '/replys', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(JSON.stringify(data));
+            data.forEach((el, index) => {
+                console.log(index + ':' + el.reply_content);
+            });
+        })
+        .catch(error => {
+            alert('Error: ' + error.message);
+        });
+      },
+      save : function () {
+          var data = {
+              boardName: document.getElementById('board-name').value,
+              boardTitle: document.getElementById('board-title').value,
+              boardContent: document.getElementById('board-content').value,
+              boardHit: 0
+          };
+
+          fetch('/api/boards', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json; charset=utf-8'
+              },
+              body: JSON.stringify(data)
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(() => {
+              alert('글이 등록되었습니다.');
+              //window.location.href = '/';
+          })
+          .catch(error => {
+              alert('Error: ' + error.message);
+          });
+      },
+      update : function () {
+          var data = {
+              boardName: document.getElementById('board-name2').value,
+              boardTitle: document.getElementById('board-title2').value,
+              boardContent: document.getElementById('board-content2').value,
+              boardHit: Number(document.getElementById('board-hit2').value)
+          };
+
+          var board_idx3 = document.getElementById('board-idx3').value;
+
+          fetch('/api/boards/' + board_idx3, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json; charset=utf-8'
+              },
+              body: JSON.stringify(data)
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(() => {
+              alert('글이 수정되었습니다.');
+              //window.location.href = '/';
+          })
+          .catch(error => {
+              alert('Error: ' + error.message);
+          });
+      },
+      delete : function () {
+          var board_idx4 = document.getElementById('board-idx4').value;
+
+          fetch('/api/boards/' + board_idx4, {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json; charset=utf-8'
+              }
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(() => {
+              alert('글이 삭제되었습니다.');
+              //window.location.href = '/';
+          })
+          .catch(error => {
+              alert('Error: ' + error.message);
+          });
+      }
+    };
+
+    main.init();
+</script>
+
+</body>
+</html>
