@@ -39,7 +39,16 @@ public class BoardApiController {
         return boardService.saveToDto( dto );
     }
     //게시글 수정
+    @PutMapping("/boards/{id}")
+    public BoardResponseDto update(@PathVariable final Long id,
+                                   @RequestBody final BoardSaveRequestDto dto){
+        return boardService.updateToDto( id, dto );
+    }
     //게시글 삭제
+    @DeleteMapping("/boards/{id}")
+    public Long delete(@PathVariable final Long id){
+        return boardService.deleteToDto( id );
+    }
 }
 
 
