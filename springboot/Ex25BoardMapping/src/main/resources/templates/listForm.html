@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판 목록보기</title>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      td,
+      h2 {
+        text-align: center;
+      }
+      table,
+      td {
+        width: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>게시판 글목록</h2>
+    <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <td>순번</td>
+          <td>이름</td>
+          <td>제목</td>
+          <td>날짜시간</td>
+          <td>조회수</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="dto, status : ${ list }">
+          <td th:text="${ status.count }">1</td>
+          <td th:text="${ dto.boardName }">홍길동</td>
+          <td>
+            <a
+              th:href="|/board/contentForm?boardIdx=${dto.boardIdx}|"
+              th:text="${ dto.boardTitle }"
+              >글제목</a
+            >
+          </td>
+          <td
+            th:text="${ #temporals.format(dto.boardDate, 'yyyy-MM-dd HH:mm') }"
+          >
+            2025-04-21 10:10
+          </td>
+          <td th:text="${ dto.boardHit }">10</td>
+        </tr>
+        <tr>
+          <td colspan="5"><a href="/board/writeForm">글작성</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      /* 웹브라우저 back키 누를때, 페이지 재로딩 => 조회수 증가  */
+      window.onpageshow = function (event) {
+        if (
+          event.persisted ||
+          (window.performance && window.performance.navigation.type == 2)
+        ) {
+          document.location.reload();
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>글 수정</title>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        overflow: hidden;
+      }
+      td,
+      h2 {
+        text-align: center;
+      }
+      table,
+      td {
+        width: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>글 목록</h3>
+
+    <form action="/board/updateAction" method="post">
+      <input type="hidden" name="boardIdx" th:value="${ dto.boardIdx }" />
+      <input type="hidden" name="boardHit" th:value="${ dto.boardHit }" />
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td>DB인덱스</td>
+          <td th:text="${ dto.boardIdx }"></td>
+        </tr>
+        <tr>
+          <td>조회수</td>
+          <td th:text="${ dto.boardHit }"></td>
+        </tr>
+        <tr>
+          <td>이름</td>
+          <td>
+            <input
+              type="text"
+              name="boardName"
+              th:value="${ dto.boardName }"
+              size="50"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>제목</td>
+          <td>
+            <input
+              type="text"
+              name="boardTitle"
+              th:value="${ dto.boardTitle }"
+              size="50"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>내용</td>
+          <td>
+            <textarea
+              rows="10"
+              cols="48"
+              name="boardContent"
+              th:text="${ dto.boardContent }"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit">글수정</button>&nbsp;&nbsp;
+            <a href="/board/listForm"
+              ><input type="button" value="목록보기"
+            /></a>
+            <a th:href="|/board/deleteAction?boardIdx=${ dto.boardIdx }|"
+              ><input type="button" value="삭제하기"
+            /></a>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <!-- 댓글목록 -->
+    <h3>댓글목록</h3>
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <th>별명</th>
+        <th>내용</th>
+        <th>날짜</th>
+        <th>삭제</th>
+      </tr>
+      <tr th:each="replyDto, status : ${ replyList }">
+        <td>[[ ${ replyDto.replyName } ]]</td>
+        <td>[[ ${ replyDto.replyContent } ]]</td>
+        <td>
+          [[ ${ #temporals.format(replyDto.replyDate, 'yyyy-MM-dd HH:mm') } ]]
+        </td>
+        <td style="text-align: center">
+          <a
+            th:href="|/reply/deleteAction?replyIdx=${ replyDto.replyIdx }&boardIdx=${ dto.boardIdx }|"
+          >
+            <button type="button">삭제</button>
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+
+    <!-- 댓글쓰기 -->
+    <form action="/reply/writeReplyAction" method="post">
+      <table cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2">
+            <input
+              type="hidden"
+              name="replyBoardIdx"
+              th:value="${ dto.boardIdx }"
+            />
+            <label>댓글</label>
+            <textarea name="replyContent" cols="50" rows="2"></textarea> <br />
+            <label>별명</label>
+            <input type="text" name="replyName" value="" /><br />
+            <input type="submit" value="댓글달기" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

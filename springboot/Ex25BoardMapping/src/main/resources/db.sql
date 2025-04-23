@@ -42,7 +42,7 @@ SELECT * FROM reply;
 -- 순수한 SQL에서는 외래키(FK)를 통해서 관계매핑
 -- JPA Entity를 통해 연관관계 매핑
 
--- @JoinColumn             mappedBy
+-- mappedBy                @JoinColumn
 -- 한개의 게시글(포스트) : 여러개의 댓글(FK) - 엔티티의 주인
 --           1           : N
 --        @OneToMany       @ManyToOne

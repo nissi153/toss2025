@@ -37,6 +37,12 @@ public class Board {
     @Column(name = "board_date", nullable = false)
     private LocalDateTime boardDate = LocalDateTime.now(); //생성일시,수정일시
 
+    //mappedBy : 연관관계 객체이름
+    //cascade : 전이 - DB에 게시글이 생성될때 같이 생성되거나 삭제.
+    //orphanRemoval : replies 리스트에서 삭제하면 DB에서도 삭제됨.
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reply> replies = new ArrayList<>();
+
     //선택적 매개변수가 있는 생성자
     @Builder
     public Board(String boardName, String boardTitle,
