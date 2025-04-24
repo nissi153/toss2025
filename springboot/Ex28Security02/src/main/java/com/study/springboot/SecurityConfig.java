@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -32,5 +34,11 @@ public class SecurityConfig {
                         //로그인 페이지를 모든 사용자에게 허용한다.
                         .permitAll());
         return http.build();
+    }
+    //BCrypt 암호화 엔코더 빈 생성
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        //암호화 강도는 4 ~ 31까지 설정할 수 있으며, 기본강도는 10이다.
+        return new BCryptPasswordEncoder( 12 );
     }
 }

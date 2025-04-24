@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HtmlController {
     @GetMapping("/")
-    @ResponseBody
     public String main(){
-        return "스프링 시큐리티 앱입니다.";
+        return "index";
     }
+
     @GetMapping("/loginForm")
     public String loginForm(){
         return "loginForm";
