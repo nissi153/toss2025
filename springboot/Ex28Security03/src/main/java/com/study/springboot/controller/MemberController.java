@@ -10,11 +10,12 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -67,6 +68,63 @@ public class MemberController {
         return "<script>alert('회원가입 성공했습니다.'); location.href='/loginForm';</script>";
 
     }
+    @GetMapping("/admin")
+    public String admin( Model model ){
+        long listCount = memberRepository.count();
+        model.addAttribute("listCount", listCount);
+
+        List<MemberEntity> list = memberRepository.findAll();
+        model.addAttribute("list", list);
+
+        return "admin";
+    }
+    @GetMapping("/viewDTO")
+    public String viewDTO(@RequestParam("id") int id,
+                          Model model) throws Exception {
+        Optional<MemberEntity> optional = memberRepository.findById(Long.valueOf(id));
+        if( !optional.isPresent() ) {
+            throw new Exception("member id is wrong!");
+        }
+        MemberEntity entity = optional.get();
+        model.addAttribute("member", entity);
+
+        return "modifyForm";
+    }
+    @RequestMapping("/modifyAction")
+    @ResponseBody
+    public String modifyAction(@ModelAttribute MemberJoinDto memberJoinDto) {
+
+        try{
+            MemberEntity entity = memberJoinDto.toUpdateEntity();
+            memberRepository.save( entity );
+        }
+        catch ( IllegalArgumentException e ){
+            e.printStackTrace();
+            return "<script>alert('회원정보 수정 실패'); history.back();</script>";
+        }
+
+        return "<script>alert('회원정보 수정 성공!'); location.href='/viewDTO?id=" + memberJoinDto.getId() + "';</script>";
+    }
+    @RequestMapping("/deleteDTO")
+    @ResponseBody
+    public String deleteDTO(@RequestParam("id") int id) throws Exception {
+
+        Optional<MemberEntity> optional = memberRepository.findById(Long.valueOf(id));
+        if( !optional.isPresent() ) {
+            throw new Exception("member id is wrong!");
+        }
+        MemberEntity entity = optional.get();
+
+        try{
+            memberRepository.delete( entity );
+        }
+        catch (IllegalArgumentException e){
+            e.printStackTrace();
+            return "<script>alert('회원정보 삭제 실패'); history.back();</script>";
+        }
+        return "<script>alert('회원정보 삭제 성공'); location.href='/admin';</script>";
+    }
+
 }
 
 
