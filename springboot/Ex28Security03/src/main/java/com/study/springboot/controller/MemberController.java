@@ -3,6 +3,7 @@ package com.study.springboot.controller;
 import com.study.springboot.dto.MemberJoinDto;
 import com.study.springboot.entity.MemberEntity;
 import com.study.springboot.entity.MemberRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,13 +33,15 @@ public class MemberController {
     @PostMapping("/joinAction")
     @ResponseBody
     public String joinAction(@Valid @ModelAttribute MemberJoinDto dto,
-                             BindingResult bindingResult){
+                             BindingResult bindingResult,
+                             HttpServletResponse response){
         //입력정보 유효성 체크
         if( bindingResult.hasErrors() ){
             String detail = bindingResult.getFieldError().getDefaultMessage();
             String bindResultCode = bindingResult.getFieldError().getCode();
             System.out.println("detail = " + detail);
             System.out.println("bindResultCode = " + bindResultCode);
+            response.setStatus( HttpServletResponse.SC_BAD_REQUEST ); //400 상태코드
             return "<script>alert('" +  detail +"'); histroy.back();</script>";
         }
         //회원가입 절차를 수행한다.
@@ -52,18 +55,17 @@ public class MemberController {
             memberRepository.save( entity );
         }catch (DataIntegrityViolationException e){
             e.printStackTrace();
+            response.setStatus( HttpServletResponse.SC_BAD_REQUEST ); //400 상태코드
             bindingResult.reject("singupFailed", "이미 등록된 사용자입니다.");
         }catch (IllegalArgumentException e){
             e.printStackTrace();
+            response.setStatus( HttpServletResponse.SC_BAD_REQUEST ); //400 상태코드
             return "<script>alert('회원가입 실패했습니다.'); history.back();</script>";
         }
         //HTTP 응답 코드 : 200 성공
-        HttpStatus status = HttpStatus.OK;
-        if( status == HttpStatus.OK ) {
-            return "<script>alert('회원가입 성공했습니다.'); location.href='/loginForm';</script>";
-        }else{
-            return "<script>alert('회원가입 실패했습니다.'); history.back();</script>";
-        }
+        response.setStatus( HttpServletResponse.SC_CREATED ); //201 성공-추가상태 코드
+        return "<script>alert('회원가입 성공했습니다.'); location.href='/loginForm';</script>";
+
     }
 }
 
