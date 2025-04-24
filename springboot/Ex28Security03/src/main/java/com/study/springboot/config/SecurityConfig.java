@@ -9,6 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity // 웹 보안 활성화를 위한 어노테이션
@@ -17,18 +20,40 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             //csrf(사이트간 위조 요청) 보안이 기본적으로 활성화 되어 있음.
-            //csrf 비활성화
-            //.csrf( (auth) -> auth.disable() )
+            // CSRF 비활성화 (개발용)
+            //.csrf( (csrf) -> csrf.disable() )
 
             //csrf 보안을 활성화 한다.
             //csrf 보안을 쿠키방식으로 지정한다.
-            //CsrfTokenRepository 인터페이스는
-            // HttpSessionCsrfTokenRepository,CookieCsrfTokenRepository
-            //2개가 있다.
+            //CsrfTokenRepository 인터페이스는 HttpSessionCsrfTokenRepository,CookieCsrfTokenRepository 2개가 있다.
             //기본적으로 스프링 시큐리티는 HttpSessionCsrfTokenRepository로 CSRF 토큰을 HttpSession에 저장한다.
             //하지만 커스텀 CsrfTokenRepository를 설정하고 싶을 때도 있을 것이다.
             //예를 들어 자바스크립트 기반 어플리케이션을 지원하려면 쿠키에 CsrfToken을 저장해야 한다.
-            .csrf((auth)->auth.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+            .csrf((csrf)->csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+
+            // CORS 모두 허용 (개발용)
+//            .cors(cors -> cors.configurationSource(request -> {
+//                CorsConfiguration config = new CorsConfiguration();
+//                config.setAllowedOrigins(Arrays.asList("*"));
+//                config.setAllowedMethods(Arrays.asList("*"));
+//                config.setAllowedHeaders(Arrays.asList("*"));
+//                return config;
+//            }))
+
+            // CORS 설정 (특정 도메인만 허용)
+            .cors(cors -> cors
+                    .configurationSource(request -> {
+                        CorsConfiguration config = new CorsConfiguration();
+                        config.setAllowedOrigins(Arrays.asList(
+                                "https://myapp.com:3000",
+                                "https://api.myapp.com"
+                        ));
+                        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+                        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+                        config.setAllowCredentials(true);
+                        return config;
+                    })
+            )
 
             .authorizeHttpRequests( (auth) -> auth
                 //루트 밑의 모든 경로에 대한 요청을 허가한다.
@@ -65,6 +90,30 @@ public class SecurityConfig {
                 );
         return http.build();
     }
+
+    //REST API용 설정 (일반적인 운영용)
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//            // REST API는 일반적으로 CSRF 비활성화
+//            .csrf(csrf -> csrf.disable())
+//
+//            // CORS 설정
+//            .cors(cors -> cors
+//                    .configurationSource(request -> {
+//                        CorsConfiguration config = new CorsConfiguration();
+//                        config.setAllowedOrigins(Arrays.asList("https://frontend.myapp.com:3000"));
+//                        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//                        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+//                        config.setAllowCredentials(true);
+//                        config.setMaxAge(3600L);
+//                        return config;
+//                    })
+//            );
+//
+//        return http.build();
+//    }
+
     //BCrypt 암호화 엔코더 빈 생성
     @Bean
     public PasswordEncoder passwordEncoder() {
