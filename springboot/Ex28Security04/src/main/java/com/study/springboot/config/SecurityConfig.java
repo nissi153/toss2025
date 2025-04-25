@@ -1,5 +1,7 @@
 package com.study.springboot.config;
 
+import com.study.springboot.service.CustomOAuth2UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -15,13 +19,16 @@ import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity // 웹 보안 활성화를 위한 어노테이션
+@RequiredArgsConstructor
 public class SecurityConfig {
+    final private CustomOAuth2UserService customOAuth2UserService;
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             //csrf(사이트간 위조 요청) 보안이 기본적으로 활성화 되어 있음.
             // CSRF 비활성화 (개발용)
-            //.csrf( (csrf) -> csrf.disable() )
+//            .csrf( (csrf) -> csrf.disable() )
 
             //csrf 보안을 활성화 한다.
             //csrf 보안을 쿠키방식으로 지정한다.
@@ -33,27 +40,27 @@ public class SecurityConfig {
 
             // CORS 모두 허용 (개발용)
 //            .cors(cors -> cors.configurationSource(request -> {
-////                CorsConfiguration config = new CorsConfiguration();
-////                config.setAllowedOrigins(Arrays.asList("*"));
-////                config.setAllowedMethods(Arrays.asList("*"));
-////                config.setAllowedHeaders(Arrays.asList("*"));
-////                return config;
-////            }))
+//                CorsConfiguration config = new CorsConfiguration();
+//                config.setAllowedOrigins(Arrays.asList("*"));
+//                config.setAllowedMethods(Arrays.asList("*"));
+//                config.setAllowedHeaders(Arrays.asList("*"));
+//                return config;
+//            }))
 
                 // CORS 설정 (특정 도메인만 허용)
-                .cors(cors -> cors
-                        .configurationSource(request -> {
-                            CorsConfiguration config = new CorsConfiguration();
-                            config.setAllowedOrigins(Arrays.asList(
-                                    "https://localhost:3000",
-                                    "https://api.myapp.com"
-                        ));
-                        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-                        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
-                        config.setAllowCredentials(true);
-                        return config;
-                    })
-            )
+//                .cors(cors -> cors
+//                        .configurationSource(request -> {
+//                            CorsConfiguration config = new CorsConfiguration();
+//                            config.setAllowedOrigins(Arrays.asList(
+//                                    "https://localhost:3000",
+//                                    "https://api.myapp.com"
+//                        ));
+//                        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+//                        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+//                        config.setAllowCredentials(true);
+//                        return config;
+//                    })
+//            )
 
             .authorizeHttpRequests( (auth) -> auth
                 //루트 밑의 모든 경로에 대한 요청을 허가한다.
