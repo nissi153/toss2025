@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -146,6 +148,12 @@ public class MemberController {
     @ResponseBody
     public String snsLoginFailure(){
         return "<script>alert('SNS로그인실패'); history.back();</script>";
+    }
+    @GetMapping("/token")
+    @ResponseBody
+    public String getToken(@RegisteredOAuth2AuthorizedClient("google") OAuth2AuthorizedClient authorizedClient) {
+        String accessToken = authorizedClient.getAccessToken().getTokenValue();
+        return accessToken;
     }
 }
 

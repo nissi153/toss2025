@@ -55,6 +55,7 @@ public class SecurityConfig {
 
             .authorizeHttpRequests( (auth) -> auth
                 //루트 밑의 모든 경로에 대한 요청을 허가한다.
+                .requestMatchers( new AntPathRequestMatcher("/**") ).permitAll()
                 .requestMatchers( new AntPathRequestMatcher("/loginForm") ).permitAll()
                 .requestMatchers( new AntPathRequestMatcher("/joinForm") ).permitAll()
                 .requestMatchers( "/admin" ).hasRole("ADMIN")
