@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 보기/수정</title>
+    </script>
+</head>
+<body>
+
+<h1>회원정보 보기/수정</h1>
+
+<form action="modifyAction" method="post" name="userInfo">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <input type="hidden" name="user_role" id="user_role" th:value="${ member.user_role }" />
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>
+                <input type="text" name="id" id="id" maxlength="10" th:value="${ member.id }" readonly />
+            </td>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td>
+                <input type="text" name="username" id="username" th:value="${ member.username }" maxlength="20" />
+            </td>
+        </tr>
+        <tr>
+            <td>비번</td>
+            <td>
+                <input type="text" name="password" id="password" th:value="${ member.password }" maxlength="20" />
+            </td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td>
+                <input type="text" name="user_name" id="user_name" th:value="${ member.user_name }" maxlength="50" />
+            </td>
+        </tr>
+        <tr>
+            <td>가입일</td>
+            <td>
+                <input type="date" name="join_date" id="join_date" th:value="|${member.join_date}|" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="회원정보수정" />
+                <button formaction="/admin" formmethod="get"> 회원목록</button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+</body>
+</html>

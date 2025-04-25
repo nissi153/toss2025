@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>메인화면</title>
+</head>
+<body>
+
+<h3>메인화면</h3>
+
+로그인여부(isAuthenticated()) : <span sec:authorize="isAuthenticated()"> 인증후 - 로그인상태 </span><br>
+로그인여부(isAnonymous()) : <span sec:authorize="isAnonymous()"> 인증전 - 로그아웃상태 </span><br>
+<hr>
+
+권한/역할(hasRole('USER')) : <span sec:authorize="hasRole('USER')">일반회원입니다.</span><br>
+권한/역할(hasRole('ADMIN')) :
+<span sec:authorize="hasRole('ADMIN')">
+  <span>관리자입니다.</span>
+  <a th:href="@{/admin}"><button type="button">회원목록보기</button></a>
+</span>
+<hr>
+
+<th:block sec:authorize="isAnonymous()">
+    <a th:href="@{/loginForm}"><button type="button">로그인</button></a>
+</th:block>
+<th:block sec:authorize="isAuthenticated()">
+    <a th:href="@{/logoutAction}"><button type="button">로그아웃</button></a>
+</th:block>
+
+</body>
+</html>

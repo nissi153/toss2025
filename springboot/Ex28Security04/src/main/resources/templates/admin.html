@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원목록 조회</title>
+</head>
+<body>
+<h2> 관리자 페이지 </h2>
+
+<h2 th:text="|회원목록(갯수 : ${ listCount })|">회원목록</h2>
+
+<table border=1>
+    <tr align=center>
+        <td>일련번호</td>
+        <td>ID</td>
+        <td>아이디</td>
+        <td>비번</td>
+        <td>이름</td>
+        <td>권한</td>
+        <td>가입일</td>
+        <td>단건조회</td>
+        <td>삭제</td>
+    </tr>
+
+    <tr th:each="member, status : ${ list }" align=center>
+        <td> <span th:text="${status.count}"></span> </td>
+        <td> <span th:text="|${member.id }|" ></span> </td>
+        <td> <span th:text="|${member.username}|" ></span> </td>
+        <td> <span th:text="|${member.password}|" ></span> </td>
+        <td> <span th:text="|${member.user_name}|" ></span> </td>
+        <td> <span th:text="|${member.user_role}|" ></span> </td>
+        <td> <span th:text="|${member.join_date}|" ></span> </td>
+        <td>
+            <button type="submit" th:onclick="|location.href='@{viewDTO(id=${member.id})}'|">단건조회</button>
+        </td>
+        <td>
+            <button type="submit" th:onclick="|location.href='@{deleteDTO(id=${member.id})}'|">삭제</button>
+        </td>
+    </tr>
+</table>
+
+<br><br>
+
+<a href="/">메인화면으로 이동</a>
+
+</body>
+</html>
+
+
+
+
