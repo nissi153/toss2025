@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>apiForm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+회원가입 <br>
+POST localhost:8080/api/users/signup<br>
+<button type="button" id="btn-signup">회원가입</button><br><br>
+
+로그인 <br>
+POST localhost:8080/api/users/login<br>
+<button type="button" id="btn-login">로그인</button><br><br>
+
+마이페이지 <br>
+POST localhost:8080/api/users/my<br>
+<button type="button" id="btn-my">마이페이지</button><br><br>
+
+관리자페이지 <br>
+POST localhost:8080/api/users/admin<br>
+<button type="button" id="btn-admin">관리자페이지</button><br><br>
+
+<script>
+    var main = {
+      init : function () {
+          var _this = this;
+          //회원가입
+          $('#btn-signup').on('click', function () {
+              _this.signup();
+          });
+          //로그인
+          $('#btn-login').on('click', function () {
+              _this.login();
+          });
+          //마이페이지
+          $('#btn-my').on('click', function () {
+              _this.my();
+          });
+          //관리자페이지
+          $('#btn-admin').on('click', function () {
+              _this.admin();
+          });
+      },
+      signup : function () {
+
+        const data = new URLSearchParams();
+        data.append('email', 'test@naver.com');
+        data.append('password', '1234');
+        data.append('userRole', 'ADMIN');
+
+        fetch("http://localhost:8080/api/users/signup",{
+            method : "POST",
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded' 
+            },
+            body: data
+        })
+        .then(response => {
+            //console.log( response.json() ); //response.json() 을 2번 수행하면 오류발생.
+            return response.json();
+        })
+        .then(json => {
+            console.log(json.id);
+            console.log(json.email);
+            console.log(json.password);
+            console.log(json.userRole);
+        });
+        
+        
+      },
+      login : function () {
+
+        const data = new URLSearchParams();
+        data.append('email', 'test@naver.com');
+        data.append('password', '1234');
+        data.append('userRole', 'ADMIN');
+
+        fetch("http://localhost:8080/api/users/login",{
+                method : "POST",
+                headers: { 
+                    'Content-Type': 'application/x-www-form-urlencoded' 
+                },
+                body: data
+        })
+        .then(response => response.text())
+        .then(text => {
+            console.log(text);
+            localStorage.setItem("X-AUTH-TOKEN", text);
+        });
+      },
+      my : function () {
+        fetch("http://localhost:8080/api/users/my",{
+        method : "GET",
+        headers : {
+            'X-AUTH-TOKEN' : localStorage.getItem("X-AUTH-TOKEN")
+        }
+        })
+        .then(response => response.json())
+        .then(json => {
+            console.log(json.id);
+            console.log(json.email);
+            console.log(json.password);
+            console.log(json.userRole);
+        })
+      },
+
+      admin : function () {
+        fetch("http://localhost:8080/api/users/admin",{
+        method : "GET",
+        headers : {
+             'X-AUTH-TOKEN' : localStorage.getItem("X-AUTH-TOKEN")
+        }
+        })
+        .then(response => response.json())
+        .then(json => {
+            json.forEach((item) => {
+                console.log(item.id);
+                console.log(item.email);
+                console.log(item.password);
+                console.log(item.userRole);
+            });
+        })
+      },
+      
+    };
+
+    main.init();
+</script>
+
+</body>
+</html>
