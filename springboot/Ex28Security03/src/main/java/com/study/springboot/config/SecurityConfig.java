@@ -33,20 +33,20 @@ public class SecurityConfig {
 
             // CORS 모두 허용 (개발용)
 //            .cors(cors -> cors.configurationSource(request -> {
-//                CorsConfiguration config = new CorsConfiguration();
-//                config.setAllowedOrigins(Arrays.asList("*"));
-//                config.setAllowedMethods(Arrays.asList("*"));
-//                config.setAllowedHeaders(Arrays.asList("*"));
-//                return config;
-//            }))
+////                CorsConfiguration config = new CorsConfiguration();
+////                config.setAllowedOrigins(Arrays.asList("*"));
+////                config.setAllowedMethods(Arrays.asList("*"));
+////                config.setAllowedHeaders(Arrays.asList("*"));
+////                return config;
+////            }))
 
-            // CORS 설정 (특정 도메인만 허용)
-            .cors(cors -> cors
-                    .configurationSource(request -> {
-                        CorsConfiguration config = new CorsConfiguration();
-                        config.setAllowedOrigins(Arrays.asList(
-                                "https://myapp.com:3000",
-                                "https://api.myapp.com"
+                // CORS 설정 (특정 도메인만 허용)
+                .cors(cors -> cors
+                        .configurationSource(request -> {
+                            CorsConfiguration config = new CorsConfiguration();
+                            config.setAllowedOrigins(Arrays.asList(
+                                    "https://localhost:3000",
+                                    "https://api.myapp.com"
                         ));
                         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
                         config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
