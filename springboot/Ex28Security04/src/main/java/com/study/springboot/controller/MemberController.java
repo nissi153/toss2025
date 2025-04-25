@@ -3,7 +3,9 @@ package com.study.springboot.controller;
 import com.study.springboot.dto.MemberJoinDto;
 import com.study.springboot.entity.MemberEntity;
 import com.study.springboot.entity.MemberRepository;
+import com.study.springboot.service.SessionUser;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -124,7 +126,27 @@ public class MemberController {
         }
         return "<script>alert('회원정보 삭제 성공'); location.href='/admin';</script>";
     }
+    @GetMapping("/snsLoginSuccess")
+    @ResponseBody
+    public String snsLoginSuccess(Model model, HttpSession session){
+        SessionUser user = (SessionUser) session.getAttribute("user");
+        String userName = "";
+        String userEmail = "";
+        String userPicture = "";
+        if( user != null ){
+            userName = user.getName();
+            userEmail = user.getEmail();
+            userPicture = user.getPicture();
 
+            //member_security테이블에 sns_user정보를 insert한다.
+        }
+        return "<script>alert('SNS로그인성공 "+ userName +"'); location.href='/';</script>";
+    }
+    @GetMapping("/snsLoginFailure")
+    @ResponseBody
+    public String snsLoginFailure(){
+        return "<script>alert('SNS로그인실패'); history.back();</script>";
+    }
 }
 
 
