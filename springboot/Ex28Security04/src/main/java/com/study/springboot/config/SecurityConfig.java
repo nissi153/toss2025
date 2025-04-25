@@ -26,17 +26,8 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            //csrf(사이트간 위조 요청) 보안이 기본적으로 활성화 되어 있음.
-            // CSRF 비활성화 (개발용)
-//            .csrf( (csrf) -> csrf.disable() )
-
-            //csrf 보안을 활성화 한다.
-            //csrf 보안을 쿠키방식으로 지정한다.
-            //CsrfTokenRepository 인터페이스는 HttpSessionCsrfTokenRepository,CookieCsrfTokenRepository 2개가 있다.
-            //기본적으로 스프링 시큐리티는 HttpSessionCsrfTokenRepository로 CSRF 토큰을 HttpSession에 저장한다.
-            //하지만 커스텀 CsrfTokenRepository를 설정하고 싶을 때도 있을 것이다.
-            //예를 들어 자바스크립트 기반 어플리케이션을 지원하려면 쿠키에 CsrfToken을 저장해야 한다.
-            .csrf((csrf)->csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+            .csrf( (csrf) -> csrf.disable() )
+//            .csrf((csrf)->csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
 
             // CORS 모두 허용 (개발용)
 //            .cors(cors -> cors.configurationSource(request -> {
@@ -97,11 +88,11 @@ public class SecurityConfig {
                 )
                 //SNS 로그인
                 .oauth2Login( oauth2 -> oauth2
-                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
-                                .userService(customOAuth2UserService))
-                                .successHandler(successHandler())
-                                .failureHandler(failureHandler())
-                );
+                    .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+                    .userService(customOAuth2UserService))
+                    .successHandler(successHandler())
+                    .failureHandler(failureHandler())
+        );
         return http.build();
     }
 

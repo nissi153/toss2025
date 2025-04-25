@@ -4,8 +4,8 @@ spring:
       client:
         registration:
           google:
-            client-id: ID입력
-            client-secret: 시크릿입력
+            client-id:
+            client-secret:
             scope: profile,email
 #          kakao:
 #            # rest-api key
