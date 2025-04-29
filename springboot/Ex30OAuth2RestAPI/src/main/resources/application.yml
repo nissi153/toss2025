@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# 카카오 로그인 설정
+kakao:
+  client-id: bc9177ab3d93148d4c07372a66e84eb4
+  client-secret: jWcufAQrOsqmLMNjKR6IEFk1f6cw66iv
+  redirect-uri: http://localhost:5173/oauth/kakao/callback
+
+# JWT 설정
+jwt:
+  secret: JWT_SECRET_1234_JWT_SECRET_1234_JWT_SECRET_1234
+  access-token-validity: 3600000  # 1시간
+  refresh-token-validity: 604800000  # 7일

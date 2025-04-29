@@ -1,0 +1,33 @@
+.kakao-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fee500;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 0 16px;
+  height: 45px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.kakao-login-btn:before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyOCAyNiI+PHBhdGggZmlsbD0iIzAwMCIgZD0iTTE0IDEwYy0uNTUgMC0xIC40NS0xIDF2NGMwIC41NS40NSAxIDEgMXMxLS40NSAxLTF2LTRjMC0uNTUtLjQ1LTEtMS0xIi8+PHBhdGggZD0iTTguNCAxMEg3LjJjLS41NiAwLTEuMDIuNDQtMS4wMiAxUzYuNjQgMTIgNy4yIDEyaC40OHY0YzAgLjU1LjQ1IDEgMSAxcy45OC0uNDUuOTgtMXYtNWMwLS41NS0uNS0xLTEuMjYtMXoiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMjEuMiAxMGMtLjU2IDAtMS4yLjQ0LTEuMiAxdjRjMCAuNTUuNDUgMSAxLjAyIDFzLjk4LS40NS45OC0xdi0xaC40OGMuNTYgMCAxLjAyLS40NCAxLjAyLTFzLS40NS0xLTEuMDItMWgtLjQ4di0xaDEuMmMuNTYgMCAxLjAyLS40NCAxLjAyLTFzLS40NS0xLTEuMDItMXoiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMTcuMjMgMTBjLS41NiAwLTEuMDIuNDQtMC45OSAxbC4xNCAzLjk4YS45ODQgMC45ODQgMCAwIDEtLjk5IDEgMC45OTggMC45OTggMCAwIDEtLjk4LTFsMC4xNC0zLjk4YzAuMDItLjU2LS41Ni0xLTEuMTItMXMtMS4wMi40NC0xLjAyIDFsLS4xNCAzLjk4YzAgMS42NSAxLjM1IDMgMy4wMiAzczMuMDItMS4zNSAzLjAyLTNsLS4xNC0zLjk4Yy0uMDMtLjU2LS40NS0xLTAuOTYtMXoiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMTQgMEM2LjI3IDAgMCA1LjM3IDAgMTJzNi4yNyAxMiAxNCAxMiAxNC01LjM3IDE0LTEyUzIxLjczIDAgMTQgMHptMCAyMi4wNWMtNi44MiAwLTEyLjM2LTQuNTEtMTIuMzYtMTAuMDVTNy4xOCAxLjk1IDE0IDEuOTVjNi44MiAwIDEyLjM2IDQuNTEgMTIuMzYgMTAuMDVTMjAuODIgMjIuMDUgMTQgMjIuMDV6IiBmaWxsPSIjMDAwIi8+PC9zdmc+")
+    no-repeat center center;
+  background-size: contain;
+}
+
+.kakao-login-btn:hover {
+  background-color: #f6e10f;
+}
