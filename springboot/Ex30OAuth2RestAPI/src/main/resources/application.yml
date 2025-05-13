@@ -18,8 +18,8 @@ spring:
 
 # 카카오 로그인 설정
 kakao:
-  client-id: REST_API_ID
-  client-secret: SCRITE
+  client-id: bc9177ab3d93148d4c07372a66e84eb4
+  client-secret: jWcufAQrOsqmLMNjKR6IEFk1f6cw66iv
   redirect-uri: http://localhost:5173/oauth/kakao/callback
 
 # JWT 설정
