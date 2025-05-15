@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+# Service 기본 정보
+metadata:
+  name: spring-service
+
+# Service 세부 정보
+spec:
+  type: NodePort # Service의 종류
+  selector:
+    app: backend-app # 실행되고 있는 파드 중 'app: backend-app'이라는 값을 가진 파드와 서비스를 연결
+  ports:
+    - protocol: TCP # 서비스에 접속하기 위한 프로토콜
+      port: 8080 # 쿠버네티스 내부에서 Service에 접속하기 위한 포트 번호 (Service
+      targetPort: 8080 # 매핑하기 위한 파드의 포트 번호
+      nodePort: 30000 # 외부에서 사용자들이 접근하게 될 포트 번호

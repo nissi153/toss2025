@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+
+# PersistentVolumeClaim 기본 정보
+metadata:
+  name: mysql-pvc # PersistentVolumeClaim 이름
+
+# PersistentVolumeClaim 세부 정보
+spec:
+  storageClassName: my-storage # PV와 PVC의 storageClassName이 같다면 볼륨이 연결된다.
+  accessModes:
+    - ReadWriteOnce # 볼륨에 접근할 때의 권한
+  resources: # PVC가 PV에 요청하는 리소스의 양을 정의
+    requests: # 필요한 최소 리소스
+      storage: 1Gi # PVC가 PV에 요청하는 스토리지 양 (PV가 최소 1Gi 이상은 되어야 한다.)

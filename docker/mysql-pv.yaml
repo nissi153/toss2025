@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+
+# PersistentVolume 기본 정보
+metadata:
+  name: mysql-pv # PersistentVolume 이름
+
+# PersistentVolume 세부 정보
+spec:
+  storageClassName: my-storage # PV와 PVC의 storageClassName이 같다면 볼륨이 연결된다.
+  capacity:
+    storage: 1Gi # 볼륨이 사용할 용량을 설정
+  accessModes:
+    - ReadWriteOnce # 아래 hostPath 타입 활용 시 이 옵션만 사용 가능
+  hostPath: # hostPath 타입을 활용 (hostPath : 쿠버네티스 내부 공간을 활용)
+    path: "/mnt/data" # 쿠버네티스 내부의 공간에서 /mnt/data의 경로를 볼륨으로 사용

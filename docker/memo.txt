@@ -1,0 +1,18 @@
+# 사용자 엑세스키 설정
+$ aws configure
+AWS Access Key ID [None]: <위에서 발급한 Key id>
+AWS Secret Access Key [None]: <위에서 발급한 Secret Access Key>
+# 로그인
+aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin {MY-AWS-ID}.dkr.ecr.ap-northeast-2.amazonaws.com
+# ecr repo 생성
+aws ecr create-repository --repository-name my-ecr-repo --region ap-northeast-2
+
+docker build -t my-app:1.0 .
+docker tag my-app:1.0 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:1.0
+docker push 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:1.0
+docker pull 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:1.0
+
+docker build -t my-app:latest .
+docker tag my-app:latest 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:latest
+docker push 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:latest
+docker pull 073658113926.dkr.ecr.ap-northeast-2.amazonaws.com/my-ecr-repo:latest

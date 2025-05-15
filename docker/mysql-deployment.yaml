@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+
+# Deployment 기본 정보
+metadata:
+  name: mysql-deployment # Deployment 이름
+
+# Deployment 세부 정보
+spec:
+  replicas: 1 # 생성할 파드의 복제본 개수
+  selector:
+    matchLabels:
+      app: mysql-db # 아래에서 정의한 Pod 중 'app: mysql-db'이라는 값을 가진 파드를 선택
+
+  # 배포할 Pod 정의
+  template:
+    metadata:
+      labels: # 레이블 (= 카테고리)
+        app: mysql-db
+    spec:
+      containers:
+        - name: mysql-container # 컨테이너 이름
+          image: mysql # 컨테이너를 생성할 때 사용할 이미지
+          ports:
+            - containerPort: 3306 # 컨테이너에서 사용하는 포트를 명시적으로 표현
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: mysql-database
+          # 컨테이너 내에서 어떤 경로를 볼륨으로 사용할 지 지정
+          volumeMounts:
+            - name: mysql-persistent-storage # 밑에서 설정할 volumes.name과 값이 같아야 함
+              mountPath: /var/lib/mysql # mysql 컨테이너 내부에 있는 경로
+      # 파드가 사용할 볼륨을 지정
+      volumes:
+        - name: mysql-persistent-storage # 위에서 설정할 volumeMounts.name과 일치해야 함
+          persistentVolumeClaim:
+            claimName: mysql-pvc # 연결시킬 PVC의 name과 동일해야 함
+
